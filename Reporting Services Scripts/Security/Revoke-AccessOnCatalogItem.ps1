@@ -15,6 +15,17 @@ if ([string]::IsNullOrEmpty($reportServerUri))
 {
     $reportServerUri = "http://localhost/reportserver/ReportService2010.asmx"    
 }
+else
+{
+    # appending ReportService2010.aspx at the end of $reportServerUri
+    if ($reportServerUri[$reportServerUri.Length - 1] -ne '/') 
+    {
+        $reportServerUri = $reportServerUri + '/'
+    }
+    $reportServerUriObject = New-Object System.Uri($reportServerUri)
+    $soapEndpointUriObject = New-Object System.Uri($reportServerUriObject, 'ReportService2010.asmx')
+    $reportServerUri = $soapEndPointUriObject.ToString()
+}
 
 # creating proxy either using specified credentials or default credentials
 if (![string]::IsNullOrEmpty($reportServerUsername) -and ![string]::IsNullOrEmpty($reportServerPassword)) 
