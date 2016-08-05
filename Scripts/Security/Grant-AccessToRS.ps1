@@ -10,20 +10,38 @@ function Grant-AccessToRS
     .DESCRIPTION
         This script grants the specified role access to the specified user/group to the SQL Server Reporting Services Instance located at the specified Report Server URI. 
 
-    .PARAMETER ReportServerUri 
+    .PARAMETER ReportServerUri (optional)
         Specify the Report Server URL to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerUsername
+    .PARAMETER ReportServerUsername (optional)
         Specify the user name to use when connecting to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerPassword
+    .PARAMETER ReportServerPassword (optional)
         Specify the password to use when connecting to your SQL Server Reporting Services Instance.
 
     .PARAMETER UserOrGroupName
         Specify the user or group name to grant access to.
         
     .PARAMETER RoleName
-        Specify the name of the role you want to grant on the catalog item.  
+        Specify the name of the role you want to grant on the catalog item.
+
+    .EXAMPLE
+        Grant-AccessToRS -UserOrGroupName 'johnd' -RoleName 'System User'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using current user's credentials and then grant 'System User' access to user 'johnd'.
+    
+    .EXAMPLE
+        Grant-AccessToRS -ReportServerUri 'http://localhost/reportserver_sql2012' -UserOrGroupName 'johnd' -RoleName 'System User'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver_2012 using current user's credentials and then grant 'System User' access to user 'johnd'.
+
+    .EXAMPLE
+        Grant-AccessToRS -ReportServerUsername 'CaptainAwesome' -ReportServerPassword 'CaptainAwesomesPassword' -UserOrGroupName 'johnd' -RoleName 'System User'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials and then grant 'System User' access to user 'johnd'.  
     #>
 
     param(
@@ -75,8 +93,18 @@ function Grant-AccessToRS
         $originalPolicies = $proxy.GetSystemPolicies()
         
         Write-Debug "Policies retrieved: $($originalPolicies.Length)!"
+
+         # checking if the specified role already exists for the specified user/group name
         foreach ($policy in $originalPolicies)
         {
+            if ($policy.GroupUserName.Equals($UserOrGroupName, [StringComparison]::OrdinalIgnoreCase)) {
+                foreach ($role in $policy.Roles) {
+                    if ($role.Name.Equals($RoleName, [StringComparison]::OrdinalIgnoreCase)) {
+                        Write-Host "$($UserOrGroupName) already has $($RoleName) privileges";
+                        return
+                    }
+                }
+            }
             Write-Debug "Policy: $($policy.GroupUserName) is $($policy.Roles[0].Name)" 
         }
     }

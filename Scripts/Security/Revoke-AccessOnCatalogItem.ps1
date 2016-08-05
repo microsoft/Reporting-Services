@@ -10,13 +10,13 @@ function Revoke-AccessOnCatalogItem
     .DESCRIPTION
         This script revokes all access on the specified catalog item from the specified user/group. 
 
-    .PARAMETER ReportServerUri 
+    .PARAMETER ReportServerUri (optional)
         Specify the Report Server URL to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerUsername
+    .PARAMETER ReportServerUsername (optional)
         Specify the user name to use when connecting to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerPassword
+    .PARAMETER ReportServerPassword (optional)
         Specify the password to use when connecting to your SQL Server Reporting Services Instance.
 
     .PARAMETER UserOrGroupName
@@ -24,6 +24,24 @@ function Revoke-AccessOnCatalogItem
 
     .PARAMETER ItemPath
         Specify the path to catalog item on the server.
+
+    .EXAMPLE
+        Revoke-AccessOnCatalogItem -UserOrGroupName 'johnd' -ItemPath '/My Folder/SalesReport'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using current user's credentials and then revoke all access granted to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
+    
+    .EXAMPLE
+        Revoke-AccessOnCatalogItem -ReportServerUri 'http://localhost/reportserver_sql2012' -UserOrGroupName 'johnd' -ItemPath '/My Folder/SalesReport'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver_2012 using current user's credentials and then revoke all access granted to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
+
+    .EXAMPLE
+        Revoke-AccessOnCatalogItem -ReportServerUsername 'CaptainAwesome' -ReportServerPassword 'CaptainAwesomesPassword' -UserOrGroupName 'johnd' -ItemPath '/My Folder/SalesReport'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials and then revoke all access to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
     #>
 
     param(

@@ -10,14 +10,32 @@ function New-RSWebServiceProxy
     .DESCRIPTION
         This script creates a web service proxy object to the Reporting Services SOAP endpoint associated to the Report Server URI specified by the user. 
 
-    .PARAMETER ReportServerUri 
+    .PARAMETER ReportServerUri (optional)
         Specify the Report Server URL to your SQL Server Reporting Services Instance.
 
-    .PARAMETER Username
+    .PARAMETER Username (optional)
         Specify the user name to use when connecting to your SQL Server Reporting Services Instance.
 
-    .PARAMETER Password
+    .PARAMETER Password (optional)
         Specify the password to use when connecting to your SQL Server Reporting Services Instance.
+
+    .EXAMPLE 
+        New-RSWebServiceProxy 
+        Description
+        -----------
+        This command will create and return a web service proxy to the Report Server located at http://localhost/reportserver using current user's credentials.
+        
+    .EXAMPLE 
+        New-RSWebServiceProxy -ReportServerUri http://myserver/reportserver_sql2012
+        Description
+        -----------
+        This command will create and return a web service proxy to the Report Server located at http://myserver/reportserver_sql2012 using current user's credentials.
+    
+    .EXAMPLE 
+        New-RSWebServiceProxy -Username 'CaptainAwesome' -Password 'CaptainAwesomesPassword'
+        Description
+        -----------
+        This command will create and return a web service proxy to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials.
     #>
 
     param(

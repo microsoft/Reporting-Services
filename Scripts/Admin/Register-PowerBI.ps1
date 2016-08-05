@@ -10,10 +10,10 @@ function Register-PowerBI
     .DESCRIPTION
         This script configures Power BI integration by providing details about a previously configured Azure Active Directory Web App
 
-    .PARAMETER SqlServerInstance 
+    .PARAMETER SqlServerInstance (optional)
         Specify the name of the SQL Server Reporting Services Instance. The default Reporting Services instance is typically named 'MSSQLSERVER'.
 
-    .PARAMETER SqlServerVersion 
+    .PARAMETER SqlServerVersion (optional)
         Specify the version of the SQL Server Reporting Services Instance. 13 for SQL Server 2016, 12 for SQL Server 2014, 11 for SQL Server 2012
         (Power BI integration was introduced in SQL Server 2016)
 
@@ -44,6 +44,8 @@ function Register-PowerBI
     .PARAMETER RedirectUrls 
         Redirect URLS - needs to match what is configured in the Azure AD app. General format:  http://{MyServerName}:80/reportserver/pages/LoginComplete.aspx
 
+    .LINK
+        https://blogs.msdn.microsoft.com/sqlrsteamblog/2016/07/22/manually-configuring-power-bi-integration-in-reporting-services/
     #>
     
     param(

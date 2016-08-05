@@ -11,6 +11,9 @@
 . $PSScriptRoot/Admin/Backup-RSEncryptionKey.ps1
 . $PSScriptRoot/Admin/Register-PowerBI.ps1
 . $PSScriptRoot/Admin/Restore-RSEncryptionKey.ps1
+. $PSScriptRoot/Admin/Set-RSEmailSettingsAsBasicAuth.ps1
+. $PSScriptRoot/Admin/Set-RSEmailSettingsAsNoAuth.ps1
+. $PSScriptRoot/Admin/Set-RSEmailSettingsAsNTLMAuth.ps1
 . $PSScriptRoot/Security/Grant-AccessOnCatalogItem.ps1
 . $PSScriptRoot/Security/Grant-AccessToRS.ps1
 . $PSScriptRoot/Security/Revoke-AccessOnCatalogItem.ps1

@@ -8,15 +8,15 @@ function Grant-AccessOnCatalogItem
         This script grants access to catalog items to users/groups.
 
     .DESCRIPTION
-        This script grants the specified role access to the specified user/group on the specified catalog item. 
+        This script grants the specified role access to the specified user/group on the specified catalog item using either current user's credentials or specified credentials. 
 
-    .PARAMETER ReportServerUri 
+    .PARAMETER ReportServerUri (optional)
         Specify the Report Server URL to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerUsername
+    .PARAMETER ReportServerUsername (optional)
         Specify the user name to use when connecting to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerPassword
+    .PARAMETER ReportServerPassword (optional)
         Specify the password to use when connecting to your SQL Server Reporting Services Instance.
 
     .PARAMETER UserOrGroupName
@@ -27,6 +27,24 @@ function Grant-AccessOnCatalogItem
 
     .PARAMETER ItemPath
         Specify the path to catalog item on the server.
+    
+    .EXAMPLE
+        Grant-AccessOnCatalogItem -UserOrGroupName 'johnd' -RoleName 'Browser' -ItemPath '/My Folder/SalesReport'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using current user's credentials and then grant Browser access to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
+    
+    .EXAMPLE
+        Grant-AccessOnCatalogItem -ReportServerUri 'http://localhost/reportserver_sql2012' -UserOrGroupName 'johnd' -RoleName 'Browser' -ItemPath '/My Folder/SalesReport'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver_2012 using current user's credentials and then grant Browser access to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
+
+    .EXAMPLE
+        Grant-AccessOnCatalogItem -ReportServerUsername 'CaptainAwesome' -ReportServerPassword 'CaptainAwesomesPassword' -UserOrGroupName 'johnd' -RoleName 'Browser' -ItemPath '/My Folder/SalesReport'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials and then grant Browser access to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
     #>
 
     param(
@@ -82,6 +100,20 @@ function Grant-AccessOnCatalogItem
         $originalPolicies = $proxy.GetPolicies($ItemPath, [ref] $inheritsParentPolicy)
         
         Write-Debug "Policies retrieved: $($originalPolicies.Length)!"
+        
+        # checking if the specified role already exists on the specified user/group name for specified catalog item 
+        foreach ($policy in $originalPolicies)
+        {
+            if ($policy.GroupUserName.Equals($UserOrGroupName, [StringComparison]::OrdinalIgnoreCase)) {
+                foreach ($role in $policy.Roles) {
+                    if ($role.Name.Equals($RoleName, [StringComparison]::OrdinalIgnoreCase)) {
+                        Write-Host "$($UserOrGroupName) already has $($RoleName) privileges";
+                        return
+                    }
+                }
+            }
+            Write-Debug "Policy: $($policy.GroupUserName) is $($policy.Roles[0].Name)" 
+        }
     }
     catch [System.Web.Services.Protocols.SoapException]
     {

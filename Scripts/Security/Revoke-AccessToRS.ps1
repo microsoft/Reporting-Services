@@ -10,17 +10,35 @@ function Revoke-AccessToRS
     .DESCRIPTION
         This script revokes all access on the SQL Server Reporting Services Instance located at the specified Report Server URI from the specified user/group. 
 
-    .PARAMETER ReportServerUri 
+    .PARAMETER ReportServerUri (optional)
         Specify the Report Server URL to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerUsername
+    .PARAMETER ReportServerUsername (optional)
         Specify the user name to use when connecting to your SQL Server Reporting Services Instance.
 
-    .PARAMETER ReportServerPassword
+    .PARAMETER ReportServerPassword (optional)
         Specify the password to use when connecting to your SQL Server Reporting Services Instance.
 
     .PARAMETER UserOrGroupName
-        Specify the user or group name to revoke access from.  
+        Specify the user or group name to revoke access from.
+
+    .EXAMPLE
+        Revoke-AccessToRS -UserOrGroupName 'johnd'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using current user's credentials and then revoke all access for user 'johnd'.
+    
+    .EXAMPLE
+        Revoke-AccessToRS -ReportServerUri 'http://localhost/reportserver_sql2012' -UserOrGroupName 'johnd'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver_2012 using current user's credentials and then revoke all access for user 'johnd'.
+
+    .EXAMPLE
+        Revoke-AccessToRS -ReportServerUsername 'CaptainAwesome' -ReportServerPassword 'CaptainAwesomesPassword' -UserOrGroupName 'johnd'
+        Description
+        -----------
+        This command will establish a connection to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials and then revoke all access for user 'johnd'.
     #>
 
     param(
