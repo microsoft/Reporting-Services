@@ -36,7 +36,8 @@ function Backup-RSEncryptionKey
     #>
 
     [cmdletbinding()]
-    param(
+    param
+    (
         [string]
         $SqlServerInstance='MSSQLSERVER',
 
