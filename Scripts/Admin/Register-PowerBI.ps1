@@ -47,40 +47,53 @@ function Register-PowerBI
     .LINK
         https://blogs.msdn.microsoft.com/sqlrsteamblog/2016/07/22/manually-configuring-power-bi-integration-in-reporting-services/
     #>
-    
-    param(
-        [string]$SqlServerInstance='MSSQLSERVER',
 
-        [string]$SqlServerVersion='13',
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $SqlServerInstance='MSSQLSERVER',
+
+        [string]
+        $SqlServerVersion='13',
 
         [Parameter(Mandatory=$True)]
-        [string]$ClientId,
+        [string]
+        $ClientId,
 
         [Parameter(Mandatory=$True)]
-        [string]$ClientSecret,
+        [string]
+        $ClientSecret,
         
         [Parameter(Mandatory=$True)]
-        [string]$AppObjectId,
+        [string]
+        $AppObjectId,
         
         [Parameter(Mandatory=$True)]
-        [string]$TenantName,
+        [string]
+        $TenantName,
         
         [Parameter(Mandatory=$True)]
-        [string]$TenantId,
+        [string]
+        $TenantId,
         
-        [string]$ResourceUrl = 'https://analysis.windows.net/powerbi/api',
+        [string]
+        $ResourceUrl = 'https://analysis.windows.net/powerbi/api',
         
-        [string]$AuthUrl = 'https://login.windows.net/common/oauth2/authorize',
+        [string]
+        $AuthUrl = 'https://login.windows.net/common/oauth2/authorize',
         
-        [string]$TokenUrl = 'https://login.microsoftonline.com/common/oauth2/token',
+        [string]
+        $TokenUrl = 'https://login.microsoftonline.com/common/oauth2/token',
         
         [Parameter(Mandatory=$True)]
-        [string]$RedirectUrls   
+        [string]
+        $RedirectUrls   
     )
 
     $rsWmiObject = New-RSConfigurationSettingObject -SqlServerInstance $SqlServerInstance -SqlServerVersion $SqlServerVersion
 
-    Write-Host "Configuring Power BI ..."
+    Write-Verbose "Configuring Power BI ..."
     $configureResult = $rsWmiObject.SavePowerBIInformation($ClientId,
                                         $ClientSecret,
                                         $AppObjectId,
@@ -91,10 +104,13 @@ function Register-PowerBI
                                         $TokenUrl,
                                         $RedirectUrls)
 
-    if ($configureResult.HRESULT -eq 0) {
-        Write-Host "Success!";
-    } else {
-        Write-Error "Fail! `n Errors: $($configureResult.ExtendedErrors)";
+    if ($configureResult.HRESULT -eq 0) 
+    {
+        Write-Verbose "Success!"
+    } 
+    else
+    {
+        Write-Error "Fail! `n Errors: $($configureResult.ExtendedErrors)"
         Exit 1
     }
 }

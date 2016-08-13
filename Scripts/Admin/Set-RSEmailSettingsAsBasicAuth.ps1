@@ -44,21 +44,29 @@ function Set-RSEmailSettingsAsBasicAuth
         This command will configure the named instance (SQL2016) from SQL Server 2016 Reporting Services to use Basic Auth with the specified SMTP Server, Sender Address, Username and Password when sending emails.
     #>
 
-    param(
-        [string]$SqlServerInstance='MSSQLSERVER',
-        [string]$SqlServerVersion='13',
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $SqlServerInstance='MSSQLSERVER',
+        [string]
+        $SqlServerVersion='13',
         
         [Parameter(Mandatory=$True)]
-        [string]$SmtpServer,
+        [string]
+        $SmtpServer,
 
         [Parameter(Mandatory=$True)]
-        [string]$SenderAddress,
+        [string]
+        $SenderAddress,
 
         [Parameter(Mandatory=$True)]
-        [string]$EmailUsername,
+        [string]
+        $EmailUsername,
 
         [Parameter(Mandatory=$True)]
-        [string]$EmailPassword
+        [string]
+        $EmailPassword
     )
 
     $rsWmiObject = New-RSConfigurationSettingObject -SqlServerInstance $SqlServerInstance -SqlServerVersion $SqlServerVersion
