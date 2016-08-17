@@ -44,29 +44,38 @@ function Revoke-AccessOnCatalogItem
         This command will establish a connection to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials and then revoke all access to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
     #>
 
-    param(
-        [string]$ReportServerUri = 'http://localhost/reportserver',
-        [string]$ReportServerUsername,
-        [string]$ReportServerPassword,
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $ReportServerUri = 'http://localhost/reportserver',
+
+        [string]
+        $ReportServerUsername,
+
+        [string]
+        $ReportServerPassword,
         
         [Parameter(Mandatory=$True)]
-        [string]$UserOrGroupName,
+        [string]
+        $UserOrGroupName,
         
         [Parameter(Mandatory=$True)]
-        [string]$ItemPath
+        [string]
+        $ItemPath
     )
 
     # creating proxy
-    $global:proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword
+    $proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword
 
     # retrieving existing policies for the current item
     try
     {
-        Write-Debug "Retrieving policies for $ItemPath..."
+        Write-Verbose "Retrieving policies for $ItemPath..."
         $inheritsParentPolicy = $false
         $originalPolicies = $proxy.GetPolicies($ItemPath, [ref] $inheritsParentPolicy)
         
-        Write-Debug "Policies retrieved: $($originalPolicies.Length)!"
+        Write-Verbose "Policies retrieved: $($originalPolicies.Length)!"
     }
     catch [System.Web.Services.Protocols.SoapException]
     {
@@ -84,7 +93,7 @@ function Revoke-AccessOnCatalogItem
     {
         if ($originalPolicy.GroupUserName.Equals($UserOrGroupName, [StringComparison]::OrdinalIgnoreCase))
         {
-            continue;
+            continue
         }
         $policyList.Add($originalPolicy)
     }
@@ -92,9 +101,9 @@ function Revoke-AccessOnCatalogItem
     # updating policies on the item
     try
     {
-        Write-Debug "Revoking all access from $UserOrGroupName on $ItemPath..." 
+        Write-Verbose "Revoking all access from $UserOrGroupName on $ItemPath..." 
         $proxy.SetPolicies($ItemPath, $policyList.ToArray())
-        Write-Host "Revoked all access from $UserOrGroupName on $ItemPath!"
+        Write-Verbose "Revoked all access from $UserOrGroupName on $ItemPath!"
     }
     catch [System.Web.Services.Protocols.SoapException]
     {

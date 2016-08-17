@@ -47,30 +47,40 @@ function Grant-AccessOnCatalogItem
         This command will establish a connection to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials and then grant Browser access to user 'johnd' on catalog item found at '/My Folder/SalesReport'.
     #>
 
-    param(
-        [string]$ReportServerUri = 'http://localhost/reportserver',
-        [string]$ReportServerUsername,
-        [string]$ReportServerPassword,
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $ReportServerUri = 'http://localhost/reportserver',
+
+        [string]
+        $ReportServerUsername,
+
+        [string]
+        $ReportServerPassword,
         
         [Parameter(Mandatory=$True)]
-        [string]$UserOrGroupName,
+        [string]
+        $UserOrGroupName,
         
         [Parameter(Mandatory=$True)]
-        [string]$RoleName,
+        [string]
+        $RoleName,
         
         [Parameter(Mandatory=$True)]
-        [string]$ItemPath
+        [string]
+        $ItemPath
     )
 
     # creating proxy
-    $global:proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword
+    $proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword
 
     # retrieving roles from the proxy 
-    Write-Debug "Retrieving valid roles for Catalog items..."
+    Write-Verbose "Retrieving valid roles for Catalog items..."
     $roles = $proxy.ListRoles("Catalog", $null)
 
     # validating the role name provided by user
-    Write-Debug "Validating role name specified: $RoleName..."
+    Write-Verbose "Validating role name specified: $RoleName..."
     $isRoleValid = $false
     foreach ($role in $roles)
     {
@@ -95,23 +105,27 @@ function Grant-AccessOnCatalogItem
     # retrieving existing policies for the current item
     try
     {
-        Write-Debug "Retrieving policies for $ItemPath..."
+        Write-Verbose "Retrieving policies for $ItemPath..."
         $inheritsParentPolicy = $false
         $originalPolicies = $proxy.GetPolicies($ItemPath, [ref] $inheritsParentPolicy)
         
-        Write-Debug "Policies retrieved: $($originalPolicies.Length)!"
+        Write-Verbose "Policies retrieved: $($originalPolicies.Length)!"
         
         # checking if the specified role already exists on the specified user/group name for specified catalog item 
         foreach ($policy in $originalPolicies)
         {
-            if ($policy.GroupUserName.Equals($UserOrGroupName, [StringComparison]::OrdinalIgnoreCase)) {
-                foreach ($role in $policy.Roles) {
-                    if ($role.Name.Equals($RoleName, [StringComparison]::OrdinalIgnoreCase)) {
-                        Write-Host "$($UserOrGroupName) already has $($RoleName) privileges";
+            if ($policy.GroupUserName.Equals($UserOrGroupName, [StringComparison]::OrdinalIgnoreCase))
+            {
+                foreach ($role in $policy.Roles)
+                {
+                    if ($role.Name.Equals($RoleName, [StringComparison]::OrdinalIgnoreCase))
+                    {
+                        Write-Warning "$($UserOrGroupName) already has $($RoleName) privileges"
                         return
                     }
                 }
             }
+
             Write-Debug "Policy: $($policy.GroupUserName) is $($policy.Roles[0].Name)" 
         }
     }
@@ -154,9 +168,9 @@ function Grant-AccessOnCatalogItem
     # updating policies on the item
     try
     {
-        Write-Debug "Granting $($role.Name) to $($policy.GroupUserName) on $ItemPath..." 
+        Write-Verbose "Granting $($role.Name) to $($policy.GroupUserName) on $ItemPath..." 
         $proxy.SetPolicies($ItemPath, $policies)
-        Write-Host "Granted $($role.Name) to $($policy.GroupUserName) on $ItemPath!"
+        Write-Verbose "Granted $($role.Name) to $($policy.GroupUserName) on $ItemPath!"
     }
     catch [System.Web.Services.Protocols.SoapException]
     {

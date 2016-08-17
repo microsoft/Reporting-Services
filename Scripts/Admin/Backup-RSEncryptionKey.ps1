@@ -34,31 +34,41 @@ function Backup-RSEncryptionKey
         -----------
         This command will back up the encryption key against named instance (SQL2012) from SQL Server 2012 Reporting Services 
     #>
-    
-    param(
-        [string]$SqlServerInstance='MSSQLSERVER',
-        [string]$SqlServerVersion='13',
+
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $SqlServerInstance='MSSQLSERVER',
+
+        [string]
+        $SqlServerVersion='13',
 
         [Parameter(Mandatory=$True)]
-        [string]$Password,
+        [string]
+        $Password,
         
         [Parameter(Mandatory=$True)]
-        [string]$KeyPath    
+        [string]
+        $KeyPath    
     )
 
     $rsWmiObject = New-RSConfigurationSettingObject -SqlServerInstance $SqlServerInstance -SqlServerVersion $SqlServerVersion
 
-    Write-Host "Retrieving encryption key..."
+    Write-Verbose "Retrieving encryption key..."
     $encryptionKeyResult = $rsWmiObject.BackupEncryptionKey($Password)
 
-    if ($encryptionKeyResult.HRESULT -eq 0) {
-        Write-Host "Success!";
-    } else {
-        Write-Error "Fail! `n Errors: $($encryptionKeyResult.ExtendedErrors)";
+    if ($encryptionKeyResult.HRESULT -eq 0) 
+    {
+        Write-Verbose "Success!"
+    }
+    else 
+    {
+        Write-Error "Fail! `n Errors: $($encryptionKeyResult.ExtendedErrors)"
         Exit 1
     }
 
-    Write-Host "Writing key to file..."
+    Write-Verbose "Writing key to file..."
     [System.IO.File]::WriteAllBytes($KeyPath, $encryptionKeyResult.KeyFile)
-    Write-Host "Success!"
+    Write-Verbose "Success!"
 }

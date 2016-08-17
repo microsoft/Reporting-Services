@@ -41,25 +41,33 @@ function Revoke-AccessToRS
         This command will establish a connection to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials and then revoke all access for user 'johnd'.
     #>
 
-    param(
-        [string]$ReportServerUri = 'http://localhost/reportserver',
-        [string]$ReportServerUsername,
-        [string]$ReportServerPassword,
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $ReportServerUri = 'http://localhost/reportserver',
+
+        [string]
+        $ReportServerUsername,
+
+        [string]
+        $ReportServerPassword,
         
         [Parameter(Mandatory=$True)]
-        [string]$UserOrGroupName
+        [string]
+        $UserOrGroupName
     )
 
     # creating proxy
-    $global:proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword
+    $proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword
 
     # retrieving existing policies for the current item
     try
     {
-        Write-Debug "Retrieving system policies..."
+        Write-Verbose "Retrieving system policies..."
         $originalPolicies = $proxy.GetSystemPolicies()
         
-        Write-Debug "Policies retrieved: $($originalPolicies.Length)!"
+        Write-Verbose "Policies retrieved: $($originalPolicies.Length)!"
     }
     catch [System.Web.Services.Protocols.SoapException]
     {
@@ -77,7 +85,7 @@ function Revoke-AccessToRS
     {
         if ($originalPolicy.GroupUserName.Equals($UserOrGroupName, [StringComparison]::OrdinalIgnoreCase))
         {
-            continue;
+            continue
         }
         $policyList.Add($originalPolicy)
     }
@@ -85,9 +93,9 @@ function Revoke-AccessToRS
     # updating policies on the item
     try
     {
-        Write-Debug "Revoking all access from $UserOrGroupName..." 
+        Write-Verbose "Revoking all access from $UserOrGroupName..." 
         $proxy.SetSystemPolicies($policyList.ToArray())
-        Write-Host "Revoked all access from $UserOrGroupName!"
+        Write-Verbose "Revoked all access from $UserOrGroupName!"
     }
     catch [System.Web.Services.Protocols.SoapException]
     {

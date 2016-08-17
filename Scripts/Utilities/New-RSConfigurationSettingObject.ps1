@@ -40,11 +40,17 @@ function New-RSConfigurationSettingObject
         -----------
         This command will retrieve and return WMI Object associated to the named instance (SQL2012) of SQL Server 2012 Reporting Services.
     #>
-    param(
-        [string]$SqlServerInstance='MSSQLSERVER',
-        [string]$SqlServerVersion='13'
+
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $SqlServerInstance='MSSQLSERVER',
+
+        [string]
+        $SqlServerVersion='13'
     )
 
-    $namespace = "root\Microsoft\SqlServer\ReportServer\RS_$SqlServerInstance\v$SqlServerVersion\Admin";
+    $namespace = "root\Microsoft\SqlServer\ReportServer\RS_$SqlServerInstance\v$SqlServerVersion\Admin"
     return Get-WmiObject -namespace $namespace -class MSReportServer_ConfigurationSetting -ErrorAction Stop
 }
