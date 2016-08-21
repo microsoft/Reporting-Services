@@ -66,13 +66,13 @@ SetWindowsServiceIdentity(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $RSParams = [ordered]@{
+            $CimArguments = [ordered]@{
                 UseBuiltInAccount = [bool]$UseBuiltInAccount
                 Account           = $AccountCredential.UserName
                 Password          = $AccountCredential.GetNetworkCredential().Password            
             }
 
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetWindowsServiceIdentity -Arguments $RSParams | Out-Null
+            Invoke-CimMethod -InputObject $rsSettings -MethodName SetWindowsServiceIdentity -Arguments $CimArguments | Out-Null
         }
     }
 }

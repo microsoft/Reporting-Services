@@ -1,20 +1,14 @@
-function Set-RSEmailConfiguration
+function Get-RSSSLCertificate
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+List SSRS SSL Certificates
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Get-RSSSLCertificates
 .EXAMPLE
  
 .NOTES
-
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
-)
-
+ListSSLCertificates()
 #>
     [cmdletbinding()]
     param
@@ -32,17 +26,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -66,14 +50,24 @@ SetEmailConfiguration(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
-            }
+            Write-Verbose 'ListSSLCertificates'
+            $results = Invoke-CimMethod -InputObject $rsSettings -MethodName ListSSLCertificates
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            if($results.Length)
+            {
+                for($index = 0;$index -lt $results.Length; $index += 1)
+                {
+                    $cert = [pscustomobject]@{                        
+                        CertName        = $results.CertName[$index]
+                        Hostname        = $results.Hostname[$index]
+                        CertificateHash = $results.CertificateHash[$index]
+                        PSComputerName  = $node
+                    }
+
+                    $url.psobject.TypeNames.Insert(0, "PSSSRS.SslCertificate")
+                    Write-Output $cert
+                }
+            }
         }
     }
 }

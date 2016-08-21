@@ -1,18 +1,17 @@
-function Set-RSEmailConfiguration
+function Set-RSUnattendedExecutionAccount
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+Sets the Windows Service Identity
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Set-RSWindowsServiceIdentity -UseBuiltInAccount -ServiceIdentityCredential $credential
 .EXAMPLE
  
 .NOTES
 
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
+SetUnattendedExecutionAccount(
+    System.String UserName, 
+    System.String Password
 )
 
 #>
@@ -34,15 +33,9 @@ SetEmailConfiguration(
         [System.Management.Automation.Credential()]
         $Credential,
 
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        [PSCredential]
+        [System.Management.Automation.Credential()]
+        $AccountCredential
     )
 
     begin
@@ -67,13 +60,12 @@ SetEmailConfiguration(
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
+                Account           = $AccountCredential.UserName
+                Password          = $AccountCredential.GetNetworkCredential().Password            
             }
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            Write-Verbose 'SetUnattendedExecutionAccount'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName SetUnattendedExecutionAccount -Arguments $CimArguments | Out-Null
         }
     }
 }

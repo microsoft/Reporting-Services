@@ -1,19 +1,16 @@
-function Set-RSEmailConfiguration
+function Disable-RSSSL
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+Sets the Secure Connection Level to not require SSL
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Disable-RSSSL
 .EXAMPLE
  
 .NOTES
 
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
-)
+https://msdn.microsoft.com/en-us/library/ms152810(v=sql.110).aspx
+SetSecureConnectionLevel(System.Int32 Level)
 
 #>
     [cmdletbinding()]
@@ -32,17 +29,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -67,13 +54,13 @@ SetEmailConfiguration(
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
+                Level = 0 # Disabled        
             }
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            Write-Verbose 'SetSecureConnectionLevel'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName SetSecureConnectionLevel -Arguments $CimArguments | Out-Null
         }
     }
 }
+
+

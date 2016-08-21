@@ -1,20 +1,14 @@
-function Set-RSEmailConfiguration
+function Get-RSReservedUrls
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+List Reserved Urls
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Get-RSReservedUrls
 .EXAMPLE
  
 .NOTES
-
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
-)
-
+ListReservedUrls()
 #>
     [cmdletbinding()]
     param
@@ -32,17 +26,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -66,14 +50,25 @@ SetEmailConfiguration(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
-            }
+            Write-Verbose 'ListReservedUrls'
+            $results = Invoke-CimMethod -InputObject $rsSettings -MethodName ListReservedUrls
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            if($results.Length)
+            {
+                for($index = 0;$index -lt $results.Length; $index += 1)
+                {
+                    $url = [pscustomobject]@{
+                        Application    =  $results.Application[$index]
+                        UrlString      = $results.UrlString[$index]
+                        Account        = $results.Account[$index]
+                        AccountSID     = $results.AccountSID[$index]
+                        PSComputerName = $node
+                    }
+
+                    $url.psobject.TypeNames.Insert(0, "PSSSRS.ReservedUrl")
+                    Write-Output $url
+                }
+            }
         }
     }
 }

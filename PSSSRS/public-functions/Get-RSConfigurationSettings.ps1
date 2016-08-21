@@ -72,7 +72,7 @@ New-RSConfigurationSession -ComputerName server
             $CimParams.Class = 'MSReportServer_ConfigurationSetting'
             
             $RSConfig = Get-CimInstance @CimParams
-            $RSConfig.psobject.TypeNames.Insert(0, "PSSSRS.ConfigurationSettings.Session")
+            $RSConfig.psobject.TypeNames.Insert(0, "PSSSRS.ConfigurationSettings")
 
             Write-Output $RSConfig
         }

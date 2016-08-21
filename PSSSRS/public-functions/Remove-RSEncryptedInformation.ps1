@@ -1,19 +1,13 @@
-function Set-RSEmailConfiguration
+function Remove-RSEncryptedInformation
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+Remove Encrypted Information
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Remove-RSEncryptedInformation
 .EXAMPLE
  
 .NOTES
-
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
-)
 
 #>
     [cmdletbinding()]
@@ -32,17 +26,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -66,14 +50,8 @@ SetEmailConfiguration(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
-            }
-
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            Write-Verbose 'DeleteEncryptedInformation'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName DeleteEncryptedInformation | Out-Null
         }
     }
 }

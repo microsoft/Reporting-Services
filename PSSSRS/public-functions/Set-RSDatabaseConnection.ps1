@@ -78,7 +78,7 @@ SetDatabaseConnection(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $RSParams = [ordered]@{
+            $CimArguments = [ordered]@{
                 Server = $Source
                 DatabaseName = $DatabaseName
                 CredentialsType = $credentialsTypes[$CredentialType] 
@@ -88,11 +88,11 @@ SetDatabaseConnection(
 
             if($SQLCredential)
             {
-                $RSParams.UserName = $SQLCredential.UserName
-                $RSParams.Password = $SQLCredential.GetNetworkCredential().Password
+                $CimArguments.UserName = $SQLCredential.UserName
+                $CimArguments.Password = $SQLCredential.GetNetworkCredential().Password
             }
 
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseConnection -Arguments $RSParams | Out-Null
+            Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseConnection -Arguments $CimArguments | Out-Null
         }
     }
 }

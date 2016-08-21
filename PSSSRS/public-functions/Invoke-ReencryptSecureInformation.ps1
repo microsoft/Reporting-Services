@@ -1,20 +1,16 @@
-function Set-RSEmailConfiguration
+System.Management.ManagementBaseObject ReencryptSecureInformation()
+Reencrypt-RSSecureInformation
+
+function Invoke-ReencryptSecureInformation
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+Reencrypt Secure Information
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Invoke-ReencryptSecureInformation
 .EXAMPLE
  
 .NOTES
-
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
-)
-
 #>
     [cmdletbinding()]
     param
@@ -32,17 +28,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -66,14 +52,8 @@ SetEmailConfiguration(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
-            }
-
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            Write-Verbose 'ReencryptSecureInformation'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName ReencryptSecureInformation | Out-Null
         }
     }
 }

@@ -1,20 +1,14 @@
-function Set-RSEmailConfiguration
+function Get-RSReportServersInDatabase
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+List Report Servers In Database
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Get-RSInstalledSharePointVersions
 .EXAMPLE
  
 .NOTES
-
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
-)
-
+ListReportServersInDatabase()
 #>
     [cmdletbinding()]
     param
@@ -32,17 +26,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -66,14 +50,25 @@ SetEmailConfiguration(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
-            }
+            Write-Verbose 'ListReportServersInDatabase'
+            $results = Invoke-CimMethod -InputObject $rsSettings -MethodName ListReportServersInDatabase
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            if($results.Length)
+            {
+                for($index = 0;$index -lt $results.Length; $index += 1)
+                {
+                    $Server = [pscustomobject]@{
+                        MachineName    =  $results.MachineNames[$index]
+                        InstanceName   = $results.InstanceNames[$index]
+                        InstallationID = $results.InstallationIDs[$index]
+                        IsInitialized  = $results.IsInitialized[$index]
+                        PSComputerName = $node
+                    }
+
+                    $Server.psobject.TypeNames.Insert(0, "PSSSRS.ServerInDatabase")
+                    Write-Output $Server
+                }
+            }
         }
     }
 }

@@ -1,20 +1,14 @@
-function Set-RSEmailConfiguration
+function Get-RSIPAddresses
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+Get SSRS IP Addresses
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Get-RSIPAddresses
 .EXAMPLE
  
 .NOTES
-
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
-)
-
+ListIPAddresses()
 #>
     [cmdletbinding()]
     param
@@ -32,17 +26,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -66,14 +50,21 @@ SetEmailConfiguration(
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
-            $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
-            }
+            Write-Verbose 'ListIPAddresses'
+            $addresses = Invoke-CimMethod -InputObject $rsSettings -MethodName ListIPAddresses
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            for($index = 0;$index -lt $addresses.Length; $index += 1)
+            {
+                $IPAddress = [pscustomobject]@{
+                    IPAddress     =  $addresses.IPAddress[$index]
+                    IPVersion     = $addresses.IPVersion[$index]
+                    IsDhcpEnabled = $addresses.IsDhcpEnabled[$index]
+                    PSComputerName  = $node
+                }
+
+                $IPAddress.psobject.TypeNames.Insert(0, "PSSSRS.IPAddress")
+                Write-Output $IPAddress
+            }
         }
     }
 }

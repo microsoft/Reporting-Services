@@ -1,20 +1,17 @@
-function Set-RSEmailConfiguration
+function Initialize-ReportServer
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+Initializes the report server
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Initialize-ReportServer
 .EXAMPLE
  
 .NOTES
 
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
+InitializeReportServer(
+    System.String InstallationID
 )
-
 #>
     [cmdletbinding()]
     param
@@ -32,17 +29,7 @@ SetEmailConfiguration(
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential,
-
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
-
-        [switch]
-        $Enabled = $true
+        $Credential
     )
 
     begin
@@ -67,13 +54,13 @@ SetEmailConfiguration(
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
+                InstallationID = $rsSettings.InstallationID        
             }
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            Write-Verbose 'InitializeReportServer'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName InitializeReportServer -Arguments $CimArguments | Out-Null
         }
     }
 }
+
+

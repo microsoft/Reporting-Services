@@ -1,18 +1,18 @@
-function Set-RSEmailConfiguration
+function Set-RSServiceState
 {
 <#
 .SYNOPSIS
-Sets the SSRS email configuration details
+Sets the SSRS service state for the windows service, web service and the report manager
 .EXAMPLE
-Set-RSEmailConfiguration -SmtpServer 127.0.0.1 -SenderEmailAddress 'reports@contoso.com'
+Set-RSServiceState
 .EXAMPLE
  
 .NOTES
 
-SetEmailConfiguration(
-    System.Boolean SendUsingSmtpServer, 
-    System.String SmtpServer, 
-    System.String SenderEmailAddress
+SetServiceState(
+    System.Boolean EnableWindowsService, 
+    System.Boolean EnableWebService, 
+    System.Boolean EnableReportManager
 )
 
 #>
@@ -34,15 +34,14 @@ SetEmailConfiguration(
         [System.Management.Automation.Credential()]
         $Credential,
 
-        [string]
-        $SmtpServer = '',
-
-        [string]
-        [alias('Email')]
-        $SenderEmailAddress = '',
+        [switch]
+        $EnableWindowsService = $true,
 
         [switch]
-        $Enabled = $true
+        $EnableWebService = $true,
+        
+        [switch]
+        $EnableReportManager = $true,
     )
 
     begin
@@ -67,13 +66,13 @@ SetEmailConfiguration(
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                SendUsingSmtpServer = [bool]$Enabled
-                SmtpServer          = $SmtpServer
-                SenderEmailAddress  = $SenderEmailAddress            
+                EnableWindowsService = [bool]$EnableWindowsService 
+                EnableWebService     = [bool]$EnableWebService
+                EnableReportManager  = [bool]$EnableReportManager          
             }
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            Write-Verbose 'SetServiceState'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName SetServiceState -Arguments $CimArguments | Out-Null
         }
     }
 }
