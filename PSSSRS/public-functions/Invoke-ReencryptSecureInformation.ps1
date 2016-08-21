@@ -1,6 +1,3 @@
-System.Management.ManagementBaseObject ReencryptSecureInformation()
-Reencrypt-RSSecureInformation
-
 function Invoke-ReencryptSecureInformation
 {
 <#
@@ -11,6 +8,7 @@ Invoke-ReencryptSecureInformation
 .EXAMPLE
  
 .NOTES
+ReencryptSecureInformation()
 #>
     [cmdletbinding()]
     param
