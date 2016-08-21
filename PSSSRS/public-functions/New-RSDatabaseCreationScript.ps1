@@ -1,16 +1,19 @@
-function Enable-RSSSL
+function New-RSDatabaseCreationScript
 {
 <#
 .SYNOPSIS
-Sets the Secure Connection Level to require SSL
+Generates a SQL Script that can be used to create a report server database.
 .EXAMPLE
-Enable-RSSSL
+ew-RSDatabaseCreationScript
 .EXAMPLE
  
 .NOTES
-
-https://msdn.microsoft.com/en-us/library/ms152810(v=sql.110).aspx
-SetSecureConnectionLevel(System.Int32 Level)
+https://msdn.microsoft.com/en-us/library/ms152823(v=sql.110).aspx
+GenerateDatabaseCreationScript(
+    System.String DatabaseName, 
+    System.Int32 Lcid, 
+    System.Boolean IsSharePointMode
+)
 
 #>
     [cmdletbinding()]
@@ -29,7 +32,10 @@ SetSecureConnectionLevel(System.Int32 Level)
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential
+        $Credential,
+
+        [string]
+        $DatabaseName = 'ReportServer'
     )
 
     begin
@@ -45,6 +51,7 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsParam.Credential = $PSBoundParameters.Credential
         }
     }
+
     process
     {
         foreach($node in $ComputerName) 
@@ -54,11 +61,13 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                Level = 1 # Enabled         
+                DatabaseName      = $DatabaseName
+                Lcid              = (Get-Culture).Lcid
+                IsSharePointMode  = [bool]$false      
             }
 
-            Write-Verbose 'SetSecureConnectionLevel'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetSecureConnectionLevel -Arguments $CimArguments | Out-Null
+            Write-Verbose 'GenerateDatabaseCreationScript'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseCreationScript -Arguments $CimArguments
         }
     }
 }

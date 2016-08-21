@@ -54,7 +54,7 @@ New-RSConfigurationSession -ComputerName server
                 
                 $session = New-CimSession @common
             }
-            Write-Verbose "Enumerating namspaces on $node"
+            Write-Debug "Enumerating namspaces on $node"
             
             $namespace = "root\Microsoft\SqlServer\ReportServer\RS_$InstanceName"# \v$SqlServerVersion\Admin"
 
@@ -62,11 +62,12 @@ New-RSConfigurationSession -ComputerName server
                 Namespace = $namespace
                 Class = "__Namespace"
                 CimSession = $session
+                Verbose = $false
             }
             $version = Get-CimInstance  @CimParams
 
             $namespace = "$namespace\$($version.name)\Admin"
-            Write-Verbose "Using namespace: $namespace"
+            Write-Debug "Using namespace: $namespace"
 
             $CimParams.Namespace = $namespace
             $CimParams.Class = 'MSReportServer_ConfigurationSetting'

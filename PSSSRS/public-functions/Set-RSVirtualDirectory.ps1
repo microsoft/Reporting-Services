@@ -1,17 +1,19 @@
-function Enable-RSSSL
+function Set-RSVirtualDirectory
 {
 <#
 .SYNOPSIS
-Sets the Secure Connection Level to require SSL
+Sets the name of the virtual directory for a given application.
 .EXAMPLE
-Enable-RSSSL
+Set-RSVirtualDirectory -Application ReportManager -VirtualDirectory reports
 .EXAMPLE
  
 .NOTES
-
-https://msdn.microsoft.com/en-us/library/ms152810(v=sql.110).aspx
-SetSecureConnectionLevel(System.Int32 Level)
-
+https://msdn.microsoft.com/en-us/library/bb630594(v=sql.110).aspx
+SetVirtualDirectory(
+    System.String Application, 
+    System.String VirtualDirectory, 
+    System.Int32 Lcid
+)
 #>
     [cmdletbinding()]
     param
@@ -29,7 +31,15 @@ SetSecureConnectionLevel(System.Int32 Level)
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential
+        $Credential,
+
+        # The name of application for which to set the virtual directory.
+        [string]
+        $Application,
+
+        # The name of the virtual directory.
+        [string]
+        $VirtualDirectory
     )
 
     begin
@@ -54,11 +64,15 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                Level = 1 # Enabled         
+                Application      = $Application  
+                VirtualDirectory = $VirtualDirectory
+                Lcid             = [int32](Get-Culture).Lcid
             }
 
-            Write-Verbose 'SetSecureConnectionLevel'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetSecureConnectionLevel -Arguments $CimArguments | Out-Null
+            Write-Verbose 'SetVirtualDirectory'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName SetVirtualDirectory -Arguments $CimArguments | Out-Null
         }
     }
 }
+
+

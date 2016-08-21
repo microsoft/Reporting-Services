@@ -1,16 +1,14 @@
-function Enable-RSSSL
+function Get-RSSSLCertificateBindings
 {
 <#
 .SYNOPSIS
-Sets the Secure Connection Level to require SSL
+Gets the SSL Certificate Bindings
 .EXAMPLE
-Enable-RSSSL
+Get-RSSSLCertificateBindings
 .EXAMPLE
  
 .NOTES
-
-https://msdn.microsoft.com/en-us/library/ms152810(v=sql.110).aspx
-SetSecureConnectionLevel(System.Int32 Level)
+ListSSLCertificateBindings(System.Int32 Lcid)
 
 #>
     [cmdletbinding()]
@@ -54,11 +52,11 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                Level = 1 # Enabled         
+                Lcid = [int](Get-Culture).Lcid       
             }
 
-            Write-Verbose 'SetSecureConnectionLevel'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetSecureConnectionLevel -Arguments $CimArguments | Out-Null
+            Write-Verbose 'ListSSLCertificateBindings'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName ListSSLCertificateBindings -Arguments $CimArguments | Out-Null
         }
     }
 }

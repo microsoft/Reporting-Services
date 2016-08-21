@@ -1,17 +1,17 @@
-function Enable-RSSSL
+function Remove-RSEncryptionKey
 {
 <#
 .SYNOPSIS
-Sets the Secure Connection Level to require SSL
+Removes the encryption key
 .EXAMPLE
-Enable-RSSSL
+Remove-RSEncryptionKey
 .EXAMPLE
  
 .NOTES
 
-https://msdn.microsoft.com/en-us/library/ms152810(v=sql.110).aspx
-SetSecureConnectionLevel(System.Int32 Level)
-
+DeleteEncryptionKey(
+    System.String InstallationID
+)
 #>
     [cmdletbinding()]
     param
@@ -54,11 +54,13 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                Level = 1 # Enabled         
+                InstallationID = $rsSettings.InstallationID        
             }
 
-            Write-Verbose 'SetSecureConnectionLevel'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetSecureConnectionLevel -Arguments $CimArguments | Out-Null
+            Write-Verbose 'DeleteEncryptionKey'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName DeleteEncryptionKey -Arguments $CimArguments | Out-Null
         }
     }
 }
+
+

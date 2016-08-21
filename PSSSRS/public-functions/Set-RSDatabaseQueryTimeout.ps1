@@ -1,16 +1,15 @@
-function Enable-RSSSL
+function Set-RSDatabaseQueryTimeout
 {
 <#
 .SYNOPSIS
-Sets the Secure Connection Level to require SSL
+Specifies the default time-out value for report server database queries.
 .EXAMPLE
-Enable-RSSSL
+Set-RSDatabaseQueryTimeout -QueryTimeout 120
 .EXAMPLE
  
 .NOTES
-
-https://msdn.microsoft.com/en-us/library/ms152810(v=sql.110).aspx
-SetSecureConnectionLevel(System.Int32 Level)
+https://msdn.microsoft.com/en-us/library/ms155080(v=sql.110).aspx
+SetDatabaseQueryTimeout(System.Int32 QueryTimeout)
 
 #>
     [cmdletbinding()]
@@ -29,7 +28,10 @@ SetSecureConnectionLevel(System.Int32 Level)
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential
+        $Credential,
+
+        [int32]
+        $QueryTimeout = 120
     )
 
     begin
@@ -54,11 +56,13 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                Level = 1 # Enabled         
+                QueryTimeout = $QueryTimeout  
             }
 
-            Write-Verbose 'SetSecureConnectionLevel'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetSecureConnectionLevel -Arguments $CimArguments | Out-Null
+            Write-Verbose 'SetDatabaseQueryTimeout'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseQueryTimeout -Arguments $CimArguments | Out-Null
         }
     }
 }
+
+

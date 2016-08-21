@@ -1,16 +1,18 @@
-function Enable-RSSSL
+function New-RSDatabaseUpgradeScript
 {
 <#
 .SYNOPSIS
-Sets the Secure Connection Level to require SSL
+Generates a script that can be used to upgrade the report server database to the SQL Server 2008 schema.
 .EXAMPLE
-Enable-RSSSL
+New-RSDatabaseUpgradeScript
 .EXAMPLE
  
 .NOTES
-
-https://msdn.microsoft.com/en-us/library/ms152810(v=sql.110).aspx
-SetSecureConnectionLevel(System.Int32 Level)
+https://msdn.microsoft.com/en-us/library/ms154641(v=sql.110).aspx
+GenerateDatabaseUpgradeScript(
+    System.String DatabaseName, 
+    System.String ServerVersion
+)
 
 #>
     [cmdletbinding()]
@@ -29,7 +31,10 @@ SetSecureConnectionLevel(System.Int32 Level)
 
         [PSCredential]
         [System.Management.Automation.Credential()]
-        $Credential
+        $Credential,
+
+        [string]
+        $DatabaseName = 'ReportServer'
     )
 
     begin
@@ -45,6 +50,7 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsParam.Credential = $PSBoundParameters.Credential
         }
     }
+
     process
     {
         foreach($node in $ComputerName) 
@@ -54,11 +60,12 @@ SetSecureConnectionLevel(System.Int32 Level)
             $rsSettings = Get-RSConfigurationSettings @rsParam 
 
             $CimArguments = [ordered]@{
-                Level = 1 # Enabled         
+                DatabaseName      = $DatabaseName
+                ServerVersion     = $rsSettings.Version
             }
 
-            Write-Verbose 'SetSecureConnectionLevel'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetSecureConnectionLevel -Arguments $CimArguments | Out-Null
+            Write-Verbose 'GenerateDatabaseUpgradeScript'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseUpgradeScript -Arguments $CimArguments 
         }
     }
 }
