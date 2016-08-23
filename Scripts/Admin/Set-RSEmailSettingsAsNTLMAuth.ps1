@@ -35,15 +35,22 @@ function Set-RSEmailSettingsAsNTLMAuth
         This command will configure the named instance (SQL2012) from SQL Server 2012 Reporting Services to use NTLM Authentication with the specified SMTP Server and Sender Address when sending emails.
     #>
 
-    param(
-        [string]$SqlServerInstance='MSSQLSERVER',
-        [string]$SqlServerVersion='13',
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $SqlServerInstance='MSSQLSERVER',
+
+        [string]
+        $SqlServerVersion='13',
         
         [Parameter(Mandatory=$True)]
-        [string]$SmtpServer,
+        [string]
+        $SmtpServer,
 
         [Parameter(Mandatory=$True)]
-        [string]$SenderAddress
+        [string]
+        $SenderAddress
     )
 
     $rsWmiObject = New-RSConfigurationSettingObject -SqlServerInstance $SqlServerInstance -SqlServerVersion $SqlServerVersion

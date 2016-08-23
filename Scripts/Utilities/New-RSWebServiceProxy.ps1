@@ -38,10 +38,17 @@ function New-RSWebServiceProxy
         This command will create and return a web service proxy to the Report Server located at http://localhost/reportserver using CaptainAwesome's credentials.
     #>
 
-    param(
-        [string]$ReportServerUri = 'http://localhost/reportserver',
-        [string]$Username,
-        [string]$Password
+    [cmdletbinding()]
+    param
+    (
+        [string]
+        $ReportServerUri = 'http://localhost/reportserver',
+
+        [string]
+        $Username,
+
+        [string]
+        $Password
     )
 
     # forming the full URL to the SOAP Proxy of ReportServerUri 

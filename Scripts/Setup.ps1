@@ -14,6 +14,14 @@
 . $PSScriptRoot/Admin/Set-RSEmailSettingsAsBasicAuth.ps1
 . $PSScriptRoot/Admin/Set-RSEmailSettingsAsNoAuth.ps1
 . $PSScriptRoot/Admin/Set-RSEmailSettingsAsNTLMAuth.ps1
+. $PSScriptRoot/CatalogItems/Download-RsCatalogItem.ps1
+. $PSScriptRoot/CatalogItems/Download-RsFolderContent.ps1
+. $PSScriptRoot/CatalogItems/Link-RsDataSet.ps1
+. $PSScriptRoot/CatalogItems/Link-RsDataSource.ps1
+. $PSScriptRoot/CatalogItems/List-RsCatalogItems.ps1
+. $PSScriptRoot/CatalogItems/List-RsItemReferences.ps1
+. $PSScriptRoot/CatalogItems/Upload-RsCatalogItem.ps1
+. $PSScriptRoot/CatalogItems/Upload-RsFolderContent.ps1
 . $PSScriptRoot/Security/Grant-AccessOnCatalogItem.ps1
 . $PSScriptRoot/Security/Grant-AccessToRS.ps1
 . $PSScriptRoot/Security/Revoke-AccessOnCatalogItem.ps1
