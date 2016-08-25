@@ -41,7 +41,7 @@ SetServiceState(
         $EnableWebService = $true,
         
         [switch]
-        $EnableReportManager = $true,
+        $EnableReportManager = $true
     )
 
     begin
