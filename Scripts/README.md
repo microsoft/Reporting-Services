@@ -19,8 +19,14 @@ The following is a list of commands which are available for you to use once you 
 |Command|Description|
 |-------|-----------|
 |Backup-RSEncryptionKey|This command backs up the encryption key used by SQL Server Reporting Services to protect sensitive content.|
+|Download-RsCatalogItem|This command downloads a catalog item.|
+|Download-RsFolderContent|This command all catalog items in folder.|
 |Grant-AccessOnCatalogItem|This command grants access on catalog item to users or groups.|
 |Grant-AccessToRS|This command grants access to SQL Server Reporting Services to users or groups.|
+|Link-RsDataSet|This command links a report to  a dataset.|
+|Link-RsDataSource|This command links a report or a dataset to a data source.|
+|List-RsCatalogItems|This command lists all catalog items under a folder.|
+|List-RsItemReferences|This commands sets the item references of a report or a dataset.|
 |New-RSConfigurationSettingObject|This command creates a new RSConfigurationSettingObject which is used to interact with the WMI Provider.|
 |New-RSWebServiceProxy|This command creates a new Web Service Proxy which is used to interact with the SOAP Endpoint.|
 |Register-PowerBI|This command registers Power BI information with SQL Server Reporting Services.|
@@ -30,6 +36,8 @@ The following is a list of commands which are available for you to use once you 
 |Set-RSEmailSettingsAsBasicAuth|This command configures the SQL Server Reporting Services email settings to use basic authentication.|
 |Set-RSEmailSettingsAsNoAuth|This command configures the SQL Server Reporting Services email settings to use no authentication.|
 |Set-RSEmailSettingsAsNTLMAuth|This command configures the SQL Server Reporting Services email settings to use NTLM authentication.|
+|Upload-RsCatalogItem|This command uploads a report, a dataset or a data source.|
+|Upload-RsFolderContent|This uploads all reports, datasets and data sources in a folder.|
 
 ## SQL Server Versions
 
@@ -48,6 +56,10 @@ The motivation behind this project was to help users perform SQL Server Reportin
 ## API Reference
 
 All of the APIs used by this project are publicly available. There are 2 types of APIs used in this repository: SOAP and WMI. You can find more details about the SOAP API at https://msdn.microsoft.com/en-us/library/ms154052.aspx and the WMI API at https://msdn.microsoft.com/en-us/library/ms152836.aspx. In general, you will use SOAP API for operations you would perform using Report Server and Web Portal whereas you will use WMI API for operations you would perform using Reporting Services Configuration Manager. 
+
+## Style Guidelines
+
+If you have any scripts you would like to share, we request you to please format your scripts according to the guidelines created by the team behind the DSC Resource Kit. (https://github.com/PowerShell/DscResources/blob/master/StyleGuidelines.md)
 
 ## Code of Conduct
 

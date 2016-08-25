@@ -49,6 +49,7 @@ function Set-RSEmailSettingsAsBasicAuth
     (
         [string]
         $SqlServerInstance='MSSQLSERVER',
+        
         [string]
         $SqlServerVersion='13',
         

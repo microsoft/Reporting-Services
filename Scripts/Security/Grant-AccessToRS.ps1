@@ -104,7 +104,7 @@ function Grant-AccessToRS
         
         Write-Verbose "Policies retrieved: $($originalPolicies.Length)!"
 
-        Writee-Verbose 'checking if the specified role already exists for the specified user/group name'
+        Write-Verbose 'checking if the specified role already exists for the specified user/group name'
         foreach ($policy in $originalPolicies)
         {
             if ($policy.GroupUserName.Equals($UserOrGroupName, [StringComparison]::OrdinalIgnoreCase))
