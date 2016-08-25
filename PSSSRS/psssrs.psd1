@@ -18,13 +18,13 @@ ModuleVersion = '0.0.2'
 GUID = '4208a265-c082-4acf-9ae3-935743aa4a42'
 
 # Author of this module
-Author = 'Kevin Marquette'
+Author = 'Community'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'Microsoft'
 
 # Copyright statement for this module
-Copyright = '(c) 2016 Kevin Marquette. All rights reserved.'
+Copyright = 'Copyright (c) 2016 Microsoft Corporation.. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''
