@@ -29,7 +29,7 @@ When IsWindowsUser is set to true, the generated script grants login rights to t
 
 When IsWindowsUser is set to true, the method accepts standard Windows SIDs as input. When a standard Windows SID or service account name is supplied, it is translated to a user name string. If the database is local, the account is translated to the correct localized representation of the account. 
 
-If the database is remote, the account is represented as the computer’s account.
+If the database is remote, the account is represented as the computer???s account.
 
 #>
     [cmdletbinding(
@@ -103,3 +103,4 @@ If the database is remote, the account is represented as the computer’s accoun
         }
     }
 }
+

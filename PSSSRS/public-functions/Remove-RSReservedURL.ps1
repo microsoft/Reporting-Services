@@ -20,7 +20,7 @@ RemoveURL(
     System.Int32 Lcid
 )
 
-UrlString does not include the Virtual Directory name – the Set-RSVirtualDirectory Method (WMI MSReportServer_ConfigurationSetting) method is provided for that purpose.
+UrlString does not include the Virtual Directory name ??? the Set-RSVirtualDirectory Method (WMI MSReportServer_ConfigurationSetting) method is provided for that purpose.
 
 Before calling the ReserveURL method, you must supply a value for the VirtualDirectory configuration property for the Application parameter. Use the Set-RSVirtualDirectory Method (WMI MSReportServer_ConfigurationSetting) method to set the VirtualDirectory property.
 
@@ -98,5 +98,6 @@ This method causes all non-configuration app domains to hard recycle and stop du
         }
     }
 }
+
 
 
