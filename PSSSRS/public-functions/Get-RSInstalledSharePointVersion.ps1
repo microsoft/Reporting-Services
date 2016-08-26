@@ -3,17 +3,17 @@ Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
 Licensed under the MIT License (MIT)
 #>
 
-function Get-RSReservedUrls
+function Get-RSInstalledSharePointVersion
 {
 <#
 .SYNOPSIS
-List Reserved Urls
+List Installed Share Point Versions
 .EXAMPLE
-Get-RSReservedUrls
+Get-RSInstalledSharePointVersion
 .EXAMPLE
  
 .NOTES
-ListReservedUrls()
+ListInstalledSharePointVersions()
 #>
     [cmdletbinding()]
     param
@@ -56,25 +56,8 @@ ListReservedUrls()
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSetting @rsParam 
 
-            Write-Verbose 'ListReservedUrls'
-            $results = Invoke-CimMethod -InputObject $rsSettings -MethodName ListReservedUrls
-
-            if($results.Length)
-            {
-                for($index = 0;$index -lt $results.Length; $index += 1)
-                {
-                    $url = [pscustomobject]@{
-                        Application    =  $results.Application[$index]
-                        UrlString      = $results.UrlString[$index]
-                        Account        = $results.Account[$index]
-                        AccountSID     = $results.AccountSID[$index]
-                        PSComputerName = $node
-                    }
-
-                    $url.psobject.TypeNames.Insert(0, "PSSSRS.ReservedUrl")
-                    Write-Output $url
-                }
-            }
+            Write-Verbose 'ListInstalledSharePointVersions'
+            Invoke-CimMethod -InputObject $rsSettings -MethodName ListInstalledSharePointVersions
         }
     }
 }

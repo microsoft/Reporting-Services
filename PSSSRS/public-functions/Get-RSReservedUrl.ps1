@@ -3,17 +3,17 @@ Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
 Licensed under the MIT License (MIT)
 #>
 
-function Get-RSIPAddresses
+function Get-RSReservedUrl
 {
 <#
 .SYNOPSIS
-Get SSRS IP Addresses
+List Reserved Urls
 .EXAMPLE
-Get-RSIPAddresses
+Get-RSReservedUrl
 .EXAMPLE
  
 .NOTES
-ListIPAddresses()
+ListReservedUrls()
 #>
     [cmdletbinding()]
     param
@@ -56,20 +56,24 @@ ListIPAddresses()
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSetting @rsParam 
 
-            Write-Verbose 'ListIPAddresses'
-            $addresses = Invoke-CimMethod -InputObject $rsSettings -MethodName ListIPAddresses
+            Write-Verbose 'ListReservedUrls'
+            $results = Invoke-CimMethod -InputObject $rsSettings -MethodName ListReservedUrls
 
-            for($index = 0;$index -lt $addresses.Length; $index += 1)
+            if($results.Length)
             {
-                $IPAddress = [pscustomobject]@{
-                    IPAddress     =  $addresses.IPAddress[$index]
-                    IPVersion     = $addresses.IPVersion[$index]
-                    IsDhcpEnabled = $addresses.IsDhcpEnabled[$index]
-                    PSComputerName  = $node
-                }
+                for($index = 0;$index -lt $results.Length; $index += 1)
+                {
+                    $url = [pscustomobject]@{
+                        Application    =  $results.Application[$index]
+                        UrlString      = $results.UrlString[$index]
+                        Account        = $results.Account[$index]
+                        AccountSID     = $results.AccountSID[$index]
+                        PSComputerName = $node
+                    }
 
-                $IPAddress.psobject.TypeNames.Insert(0, "PSSSRS.IPAddress")
-                Write-Output $IPAddress
+                    $url.psobject.TypeNames.Insert(0, "PSSSRS.ReservedUrl")
+                    Write-Output $url
+                }
             }
         }
     }

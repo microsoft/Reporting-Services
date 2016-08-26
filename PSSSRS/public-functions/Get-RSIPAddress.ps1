@@ -3,17 +3,17 @@ Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
 Licensed under the MIT License (MIT)
 #>
 
-function Get-RSInstalledSharePointVersions
+function Get-RSIPAddress
 {
 <#
 .SYNOPSIS
-List Installed Share Point Versions
+Get SSRS IP Addresses
 .EXAMPLE
-Get-RSInstalledSharePointVersions
+Get-RSIPAddress
 .EXAMPLE
  
 .NOTES
-ListInstalledSharePointVersions()
+ListIPAddresses()
 #>
     [cmdletbinding()]
     param
@@ -56,8 +56,21 @@ ListInstalledSharePointVersions()
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSetting @rsParam 
 
-            Write-Verbose 'ListInstalledSharePointVersions'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName ListInstalledSharePointVersions
+            Write-Verbose 'ListIPAddresses'
+            $addresses = Invoke-CimMethod -InputObject $rsSettings -MethodName ListIPAddresses
+
+            for($index = 0;$index -lt $addresses.Length; $index += 1)
+            {
+                $IPAddress = [pscustomobject]@{
+                    IPAddress     =  $addresses.IPAddress[$index]
+                    IPVersion     = $addresses.IPVersion[$index]
+                    IsDhcpEnabled = $addresses.IsDhcpEnabled[$index]
+                    PSComputerName  = $node
+                }
+
+                $IPAddress.psobject.TypeNames.Insert(0, "PSSSRS.IPAddress")
+                Write-Output $IPAddress
+            }
         }
     }
 }

@@ -3,13 +3,13 @@ Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
 Licensed under the MIT License (MIT)
 #>
 
-function Get-RSSSLCertificateBindings
+function Get-RSSSLCertificateBinding
 {
 <#
 .SYNOPSIS
 Gets the SSL Certificate Bindings
 .EXAMPLE
-Get-RSSSLCertificateBindings
+Get-RSSSLCertificateBinding
 .EXAMPLE
  
 .NOTES
