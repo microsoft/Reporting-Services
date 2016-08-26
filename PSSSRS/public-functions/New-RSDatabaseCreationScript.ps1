@@ -74,9 +74,11 @@ GenerateDatabaseCreationScript(
                 Lcid              = (Get-Culture).Lcid
                 IsSharePointMode  = [bool]$false      
             }
-
-            Write-Verbose 'GenerateDatabaseCreationScript'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseCreationScript -Arguments $CimArguments
+            
+            if ($pscmdlet.ShouldProcess('GenerateDatabaseCreationScript')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseCreationScript -Arguments $CimArguments
+            }
         }
     }
 }

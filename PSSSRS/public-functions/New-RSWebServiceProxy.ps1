@@ -42,7 +42,7 @@ function New-RSWebServiceProxy
 
     [cmdletbinding(
         SupportsShouldProcess=$true,
-        ConfirmImpact="Low",
+        ConfirmImpact="None",
         DefaultParameterSetName='Default'
     )]
     param
@@ -101,7 +101,10 @@ function New-RSWebServiceProxy
         {
             $proxyParams.useDefaultCredential = $true
         }
-
-        Write-Output (New-WebServiceProxy @proxyParams)
+        
+        if ($pscmdlet.ShouldProcess('WebServiceProxy')) 
+        {
+            Write-Output (New-WebServiceProxy @proxyParams)
+        }
     }
 }

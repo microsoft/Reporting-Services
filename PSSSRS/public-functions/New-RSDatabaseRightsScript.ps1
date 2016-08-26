@@ -96,8 +96,10 @@ If the database is remote, the account is represented as the computer’s accoun
                 IsWindowsUser = [bool]$IsWindowsUser
             }
 
-            Write-Verbose 'GenerateDatabaseRightsScript'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseRightsScript -Arguments $CimArguments 
+            if ($pscmdlet.ShouldProcess('GenerateDatabaseRightsScript')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseRightsScript -Arguments $CimArguments 
+            }
         }
     }
 }

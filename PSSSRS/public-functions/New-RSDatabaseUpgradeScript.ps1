@@ -73,8 +73,10 @@ GenerateDatabaseUpgradeScript(
                 ServerVersion     = $rsSettings.Version
             }
 
-            Write-Verbose 'GenerateDatabaseUpgradeScript'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseUpgradeScript -Arguments $CimArguments 
+            if ($pscmdlet.ShouldProcess('GenerateDatabaseUpgradeScript')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName GenerateDatabaseUpgradeScript -Arguments $CimArguments 
+            }
         }
     }
 }
