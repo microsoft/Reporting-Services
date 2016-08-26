@@ -54,7 +54,7 @@ ReencryptSecureInformation()
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             Write-Verbose 'ReencryptSecureInformation'
             Invoke-CimMethod -InputObject $rsSettings -MethodName ReencryptSecureInformation | Out-Null

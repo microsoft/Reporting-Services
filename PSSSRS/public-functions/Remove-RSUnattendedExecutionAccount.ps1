@@ -54,7 +54,7 @@ RemoveUnattendedExecutionAccount()
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             Write-Verbose 'RemoveUnattendedExecutionAccount'
             Invoke-CimMethod -InputObject $rsSettings -MethodName RemoveUnattendedExecutionAccount | Out-Null

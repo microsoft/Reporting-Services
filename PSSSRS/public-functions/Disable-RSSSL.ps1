@@ -57,7 +57,7 @@ SetSecureConnectionLevel(System.Int32 Level)
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             $CimArguments = [ordered]@{
                 Level = 0 # Disabled        

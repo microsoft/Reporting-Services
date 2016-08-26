@@ -54,7 +54,7 @@ GetAdminSiteUrl()
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             Write-Verbose 'GetAdminSiteUrl'
             Invoke-CimMethod -InputObject $rsSettings -MethodName GetAdminSiteUrl

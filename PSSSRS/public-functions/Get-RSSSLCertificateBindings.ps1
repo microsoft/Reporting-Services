@@ -55,7 +55,7 @@ ListSSLCertificateBindings(System.Int32 Lcid)
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             $CimArguments = [ordered]@{
                 Lcid = [int](Get-Culture).Lcid       

@@ -64,7 +64,7 @@ BackupEncryptionKey(
     process
     {
         $rsParam.ComputerName = $ComputerName         
-        $rsSettings = Get-RSConfigurationSettings @rsParam 
+        $rsSettings = Get-RSConfigurationSetting @rsParam 
 
         $CimArguments = [ordered]@{
             Password = $KeyCredential.GetNetworkCredential().Password       

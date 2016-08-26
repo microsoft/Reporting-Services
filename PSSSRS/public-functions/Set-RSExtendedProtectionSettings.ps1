@@ -80,7 +80,7 @@ To set the ExtendedProtectionLevel, the user must be a member of the BUILTIN\Adm
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             $CimArguments = [ordered]@{
                 ExtendedProtectionLevel    = $ExtendedProtectionLevel

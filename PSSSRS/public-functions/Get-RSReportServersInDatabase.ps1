@@ -54,7 +54,7 @@ ListReportServersInDatabase()
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             Write-Verbose 'ListReportServersInDatabase'
             $results = Invoke-CimMethod -InputObject $rsSettings -MethodName ListReportServersInDatabase

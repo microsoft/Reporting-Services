@@ -84,7 +84,7 @@ If the database is remote, the account is represented as the computer’s accoun
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             $CimArguments = [ordered]@{
                 UserName      = $UserName

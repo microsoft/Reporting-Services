@@ -54,7 +54,7 @@ ListIPAddresses()
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             Write-Verbose 'ListIPAddresses'
             $addresses = Invoke-CimMethod -InputObject $rsSettings -MethodName ListIPAddresses

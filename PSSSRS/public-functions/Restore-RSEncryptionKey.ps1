@@ -73,7 +73,7 @@ RestoreEncryptionKey(
     process
     {
         $rsParam.ComputerName = $ComputerName         
-        $rsSettings = Get-RSConfigurationSettings @rsParam 
+        $rsSettings = Get-RSConfigurationSetting @rsParam 
 
         Write-Verbose "Reading key from $Path"
         $keyFile = [System.IO.File]::ReadAllBytes($Path)

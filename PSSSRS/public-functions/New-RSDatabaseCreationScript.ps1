@@ -64,7 +64,7 @@ GenerateDatabaseCreationScript(
         {
             Write-Verbose $node
             $rsParam.ComputerName = $node         
-            $rsSettings = Get-RSConfigurationSettings @rsParam 
+            $rsSettings = Get-RSConfigurationSetting @rsParam 
 
             $CimArguments = [ordered]@{
                 DatabaseName      = $DatabaseName

@@ -68,7 +68,7 @@ Copyright = 'Copyright (c) 2016 Microsoft Corporation.. All rights reserved.'
 # Functions to export from this module
 FunctionsToExport = 'Add-RSReservedURL', 'Add-RSSSLCertificateBinding', 
                'Backup-RSEncryptionKey', 'Disable-RSSSL', 'Enable-RSSSL', 
-               'Get-RSAdminSiteUrl', 'Get-RSConfigurationSettings', 
+               'Get-RSAdminSiteUrl', 'Get-RSConfigurationSetting', 
                'Get-RSInstalledSharePointVersions', 'Get-RSIPAddresses', 
                'Get-RSReportServersInDatabase', 'Get-RSReservedUrls', 
                'Get-RSSSLCertificate', 'Get-RSSSLCertificateBindings', 
