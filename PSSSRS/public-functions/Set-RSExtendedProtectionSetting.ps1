@@ -3,13 +3,13 @@ Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
 Licensed under the MIT License (MIT)
 #>
 
-function Set-RSExtendedProtectionSettings
+function Set-RSExtendedProtectionSetting
 {
 <#
 .SYNOPSIS
 The SetExtendedProtectionSettings method is used to set the RSWindowsExtendedProtectionLevel and the RSWindowsExtendedProtectionScenario properties in the Reporting Services configuration file RSReportServer.config.
 .EXAMPLE
-Set-RSExtendedProtectionSettings -ExtendedProtectionLevel Allow -ExtendedProtectionScenario Any
+Set-RSExtendedProtectionSetting -ExtendedProtectionLevel Allow -ExtendedProtectionScenario Any
 .EXAMPLE
  
 .NOTES
