@@ -33,8 +33,8 @@ Task RunTests {
     if($testResults.FailedCount -gt 0)
     {
         # Because we may run hundreds of tests, echo out the failed ones at the end so they are easy to find
-        $FailedTests = $testResults.Testresult | where passed -eq $false        
-        $FailedTests | %{
+        $FailedTests = $testResults.Testresult | where-Object passed -eq $false        
+        $FailedTests | ForEach-Object {
             Write-Warning ('[{0,-20}][{1,-20}][{2,-20}][{3}]' -f $_.Describe,$_.Context,$_.Name,$_.Failuremessage)
         }
 
