@@ -17,7 +17,10 @@ https://msdn.microsoft.com/en-us/library/ms155080(v=sql.110).aspx
 SetDatabaseQueryTimeout(System.Int32 QueryTimeout)
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Medium"
+    )]
     param
     (
         [Parameter(

@@ -20,7 +20,10 @@ SetVirtualDirectory(
     System.Int32 Lcid
 )
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Medium"
+    )]
     param
     (
         [Parameter(

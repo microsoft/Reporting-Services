@@ -20,7 +20,10 @@ GenerateDatabaseUpgradeScript(
 )
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Low"
+    )]
     param
     (
         [Parameter(

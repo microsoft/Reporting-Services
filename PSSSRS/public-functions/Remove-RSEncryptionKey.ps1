@@ -18,7 +18,10 @@ DeleteEncryptionKey(
     System.String InstallationID
 )
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
     param
     (
         [Parameter(

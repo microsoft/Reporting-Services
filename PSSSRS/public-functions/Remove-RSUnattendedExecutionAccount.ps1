@@ -15,7 +15,10 @@ Remove-RSUnattendedExecutionAccount
 .NOTES
 RemoveUnattendedExecutionAccount()
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
     param
     (
         [Parameter(

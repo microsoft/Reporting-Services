@@ -17,7 +17,10 @@ SetDatabaseLogonTimeout(System.Int32 LogonTimeout)
 
 A value of -1 means unlimited or no timeout defined
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Medium"
+    )]
     param
     (
         [Parameter(

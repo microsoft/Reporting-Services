@@ -27,7 +27,10 @@ URL reservations are created for the current windows service account. Changing t
 
 This method causes all application domains to hard recycle. Application domains are restarted after this operation is complete.
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
     param
     (
         [Parameter(

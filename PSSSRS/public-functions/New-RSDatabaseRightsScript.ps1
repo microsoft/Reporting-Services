@@ -32,7 +32,10 @@ When IsWindowsUser is set to true, the method accepts standard Windows SIDs as i
 If the database is remote, the account is represented as the computer’s account.
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Low"
+    )]
     param
     (
         [Parameter(

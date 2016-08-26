@@ -25,7 +25,10 @@ The RSWindowsExtendedProtectionLevel and the RSWindowsExtendedProtectionScenario
 To set the ExtendedProtectionLevel, the user must be a member of the BUILTIN\Administrators group on the report server.
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Medium"
+    )]
     param
     (
         [Parameter(

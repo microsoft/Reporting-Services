@@ -21,7 +21,10 @@ SetEmailConfiguration(
 )
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Medium"
+    )]
     param
     (
         [Parameter(

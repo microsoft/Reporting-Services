@@ -15,7 +15,10 @@ Remove-RSEncryptedInformation
 .NOTES
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
     param
     (
         [Parameter(

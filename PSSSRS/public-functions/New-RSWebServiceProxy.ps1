@@ -40,7 +40,11 @@ function New-RSWebServiceProxy
         This command will create and return a web service proxy to the Report Server located at http://localhost/reportserver using the provided credentials.
     #>
 
-    [cmdletbinding(DefaultParameterSetName='Default')]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="Low",
+        DefaultParameterSetName='Default'
+    )]
     param
     (
         [Parameter(

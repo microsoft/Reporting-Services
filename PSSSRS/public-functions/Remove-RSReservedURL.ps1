@@ -28,7 +28,10 @@ If an SSL Certificate was provisioned by Reporting Services and no other URLs ne
 
 This method causes all non-configuration app domains to hard recycle and stop during this operation; app domains are restarted after this operation complete.
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
     param
     (
         [Parameter(

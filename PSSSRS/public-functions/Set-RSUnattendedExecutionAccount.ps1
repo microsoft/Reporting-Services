@@ -20,7 +20,10 @@ SetUnattendedExecutionAccount(
 )
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="medium"
+    )]
     param
     (
         [Parameter(

@@ -22,7 +22,10 @@ SetDatabaseConnection(
     System.String Password)
 
 #>
-    [cmdletbinding()]
+    [cmdletbinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
     param
     (
         [Parameter(
