@@ -92,8 +92,10 @@ This method causes all application domains to hard recycle. Application domains 
                 Lcid            = [int32](Get-Culture).Lcid
             }
 
-            Write-Verbose 'RemoveSSLCertificateBindings'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName RemoveSSLCertificateBindings -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Remove SSL Certificate Bindings')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName RemoveSSLCertificateBindings -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

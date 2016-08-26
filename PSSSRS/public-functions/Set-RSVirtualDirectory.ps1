@@ -78,8 +78,10 @@ SetVirtualDirectory(
                 Lcid             = [int32](Get-Culture).Lcid
             }
 
-            Write-Verbose 'SetVirtualDirectory'
+            if ($pscmdlet.ShouldProcess('Set Virtual Directory')) 
+            {
             Invoke-CimMethod -InputObject $rsSettings -MethodName SetVirtualDirectory -Arguments $CimArguments | Out-Null
+        }
         }
     }
 }

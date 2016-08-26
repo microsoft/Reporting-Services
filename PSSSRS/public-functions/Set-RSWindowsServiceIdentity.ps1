@@ -80,7 +80,10 @@ SetWindowsServiceIdentity(
                 Password          = $AccountCredential.GetNetworkCredential().Password            
             }
 
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetWindowsServiceIdentity -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Windows Service Identity')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetWindowsServiceIdentity -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

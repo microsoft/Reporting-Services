@@ -59,8 +59,10 @@ Remove-RSEncryptedInformation
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSetting @rsParam 
 
-            Write-Verbose 'DeleteEncryptedInformation'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName DeleteEncryptedInformation | Out-Null
+            if ($pscmdlet.ShouldProcess('Delete Encrypted Information')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName DeleteEncryptedInformation | Out-Null
+            }
         }
     }
 }

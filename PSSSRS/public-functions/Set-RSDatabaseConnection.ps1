@@ -102,7 +102,10 @@ SetDatabaseConnection(
                 $CimArguments.Password = $SQLCredential.GetNetworkCredential().Password
             }
 
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseConnection -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Database Connection')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseConnection -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

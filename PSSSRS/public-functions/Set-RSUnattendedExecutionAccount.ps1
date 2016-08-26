@@ -74,8 +74,10 @@ SetUnattendedExecutionAccount(
                 Password          = $AccountCredential.GetNetworkCredential().Password            
             }
 
-            Write-Verbose 'SetUnattendedExecutionAccount'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetUnattendedExecutionAccount -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Unattended Execution Account')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetUnattendedExecutionAccount -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

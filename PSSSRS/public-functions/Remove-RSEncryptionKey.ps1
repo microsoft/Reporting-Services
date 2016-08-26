@@ -66,8 +66,10 @@ DeleteEncryptionKey(
                 InstallationID = $rsSettings.InstallationID        
             }
 
-            Write-Verbose 'DeleteEncryptionKey'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName DeleteEncryptionKey -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Delete Encryption Key')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName DeleteEncryptionKey -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

@@ -91,8 +91,10 @@ This method causes all non-configuration app domains to hard recycle and stop du
                 Lcid        = [int32](Get-Culture).Lcid
             }
 
-            Write-Verbose 'RemoveURL'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName RemoveURL -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Remove SSL Certificate Bindings')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName RemoveURL -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

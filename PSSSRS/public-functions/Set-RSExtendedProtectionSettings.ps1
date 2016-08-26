@@ -90,8 +90,10 @@ To set the ExtendedProtectionLevel, the user must be a member of the BUILTIN\Adm
                 ExtendedProtectionScenario = $ExtendedProtectionScenario            
             }
 
-            Write-Verbose 'SetExtendedProtectionSettings'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetExtendedProtectionSettings -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Extended Protection Settings')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetExtendedProtectionSettings -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

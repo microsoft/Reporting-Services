@@ -87,8 +87,10 @@ RestoreEncryptionKey(
             Password = $KeyCredential.GetNetworkCredential().Password       
         }
 
-        Write-Verbose 'RestoreEncryptionKey'
-        Invoke-CimMethod -InputObject $rsSettings -MethodName RestoreEncryptionKey -Arguments $CimArguments | Out-Null
+        if ($pscmdlet.ShouldProcess('Restore EncryptionKey')) 
+        {
+            Invoke-CimMethod -InputObject $rsSettings -MethodName RestoreEncryptionKey -Arguments $CimArguments | Out-Null
+        }
     }
 }
 

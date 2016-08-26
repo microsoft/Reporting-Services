@@ -69,8 +69,10 @@ A value of -1 means unlimited or no timeout defined
                 LogonTimeout = $LogonTimeout  
             }
 
-            Write-Verbose 'SetDatabaseLogonTimeout'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseLogonTimeout -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Database Logon Timeout')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseLogonTimeout -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

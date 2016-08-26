@@ -81,8 +81,10 @@ SetEmailConfiguration(
                 SenderEmailAddress  = $SenderEmailAddress            
             }
 
-            Write-Verbose 'SetEmailConfiguration'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Email Configuration')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetEmailConfiguration -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

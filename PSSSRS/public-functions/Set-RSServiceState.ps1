@@ -80,8 +80,10 @@ SetServiceState(
                 EnableReportManager  = [bool]$EnableReportManager          
             }
 
-            Write-Verbose 'SetServiceState'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetServiceState -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Service State')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetServiceState -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

@@ -68,8 +68,10 @@ SetDatabaseQueryTimeout(System.Int32 QueryTimeout)
                 QueryTimeout = $QueryTimeout  
             }
 
-            Write-Verbose 'SetDatabaseQueryTimeout'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseQueryTimeout -Arguments $CimArguments | Out-Null
+            if ($pscmdlet.ShouldProcess('Set Database Query Timeout')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName SetDatabaseQueryTimeout -Arguments $CimArguments | Out-Null
+            }
         }
     }
 }

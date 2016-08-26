@@ -59,8 +59,10 @@ RemoveUnattendedExecutionAccount()
             $rsParam.ComputerName = $node         
             $rsSettings = Get-RSConfigurationSetting @rsParam 
 
-            Write-Verbose 'RemoveUnattendedExecutionAccount'
-            Invoke-CimMethod -InputObject $rsSettings -MethodName RemoveUnattendedExecutionAccount | Out-Null
+            if ($pscmdlet.ShouldProcess('Remove Unattended Execution Account')) 
+            {
+                Invoke-CimMethod -InputObject $rsSettings -MethodName RemoveUnattendedExecutionAccount | Out-Null
+            }
         }
     }
 }
