@@ -31,6 +31,7 @@ SetDatabaseQueryTimeout(System.Int32 QueryTimeout)
         [string]
         $InstanceName='MSSQLSERVER',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential,

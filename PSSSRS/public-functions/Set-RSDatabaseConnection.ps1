@@ -36,6 +36,7 @@ SetDatabaseConnection(
         [string]
         $InstanceName='MSSQLSERVER',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential,
@@ -51,6 +52,7 @@ SetDatabaseConnection(
         [ValidateSet('Windows','SQL','Service')]
         $CredentialType = 'Service',
 
+        [Alias('SQLAccount')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $SQLCredential

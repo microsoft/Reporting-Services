@@ -32,6 +32,7 @@ SetSecureConnectionLevel(System.Int32 Level)
         [string]
         $InstanceName='MSSQLSERVER',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential

@@ -31,6 +31,7 @@ A value of -1 means unlimited or no timeout defined
         [string]
         $InstanceName='MSSQLSERVER',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential,

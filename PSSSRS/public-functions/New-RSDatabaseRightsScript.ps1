@@ -46,6 +46,7 @@ If the database is remote, the account is represented as the computer’s accoun
         [string]
         $InstanceName='MSSQLSERVER',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential,

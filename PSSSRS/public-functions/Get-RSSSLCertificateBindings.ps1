@@ -30,6 +30,7 @@ ListSSLCertificateBindings(System.Int32 Lcid)
         [string]
         $InstanceName='MSSQLSERVER',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential

@@ -53,6 +53,7 @@ function New-RSWebServiceProxy
         [string]
         $ComputerName = 'localhost',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential,

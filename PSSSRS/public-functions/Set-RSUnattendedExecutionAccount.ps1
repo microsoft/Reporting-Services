@@ -34,10 +34,12 @@ SetUnattendedExecutionAccount(
         [string]
         $InstanceName='MSSQLSERVER',
 
+        [Alias('UserName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $Credential,
 
+        [Alias('AccountName')]
         [PSCredential]
         [System.Management.Automation.Credential()]
         $AccountCredential
