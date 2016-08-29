@@ -33,6 +33,7 @@ The following is a list of commands which are available for you to use once you 
 |Restore-RSEncryptionKey|This command restores encryption key on to the SQL Server Reporting Services.|
 |Revoke-AccessOnCatalogItem|This command revokes access on catalog item from users or groups.|
 |Revoke-AccessToRS|This command revokes access on SQL Server Reporting Services from users or groups.|
+|Set-RsDataSourcePassword|This command sets the password assoicated with a datasource.|
 |Set-RSEmailSettingsAsBasicAuth|This command configures the SQL Server Reporting Services email settings to use basic authentication.|
 |Set-RSEmailSettingsAsNoAuth|This command configures the SQL Server Reporting Services email settings to use no authentication.|
 |Set-RSEmailSettingsAsNTLMAuth|This command configures the SQL Server Reporting Services email settings to use NTLM authentication.|
