@@ -26,15 +26,15 @@
 .PARAMETER Path
     Path to folder which contains items to upload on disk.
 
-.PARAMETER Destination
+.PARAMETER DestinationFolder
     Folder on reportserver to upload the item to.
 
 .EXAMPLE
-    Upload-RsFolderContent -ReportServerUri 'http://localhost/reportserver_sql2012' -Path c:\monthlyreports -Destination /
+    Upload-RsFolderContent -ReportServerUri 'http://localhost/reportserver_sql2012' -Path c:\monthlyreports -DestinationFolder /monthlyReports
    
     Description
     -----------
-    Creates folder /monthlyreports on reportserver and uploads all reports under c:\monthlyreports to that folder.
+    Uploads all reports under c:\monthlyreports to folder /monthlyReports.
 #>
 
 function Upload-RsFolderContent()
@@ -59,7 +59,7 @@ function Upload-RsFolderContent()
         
         [Parameter(Mandatory=$True)]
         [string]
-        $Destination
+        $DestinationFolder
     )
 
     if(-not $Proxy)
@@ -72,18 +72,9 @@ function Upload-RsFolderContent()
     {
         throw "$Path is not a folder"
     } 
-
-    if($Destination -eq "/")
-    {
-        $DestinationFolder = "/$($sourceFolder.Name)"
-    }
-    else
-    {
-        $DestinationFolder = "$Destination/$($sourceFolder.Name)"
-    }
-
-    Write-Verbose "Creating folder $DestinationFolder"
-    $Proxy.CreateFolder($sourceFolder.Name, $Destination, $null) | Out-Null
+    
+    # Write-Verbose "Creating folder $DestinationFolder"
+    # $Proxy.CreateFolder($sourceFolder.Name, $Destination, $null) | Out-Null
 
     if($Recurse) { $items = Get-ChildItem $Path -Recurse } else { $items = Get-ChildItem $Path }
     foreach($item in $items)

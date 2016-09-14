@@ -33,11 +33,11 @@
     Folder to download catalog items to.
 
 .EXAMPLE
-    Download-RsCatalogItem -ReportServerUri 'http://localhost/reportserver_sql2012' -Path /MonthlyReports -Destination C:\reports
+    Download-RsCatalogItem -ReportServerUri 'http://localhost/reportserver_sql2012' -Path /MonthlyReports -Destination C:\reports\MonthlyReports
    
     Description
     -----------
-    Creates a new folder C:\reports\MonthlyReports and downloads catalogitems from /MonthlyReports into it
+    Downloads catalogitems from /MonthlyReports into folder C:\reports\MonthlyReports
 
 #>
 
@@ -72,9 +72,6 @@ function Download-RsFolderContent
         $Proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword 
     }
     
-    mkdir $Destination -Force | Out-Null
-    Write-Verbose "Creating folder $Destination"
-
     if($Recurse) { $items = List-RsCatalogItems -proxy:$Proxy -Path:$Path -Recurse } else { $items = List-RsCatalogItems -proxy:$Proxy -Path:$Path }
     foreach($item in $items)
     {
