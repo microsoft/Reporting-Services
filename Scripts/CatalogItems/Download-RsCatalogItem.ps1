@@ -107,6 +107,6 @@ function Download-RsCatalogItem
     }
 
     $bytes = $Proxy.GetItemDefinition($Path)
-    Write-Output "Downloading $Path to $Destination\$fileName"
+    Write-Verbose "Downloading $Path to $Destination\$fileName"
     [System.IO.File]::WriteAllBytes("$Destination\$fileName", $bytes)
 }

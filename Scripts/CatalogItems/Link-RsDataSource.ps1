@@ -87,7 +87,7 @@ function Link-RsDataSource
     $dataSourceReference.Name = $DataSourceName
     $dataSourceReference.Reference = $DataSourcePath
 
-    Write-Output "Set dataSource reference '$DataSourceName' of item $ItemPath to $DataSourcePath"
+    Write-Verbose "Set dataSource reference '$DataSourceName' of item $ItemPath to $DataSourcePath"
     $Proxy.SetItemReferences($ItemPath, @($dataSourceReference))
 }
 
