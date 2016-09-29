@@ -69,7 +69,7 @@ function Set-RsDataSourcePassword
 
     $dataSourceContent = $Proxy.GetDataSourceContents($ItemPath)
     $dataSourceContent.Password = $Password
-    Write-Output "Setting password of datasource $ItemPath"
+    Write-Verbose "Setting password of datasource $ItemPath"
     $Proxy.SetDataSourceContents($ItemPath, $dataSourceContent)
 }
 

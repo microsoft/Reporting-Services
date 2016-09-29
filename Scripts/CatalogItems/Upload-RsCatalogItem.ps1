@@ -104,11 +104,11 @@ function Upload-RsCatalogItem
     
     if($Destination -eq "/")
     {
-        Write-Output "Uploading $Path to /$($itemName)"
+        Write-Verbose "Uploading $Path to /$($itemName)"
     }
     else 
     {
-        Write-Output "Uploading $Path to $Destination/$($itemName)"        
+        Write-Verbose "Uploading $Path to $Destination/$($itemName)"        
     }
     
     $Proxy.CreateCatalogItem($itemType, $itemName, $Destination, $override, $bytes, $null, [ref]$warnings) | Out-Null

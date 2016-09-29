@@ -87,7 +87,7 @@ function Link-RsDataSet
     $dataSetReference.Name = $DataSetName
     $dataSetReference.Reference = $DataSetPath
 
-    Write-Output "Set dataSet reference '$DataSetName' of item $ItemPath to $DataSetPath"
+    Write-Verbose "Set dataSet reference '$DataSetName' of item $ItemPath to $DataSetPath"
     $Proxy.SetItemReferences($ItemPath, @($dataSetReference))
 }
 
