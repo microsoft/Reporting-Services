@@ -21,6 +21,7 @@ The following is a list of commands which are available for you to use once you 
 |Backup-RSEncryptionKey|This command backs up the encryption key used by SQL Server Reporting Services to protect sensitive content.|
 |Download-RsCatalogItem|This command downloads a catalog item.|
 |Download-RsFolderContent|This command all catalog items in folder.|
+|Get-RsDataSorouce|This command lists information about data source located at the specified path.|
 |Grant-AccessOnCatalogItem|This command grants access on catalog item to users or groups.|
 |Grant-AccessToRS|This command grants access to SQL Server Reporting Services to users or groups.|
 |Link-RsDataSet|This command links a report to  a dataset.|

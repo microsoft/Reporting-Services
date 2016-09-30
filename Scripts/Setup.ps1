@@ -16,6 +16,7 @@
 . $PSScriptRoot/Admin/Set-RSEmailSettingsAsNTLMAuth.ps1
 . $PSScriptRoot/CatalogItems/Download-RsCatalogItem.ps1
 . $PSScriptRoot/CatalogItems/Download-RsFolderContent.ps1
+. $PSScriptRoot/CatalogItems/Get-RsDataSource.ps1
 . $PSScriptRoot/CatalogItems/Link-RsDataSet.ps1
 . $PSScriptRoot/CatalogItems/Link-RsDataSource.ps1
 . $PSScriptRoot/CatalogItems/List-RsCatalogItems.ps1
