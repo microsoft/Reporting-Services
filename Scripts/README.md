@@ -10,7 +10,7 @@ You can either download this repository as a Zip file or clone this repository o
 
 Every time you launch PowerShell or start a new PowerShell session, you MUST run the following command. This will load up all our commands into your environment and allow you to run any of the commands listed in "List of Commands" section within the PowerShell session. 
     
-    . Setup.ps1 
+    . .\Setup.ps1 
 
 ## List of commands
 
