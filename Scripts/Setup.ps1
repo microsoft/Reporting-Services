@@ -21,6 +21,9 @@
 . $PSScriptRoot/CatalogItems/Link-RsDataSource.ps1
 . $PSScriptRoot/CatalogItems/List-RsCatalogItems.ps1
 . $PSScriptRoot/CatalogItems/List-RsItemReferences.ps1
+. $PSScriptRoot/CatalogItems/New-RsDataSource.ps1
+. $PSScriptRoot/CatalogItems/Remove-RsCatalogItem.ps1
+. $PSScriptRoot/CatalogItems/Set-RsDataSource.ps1
 . $PSScriptRoot/CatalogItems/Set-RsDataSourcePassword.ps1
 . $PSScriptRoot/CatalogItems/Upload-RsCatalogItem.ps1
 . $PSScriptRoot/CatalogItems/Upload-RsFolderContent.ps1

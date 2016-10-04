@@ -23,7 +23,7 @@ function Get-RsDataSource
         Specify the Proxy to use when communicating with Reporting Services server. If Proxy is not specified, connection to Report Server will be created using ReportServerUri, ReportServerUsername and ReportServerPassword.
 
     .PARAMETER DataSourcePath 
-        Specify the path to the data source 
+        Specify the path to the data source.
 
     .EXAMPLE 
         Get-RsDataSource -DataSourcePath '/path/to/my/datasource'
@@ -44,6 +44,7 @@ function Get-RsDataSource
         This command will establish a connection to the Report Server located at http://remote-machine:8080/reportserver_sql16 using CaptainAwesome's credentials and retrieve details of data source found at '/path/to/my/datasource'.
     #>
 
+    [cmdletbinding()]
     param
     (
         [string]
@@ -64,11 +65,18 @@ function Get-RsDataSource
 
     if (-not $Proxy) 
     {
-        # creating proxy
         $Proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword
     }
     
-    # retrieving item type of item located at DataSourcePath
-    Write-Verbose "Retrieving data source contents..."
-    $Proxy.GetDataSourceContents($DataSourcePath)
+    try
+    {
+        Write-Verbose "Retrieving data source contents..."
+        $Proxy.GetDataSourceContents($DataSourcePath)
+        Write-Information "Data source retrieved successfully!"
+    }
+    catch
+    {
+        Write-Error "Exception while retrieving datasource! $($_.Exception.Message)"
+        break
+    }
 }

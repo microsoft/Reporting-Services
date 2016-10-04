@@ -21,7 +21,7 @@ The following is a list of commands which are available for you to use once you 
 |Backup-RSEncryptionKey|This command backs up the encryption key used by SQL Server Reporting Services to protect sensitive content.|
 |Download-RsCatalogItem|This command downloads a catalog item.|
 |Download-RsFolderContent|This command all catalog items in folder.|
-|Get-RsDataSorouce|This command lists information about data source located at the specified path.|
+|Get-RsDataSource|This command lists information about data source located at the specified path.|
 |Grant-AccessOnCatalogItem|This command grants access on catalog item to users or groups.|
 |Grant-AccessToRS|This command grants access to SQL Server Reporting Services to users or groups.|
 |Link-RsDataSet|This command links a report to  a dataset.|
@@ -29,12 +29,15 @@ The following is a list of commands which are available for you to use once you 
 |List-RsCatalogItems|This command lists all catalog items under a folder.|
 |List-RsItemReferences|This commands sets the item references of a report or a dataset.|
 |New-RSConfigurationSettingObject|This command creates a new RSConfigurationSettingObject which is used to interact with the WMI Provider.|
+|New-RsDataSource|This command creates/overwrites data source to the specified path.|
 |New-RSWebServiceProxy|This command creates a new Web Service Proxy which is used to interact with the SOAP Endpoint.|
 |Register-PowerBI|This command registers Power BI information with SQL Server Reporting Services.|
+|Remove-RsCatalogItem|This command removes catalog item located at the specified path.|
 |Restore-RSEncryptionKey|This command restores encryption key on to the SQL Server Reporting Services.|
 |Revoke-AccessOnCatalogItem|This command revokes access on catalog item from users or groups.|
 |Revoke-AccessToRS|This command revokes access on SQL Server Reporting Services from users or groups.|
-|Set-RsDataSourcePassword|This command sets the password assoicated with a datasource.|
+|Set-RsDataSource|This command updates information associated to a data source.|
+|Set-RsDataSourcePassword|This command sets the password associated with a data source.|
 |Set-RSEmailSettingsAsBasicAuth|This command configures the SQL Server Reporting Services email settings to use basic authentication.|
 |Set-RSEmailSettingsAsNoAuth|This command configures the SQL Server Reporting Services email settings to use no authentication.|
 |Set-RSEmailSettingsAsNTLMAuth|This command configures the SQL Server Reporting Services email settings to use NTLM authentication.|
