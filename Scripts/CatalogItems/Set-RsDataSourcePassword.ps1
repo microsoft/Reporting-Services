@@ -64,7 +64,7 @@ function Set-RsDataSourcePassword
 
     if(-not $Proxy)
     {
-        $Proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword 
+        $Proxy = New-RsWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword 
     }
 
     $dataSourceContent = $Proxy.GetDataSourceContents($ItemPath)

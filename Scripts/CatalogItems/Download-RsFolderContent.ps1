@@ -69,7 +69,7 @@ function Download-RsFolderContent
 
     if(-not $Proxy)
     {
-        $Proxy = New-RSWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword 
+        $Proxy = New-RsWebServiceProxy -ReportServerUri $ReportServerUri -Username $ReportServerUsername -Password $ReportServerPassword 
     }
     
     if($Recurse) { $items = List-RsCatalogItems -proxy:$Proxy -Path:$Path -Recurse } else { $items = List-RsCatalogItems -proxy:$Proxy -Path:$Path }
