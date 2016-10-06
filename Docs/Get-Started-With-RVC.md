@@ -4,6 +4,12 @@
 * The Report Viewer Control is designed to be included in projects via nuget. It's not a good idea to add the libraries to the GAC.
 * If deploying the control on an intranet site make sure that the page is targeting HTML5.
 
+## Known issues
+
+* Icons don't show when using the control in Master/child pages
+* Design time experience doesn't always show in Visual Studio
+* Exception thrown when no Report Server and Report Path properties set
+
 ## Adding the Report Viewer Control to a new project
 
 1. Create a new ASP.Net empty web site, or open an existing ASP.Net project 
