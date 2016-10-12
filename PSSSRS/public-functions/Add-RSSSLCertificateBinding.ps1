@@ -13,13 +13,6 @@ Add-RSSSLCertificateBinding -Application ReportManager
 .EXAMPLE
  
 .NOTES
- CreateSSLCertificateBinding(
-    System.String Application, 
-    System.String CertificateHash, 
-    System.String IPAddress, 
-    System.Int32 Port, 
-    System.Int32 Lcid
-)
 
 UrlString does not include the virtual directory name. The SetVirtualDirectory method is provided for that purpose.
 

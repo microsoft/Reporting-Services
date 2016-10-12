@@ -12,7 +12,7 @@
 RootModule = 'psssrs.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # ID used to uniquely identify this module
 GUID = '4208a265-c082-4acf-9ae3-935743aa4a42'

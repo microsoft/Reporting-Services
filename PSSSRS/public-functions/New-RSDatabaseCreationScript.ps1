@@ -9,7 +9,7 @@ function New-RSDatabaseCreationScript
 .SYNOPSIS
 Generates a SQL Script that can be used to create a report server database.
 .EXAMPLE
-ew-RSDatabaseCreationScript
+New-RSDatabaseCreationScript
 .EXAMPLE
  
 .NOTES

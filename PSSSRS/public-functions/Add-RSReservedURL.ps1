@@ -9,7 +9,7 @@ function Add-RSReservedURL
 .SYNOPSIS
 Adds a URL reservation for a given application.
 .EXAMPLE
-Set-RSReservedURL -Application ReportManager -UrlString 'http://+:80'
+Add-RSReservedURL -Application ReportManager -UrlString 'http://+:80'
 .EXAMPLE
  
 .NOTES

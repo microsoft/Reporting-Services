@@ -13,7 +13,7 @@ Get-RSAdminSiteUrl
 .EXAMPLE
  
 .NOTES
-GetAdminSiteUrl()
+this method only returns a site when SSRS is SharePoint integrated
 #>
     [cmdletbinding()]
     param

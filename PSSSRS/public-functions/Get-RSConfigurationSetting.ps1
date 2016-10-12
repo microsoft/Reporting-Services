@@ -9,7 +9,7 @@ function Get-RSConfigurationSetting
 .SYNOPSIS
 
 .EXAMPLE
-New-RSConfigurationSession -ComputerName server
+Get-RSConfigurationSession -ComputerName server
 .EXAMPLE
  
 .NOTES
