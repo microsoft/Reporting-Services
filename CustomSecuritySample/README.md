@@ -12,6 +12,8 @@ A new interface is introduced that can be implemented which provides an IRSReque
 In previous versions extensions, could rely on a common assumption that ASP.NET objects would be readily available, since the new portal does not run in asp.net the extension might hit issues with objects being NULL. 
 The most generic example is accessing HttpContext.Current to read request information such as headers and cookies. In order to allow extensions to make the same decisions we introduced a new method in the extension that provides request information and is called when authenticating from the portal. 
  Extensions should implement the IAuthenticationExtension2 interface to leverage this. The extensions will need to implement both versions of GetUserInfo method, as is called by the reportserver context and other used in webhost process. The sample below shows one of the simple implementations for the portal where the identity resolved by the reportserver is the one used.
+  
+```csharp
   public void GetUserInfo(IRSRequestContext requestContext, out IIdentity userIdentity, out IntPtr userId)
        {
            userIdentity = null;
@@ -22,7 +24,7 @@ The most generic example is accessing HttpContext.Current to read request inform
 // initialize a pointer to the current user id to zero
            userId = IntPtr.Zero;
       }
-
+```
 
 # Implementation 
 
@@ -30,11 +32,11 @@ The most generic example is accessing HttpContext.Current to read request inform
 
 The sample includes a database script, Createuserstore.sql, that enables you to set up a user store for the Forms sample in a SQL Server database.
 Script is in the CustomSecuritySample\Setup folder.
-1.	To create the UserAccounts database
-2.	Open SQL Server Management Studio, and then connect to your local instance of SQL Server. 
-3.	Locate the Createuserstore.sql SQL script file. The script file is contained within the sample project files. 
-4.	Run the query to create the UserAccounts database. 
-5.	Exit SQL Server Management Studio. 
+-	To create the UserAccounts database
+-	Open SQL Server Management Studio, and then connect to your local instance of SQL Server. 
+-	Locate the Createuserstore.sql SQL script file. The script file is contained within the sample project files. 
+-	Run the query to create the UserAccounts database. 
+-	Exit SQL Server Management Studio. 
 
 
 ## Step 2: Building the Sample
@@ -45,62 +47,75 @@ To generate a strong name key file
 Open a Microsoft Visual Studio prompt and point to .Net Framework 4.0.
 Use the change directory command (CD) to change the current directory of the command prompt window to the folder where the project is saved. 
 At the command prompt, run the following command to generate the key file: sn -k SampleKey.snk .
+
 To compile the sample using Visual Studio
-1.	Open CustomSecuritySample.sln in Microsoft Visual Studio. 
-2.	In Solution Explorer, select the CustomSecuritySample project. 
-3.	Look at the CustomSecuritySample project's references. If you do not see Microsoft.ReportingServices.Interfaces.dll, then complete the following steps: 
-4.	On the Project menu, click Add Reference. The Add References dialog box opens. 
-5.	Click the .NET tab. 
-6.	Click Browse, and find Microsoft.ReportingServices.Interfaces on your local drive. By default, the assembly is in the <install>\ReportServer\bin directory. Click OK. The selected reference is added to your project. 
-7.	On the Build menu, click Build Solution. 
+-	Open CustomSecuritySample.sln in Microsoft Visual Studio. 
+-	In Solution Explorer, select the CustomSecuritySample project. 
+-	Look at the CustomSecuritySample project's references. If you do not see Microsoft.ReportingServices.Interfaces.dll, then complete the following steps: 
+-	On the Project menu, click Add Reference. The Add References dialog box opens. 
+-	Click the .NET tab. 
+-	Click Browse, and find Microsoft.ReportingServices.Interfaces on your local drive. By default, the assembly is in the <install>\ReportServer\bin directory. Click OK. The selected reference is added to your project. 
+-	On the Build menu, click Build Solution. 
+
 Debugging
+
 To debug the extension, you might want to attach the debugger to both ReportingServicesService.exe and Microsoft.ReportingServices.Portal.Webhost.exe. And add breakpoints to the methods implementing the interface IAuthenticationExtension2.
 
 
 ## Step 3: Deployment and Configuration
 
 The basic configurations needed for custom security extension are the same as previous releases. Following changes are needed in for web.config and rsreportserver.config present in the ReportServer folder. There is no longer a separate web.config for the reportmanager, the portal will inherit the same settings as the reportserver endpoint.
-a). To deploy the sample
-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
-	Copy the Logon.aspx page to the <install>\ReportServer directory. 
-b). Modify files in the ReportServer Folder
- To modify the RSReportServer.config file 
-Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the <install>\ReportServer directory. 
- 	Locate the <AuthenticationTypes> element and modify the settings as follows: 
+
+1. To deploy the sample
+	..*Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
+	..*Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
+	..*Copy the Logon.aspx page to the <install>\ReportServer directory. 
+	
+2. Modify files in the ReportServer Folder
+	..*To modify the RSReportServer.config file 
+	..*Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the <install>\ReportServer directory. 
+ 	..*Locate the <AuthenticationTypes> element and modify the settings as follows: 
+```xml
 <Authentication>
-< AuthenticationTypes> 
-< Custom/>
-< /AuthenticationTypes>
-< RSWindowsExtendedProtectionLevel>Off</RSWindowsExtendedProtectionLevel>
-< RSWindowsExtendedProtectionScenario>Proxy</RSWindowsExtendedProtectionScenario>
-< EnableAuthPersistence>true</EnableAuthPersistence>
+	< AuthenticationTypes> 
+		< Custom/>
+	< /AuthenticationTypes>
+	< RSWindowsExtendedProtectionLevel>Off</RSWindowsExtendedProtectionLevel>
+	< RSWindowsExtendedProtectionScenario>Proxy</RSWindowsExtendedProtectionScenario>
+	< EnableAuthPersistence>true</EnableAuthPersistence>
 < /Authentication>
+```
+
 Locate the <Security> and <Authentication> elements, within the <Extensions> element, and modify the settings as follows: 
+
+```xml
 <Security>
-< Extension Name="Forms" 
-Type="Microsoft.Samples.ReportingServices.CustomSecurity.Authorization, 
-Microsoft.Samples.ReportingServices.CustomSecurity" >
-< Configuration>
-< AdminConfiguration>
-< UserName>username</UserName>
-< /AdminConfiguration>
-< /Configuration>
-< /Extension>
+	< Extension Name="Forms" Type="Microsoft.Samples.ReportingServices.CustomSecurity.Authorization, Microsoft.Samples.ReportingServices.CustomSecurity" >
+	< Configuration>
+		< AdminConfiguration>
+			< UserName>username</UserName>
+		< /AdminConfiguration>
+	< /Configuration>
+	< /Extension>
 < /Security>
+```
+```xml
 < Authentication>
-< Extension Name="Forms" 
-Type="Microsoft.Samples.ReportingServices.CustomSecurity.AuthenticationExtension,Microsoft.Samples.ReportingServices.CustomSecurity" />
+	< Extension Name="Forms" Type="Microsoft.Samples.ReportingServices.CustomSecurity.AuthenticationExtension,Microsoft.Samples.ReportingServices.CustomSecurity" />
 < /Authentication> 
- 	Locate the <UI> element and update it as follows: 
+```
+
+Locate the <UI> element and update it as follows: 
+```xml
 <UI>
-< CustomAuthenticationUI>
-< loginUrl>/Pages/UILogon.aspx</loginUrl>
-< UseSSL>True</UseSSL>
-< /CustomAuthenticationUI>
-< ReportServerUrl>http://<server>/ReportServer</ReportServerUrl>
-< PageCountMode>Estimate</PageCountMode>
+	< CustomAuthenticationUI>
+		< loginUrl>/Pages/UILogon.aspx</loginUrl>
+		< UseSSL>True</UseSSL>
+	< /CustomAuthenticationUI>
+	< ReportServerUrl>http://<server>/ReportServer</ReportServerUrl>
+	< PageCountMode>Estimate</PageCountMode>
 < /UI>
+```
 Note: 
 If you are running the sample security extension in a development environment that does not have a Secure Sockets Layer (SSL) certificate installed, you must change the value of the <UseSSL> element to False in the previous configuration entry. We recommend that you always use SSL when combining Reporting Services with Forms Authentication. 
 You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.

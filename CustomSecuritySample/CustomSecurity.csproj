@@ -32,7 +32,7 @@
     <SignAssembly>false</SignAssembly>
     <OldToolsVersion>3.5</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -47,6 +47,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -126,14 +127,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Logon.aspx.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_LocalResources\UILogon.aspx.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UILogon.aspx.resx</DependentUpon>
-    </Compile>
-    <Compile Include="AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="AuthenticationExtension.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -158,10 +151,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ReportingService2010.cs" />
-    <Compile Include="UILogon.aspx.cs">
-      <DependentUpon>UILogon.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,17 +160,11 @@
     <Content Include="Logon.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="UILogon.aspx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\Logon.aspx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logon.aspx.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\UILogon.aspx.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>UILogon.aspx.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomSecurity.resx">
