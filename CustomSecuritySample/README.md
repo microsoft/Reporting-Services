@@ -156,7 +156,7 @@ validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB082182
     <machineKey
 validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
 </system.web>
-```
+
  Note: You should use a validation key specific for you deployment, there are several tools to generate the keys, one example is: 
 http://www.a2zmenu.com/utility/machine-key-generator.aspx 
  
@@ -173,8 +173,7 @@ In the rsreportserver.config file add following under <UI> :-
       </PassThroughCookies>
    </CustomAuthenticationUI>
 </UI>
-```
- 
+``` 
 
 
 # Code Of Conduct
