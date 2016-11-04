@@ -149,14 +149,17 @@ Open the Web.config file in a text editor. By default, the file is in the <insta
 Locate the <identity> element and set the Impersonate attribute to false. * <identity impersonate="false" /> * 
 Locate the <authentication> element and change the Mode attribute to Forms. 
 Add the following <forms> element as a child of the <authentication> element and set the loginUrl, name, timeout, and path attributes as follows: 
+```xml
 <authentication mode="Forms">
-< forms loginUrl="logon.aspx" name="sqlAuthCookie" timeout="60" 
-path="/"></forms>
-< /authentication> 
+	<forms loginUrl="logon.aspx" name="sqlAuthCookie" timeout="60" path="/"></forms>
+</authentication> 
+
 Add the following <authorization> element directly after the <authentication> element. 
+```xml
 <authorization> 
-< deny users="?" />
-< /authorization> 
+<deny users="?" />
+</authorization> 
+```
 
 This will deny unauthenticated users the right to access the report server. The previously established loginUrl attribute of the <authentication> element will redirect unauthenticated requests to the Logon.aspx page.
 
@@ -168,19 +171,21 @@ Adding Machine Keys
  For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
  For example:
 <RSPATH>\ReportServer\web.config
-Add under <system.web>
-
-    <machineKey
-validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
-
- <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config
- Add under <configuration>
- <system.web>
-    <machineKey
-validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
-</system.web>
-
- Note: You should use a validation key specific for you deployment, there are several tools to generate the keys, one example is: 
+Add under 
+	```xml
+	<system.web>
+		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
+	```
+<RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config
+ Add under 
+	```xml
+	<configuration>
+	 <system.web>
+		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
+	</system.web>
+	</configuration>
+	```
+Note: You should use a validation key specific for you deployment, there are several tools to generate the keys, one example is: 
 http://www.a2zmenu.com/utility/machine-key-generator.aspx 
  
 
