@@ -29,8 +29,7 @@ using System.Globalization;
 
 namespace Microsoft.Samples.ReportingServices.CustomSecurity
 {
-  // public class AuthenticationExtension : IAuthenticationExtension
-   // public class IAuthenticationExtension2 : IExtension
+ 
    public class AuthenticationExtension:IAuthenticationExtension2, IExtension
    {
       /// <summary>
