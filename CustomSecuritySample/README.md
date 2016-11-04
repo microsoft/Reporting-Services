@@ -129,6 +129,7 @@ Note:
 If you are running the sample security extension in a development environment that does not have a Secure Sockets Layer (SSL) certificate installed, you must change the value of the <UseSSL> element to False in the previous configuration entry. We recommend that you always use SSL when combining Reporting Services with Forms Authentication. 
 
 - 	To modify the RSSrvPolicy.config file 
+
 1.	You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.
 2.	Open the RSSrvPolicy.config file located in the <install>\ReportServer directory. 
 3.	Add the following <CodeGroup> element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
@@ -150,6 +151,7 @@ Note:
 For simplicity, the Forms Authentication Sample is weak-named and requires a simple URL membership entry in the security policy files. In your production security extension implementation, you should create strong-named assemblies and use the strong name membership condition when adding security policies for your assembly. For more information about strong-named assemblies, see the Creating and Using Strong-Named Assemblies topic on MSDN. 
 
 -	To modify the Web.config file for Report Server
+
 1.	Open the Web.config file in a text editor. By default, the file is in the <install>\ReportServer directory.
 2.	Locate the <identity> element and set the Impersonate attribute to false. * <identity impersonate="false" /> * 
 3.	Locate the <authentication> element and change the Mode attribute to Forms. 
@@ -179,12 +181,15 @@ Adding Machine Keys
  For example:
 <RSPATH>\ReportServer\web.config
 Add under 
+
 	```xml
 	<system.web>
 		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
+	</system.web>
 	```
 <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config
  Add under 
+ 
 	```xml
 	<configuration>
 	 <system.web>
