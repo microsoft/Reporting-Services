@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
    <HEAD>
-      <title>Sql Server 2012 Reporting Services Samples</title>
+      <title>Sql Server 2016 Reporting Services Samples</title>
       <meta name="GENERATOR" Content="Microsoft Visual Studio .NET 7.1">
       <meta name="CODE_LANGUAGE" Content="C#">
       <meta name="vs_defaultClientScript" content="JavaScript">
