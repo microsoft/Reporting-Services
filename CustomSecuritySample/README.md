@@ -146,14 +146,17 @@ Adding Machine Keys
  For example:
 <RSPATH>\ReportServer\web.config
 Add under <system.web>
-     <machineKey
+
+    <machineKey
 validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
+
  <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config
-Add under <configuration>
+ Add under <configuration>
  <system.web>
     <machineKey
 validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
 </system.web>
+```
  Note: You should use a validation key specific for you deployment, there are several tools to generate the keys, one example is: 
 http://www.a2zmenu.com/utility/machine-key-generator.aspx 
  
@@ -162,6 +165,7 @@ http://www.a2zmenu.com/utility/machine-key-generator.aspx
 
  The new portal and the reportserver communicate using internal soap APIs for some of its operations. When additional cookies are required to be passed from the portal to the server the PassThroughCookies properties is still available. More Details: https://msdn.microsoft.com/en-us/library/ms345241.aspx 
 In the rsreportserver.config file add following under <UI> :-
+```xml
 <UI>
    <CustomAuthenticationUI>
       <PassThroughCookies>
@@ -169,6 +173,7 @@ In the rsreportserver.config file add following under <UI> :-
       </PassThroughCookies>
    </CustomAuthenticationUI>
 </UI>
+```
  
 
 
