@@ -9,9 +9,11 @@ SSRS 2016 introduced a new portal to host new OData APIs and host new report wor
 ## What Changed?
 
 A new interface is introduced that can be implemented which provides an IRSRequestContext providing the more common properties used by extensions to make decisions related to authentication. In previous version ReportManager was the front-end and could be configured with its own custom login page, in SSRS2016 only one page hosted by reportserver is supported and should authenticate to both applications.
+
 In previous versions extensions, could rely on a common assumption that ASP.NET objects would be readily available, since the new portal does not run in asp.net the extension might hit issues with objects being NULL. 
 The most generic example is accessing HttpContext.Current to read request information such as headers and cookies. In order to allow extensions to make the same decisions we introduced a new method in the extension that provides request information and is called when authenticating from the portal. 
- Extensions should implement the IAuthenticationExtension2 interface to leverage this. The extensions will need to implement both versions of GetUserInfo method, as is called by the reportserver context and other used in webhost process. The sample below shows one of the simple implementations for the portal where the identity resolved by the reportserver is the one used.
+
+Extensions should implement the IAuthenticationExtension2 interface to leverage this. The extensions will need to implement both versions of GetUserInfo method, as is called by the reportserver context and other used in webhost process. The sample below shows one of the simple implementations for the portal where the identity resolved by the reportserver is the one used.
   
 ```csharp
   public void GetUserInfo(IRSRequestContext requestContext, out IIdentity userIdentity, out IntPtr userId)
@@ -20,10 +22,10 @@ The most generic example is accessing HttpContext.Current to read request inform
            if (requestContext.User != null)
            {
                userIdentity = requestContext.User;
-          }
-// initialize a pointer to the current user id to zero
+           }
+	// initialize a pointer to the current user id to zero
            userId = IntPtr.Zero;
-      }
+       }
 ```
 
 # Implementation 
@@ -42,11 +44,13 @@ Script is in the CustomSecuritySample\Setup folder.
 ## Step 2: Building the Sample
 
 You must first compile and install the extension. The procedure assumes that you have installed Reporting Services to the default location: C:\Program Files\Microsoft SQL Server\MSRS13.MSSQLSERVER\Reporting Services. This location will be referred to throughout the remainder of this topic as <install_>.
+
 If you have not already created a strong name key file, generate the key file using the following instructions.
+
 To generate a strong name key file
-Open a Microsoft Visual Studio prompt and point to .Net Framework 4.0.
-Use the change directory command (CD) to change the current directory of the command prompt window to the folder where the project is saved. 
-At the command prompt, run the following command to generate the key file: sn -k SampleKey.snk .
+-	Open a Microsoft Visual Studio prompt and point to .Net Framework 4.0.
+-	Use the change directory command (CD) to change the current directory of the command prompt window to the folder where the project is saved. 
+-	At the command prompt, run the following command to generate the key file: sn -k SampleKey.snk .
 
 To compile the sample using Visual Studio
 -	Open CustomSecuritySample.sln in Microsoft Visual Studio. 
@@ -67,72 +71,76 @@ To debug the extension, you might want to attach the debugger to both ReportingS
 The basic configurations needed for custom security extension are the same as previous releases. Following changes are needed in for web.config and rsreportserver.config present in the ReportServer folder. There is no longer a separate web.config for the reportmanager, the portal will inherit the same settings as the reportserver endpoint.
 
 1. To deploy the sample
-	..*Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
-	..*Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
-	..*Copy the Logon.aspx page to the <install>\ReportServer directory. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
+-	Copy the Logon.aspx page to the <install>\ReportServer directory. 
 	
 2. Modify files in the ReportServer Folder
-	..*To modify the RSReportServer.config file 
-	..*Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the <install>\ReportServer directory. 
- 	..*Locate the <AuthenticationTypes> element and modify the settings as follows: 
-```xml
-<Authentication>
-	< AuthenticationTypes> 
-		< Custom/>
-	< /AuthenticationTypes>
-	< RSWindowsExtendedProtectionLevel>Off</RSWindowsExtendedProtectionLevel>
-	< RSWindowsExtendedProtectionScenario>Proxy</RSWindowsExtendedProtectionScenario>
-	< EnableAuthPersistence>true</EnableAuthPersistence>
-< /Authentication>
-```
+-	To modify the RSReportServer.config file 
+-	Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the <install>\ReportServer directory. 
+-	Locate the <AuthenticationTypes> element and modify the settings as follows: 
+	```xml
+	<Authentication>
+		<AuthenticationTypes> 
+			<Custom/>
+		</AuthenticationTypes>
+		<RSWindowsExtendedProtectionLevel>Off</RSWindowsExtendedProtectionLevel>
+		<RSWindowsExtendedProtectionScenario>Proxy</RSWindowsExtendedProtectionScenario>
+		<EnableAuthPersistence>true</EnableAuthPersistence>
+	</Authentication>
+	```
 
-Locate the <Security> and <Authentication> elements, within the <Extensions> element, and modify the settings as follows: 
+-	Locate the <Security> and <Authentication> elements, within the <Extensions> element, and modify the settings as follows: 
 
-```xml
-<Security>
-	< Extension Name="Forms" Type="Microsoft.Samples.ReportingServices.CustomSecurity.Authorization, Microsoft.Samples.ReportingServices.CustomSecurity" >
-	< Configuration>
-		< AdminConfiguration>
-			< UserName>username</UserName>
-		< /AdminConfiguration>
-	< /Configuration>
-	< /Extension>
-< /Security>
-```
-```xml
-< Authentication>
-	< Extension Name="Forms" Type="Microsoft.Samples.ReportingServices.CustomSecurity.AuthenticationExtension,Microsoft.Samples.ReportingServices.CustomSecurity" />
-< /Authentication> 
-```
+	```xml
+	<Security>
+		<Extension Name="Forms" Type="Microsoft.Samples.ReportingServices.CustomSecurity.Authorization, Microsoft.Samples.ReportingServices.CustomSecurity" >
+		<Configuration>
+			<AdminConfiguration>
+				<UserName>username</UserName>
+			</AdminConfiguration>
+		</Configuration>
+		</Extension>
+	</Security>
+	```
+	```xml
+	<Authentication>
+		<Extension Name="Forms" Type="Microsoft.Samples.ReportingServices.CustomSecurity.AuthenticationExtension,Microsoft.Samples.ReportingServices.CustomSecurity" />
+	</Authentication> 
+	```
 
-Locate the <UI> element and update it as follows: 
-```xml
-<UI>
-	< CustomAuthenticationUI>
-		< loginUrl>/Pages/UILogon.aspx</loginUrl>
-		< UseSSL>True</UseSSL>
-	< /CustomAuthenticationUI>
-	< ReportServerUrl>http://<server>/ReportServer</ReportServerUrl>
-	< PageCountMode>Estimate</PageCountMode>
-< /UI>
-```
+-	Locate the <UI> element and update it as follows: 
+	```xml
+	<UI>
+		< CustomAuthenticationUI>
+			< loginUrl>/Pages/UILogon.aspx</loginUrl>
+			< UseSSL>True</UseSSL>
+		< /CustomAuthenticationUI>
+		< ReportServerUrl>http://<server>/ReportServer</ReportServerUrl>
+		< PageCountMode>Estimate</PageCountMode>
+	< /UI>
+	```
+	
 Note: 
 If you are running the sample security extension in a development environment that does not have a Secure Sockets Layer (SSL) certificate installed, you must change the value of the <UseSSL> element to False in the previous configuration entry. We recommend that you always use SSL when combining Reporting Services with Forms Authentication. 
-You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.
+
 To modify the RSSrvPolicy.config file 
-Open the RSSrvPolicy.config file located in the <install>\ReportServer directory. 
-Add the following <CodeGroup> element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
-< CodeGroup
-class="UnionCodeGroup"
-version="1"
-Name="SecurityExtensionCodeGroup" 
-Description="Code group for the sample security extension"
-PermissionSetName="FullTrust">
-< IMembershipCondition 
-class="UrlMembershipCondition"
-version="1"
-Url="C:\Program Files\Microsoft SQL Server\MSRS11.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.Samples.ReportingServices.CustomSecurity.dll"/>
-< /CodeGroup>
+-	You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.
+-	Open the RSSrvPolicy.config file located in the <install>\ReportServer directory. 
+-	Add the following <CodeGroup> element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
+	```xml
+	< CodeGroup
+		class="UnionCodeGroup"
+		version="1"
+		Name="SecurityExtensionCodeGroup" 
+		Description="Code group for the sample security extension"
+		PermissionSetName="FullTrust">
+	< IMembershipCondition 
+		class="UrlMembershipCondition"
+		version="1"
+		Url="C:\Program Files\Microsoft SQL Server\MSRS11.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.Samples.ReportingServices.CustomSecurity.dll"/>
+	< /CodeGroup>
+	```
 Note: 
 For simplicity, the Forms Authentication Sample is weak-named and requires a simple URL membership entry in the security policy files. In your production security extension implementation, you should create strong-named assemblies and use the strong name membership condition when adding security policies for your assembly. For more information about strong-named assemblies, see the Creating and Using Strong-Named Assemblies topic on MSDN. 
 
