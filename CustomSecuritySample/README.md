@@ -70,17 +70,15 @@ To debug the extension, you might want to attach the debugger to both ReportingS
 
 The basic configurations needed for custom security extension are the same as previous releases. Following changes are needed in for web.config and rsreportserver.config present in the ReportServer folder. There is no longer a separate web.config for the reportmanager, the portal will inherit the same settings as the reportserver endpoint.
 
--	To deploy the sample
-
-1.	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
-2.	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
-3.	Copy the Logon.aspx page to the <install>\ReportServer directory. 
+To deploy the sample
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
+-	Copy the Logon.aspx page to the <install>\ReportServer directory. 
 	
--	Modify files in the ReportServer Folder
-
-1.	To modify the RSReportServer.config file. 
-2.	Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the <install>\ReportServer directory. 
-3.	Locate the <AuthenticationTypes> element and modify the settings as follows: 
+Modify files in the ReportServer Folder
+-	To modify the RSReportServer.config file. 
+-	Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the <install>\ReportServer directory. 
+-	Locate the <AuthenticationTypes> element and modify the settings as follows: 
 	
 	```xml
 	<Authentication>
@@ -93,7 +91,7 @@ The basic configurations needed for custom security extension are the same as pr
 	</Authentication>
 	```
 
-4.	Locate the <Security> and <Authentication> elements, within the <Extensions> element, and modify the settings as follows: 
+-	Locate the <Security> and <Authentication> elements, within the <Extensions> element, and modify the settings as follows: 
 
 	```xml
 	<Security>
@@ -112,7 +110,7 @@ The basic configurations needed for custom security extension are the same as pr
 	</Authentication> 
 	```
 
-5.	Locate the <UI> element and update it as follows: 
+-	Locate the <UI> element and update it as follows: 
 	
 	```xml
 	<UI>
@@ -128,11 +126,10 @@ The basic configurations needed for custom security extension are the same as pr
 Note: 
 If you are running the sample security extension in a development environment that does not have a Secure Sockets Layer (SSL) certificate installed, you must change the value of the <UseSSL> element to False in the previous configuration entry. We recommend that you always use SSL when combining Reporting Services with Forms Authentication. 
 
-- 	To modify the RSSrvPolicy.config file 
-
-1.	You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.
-2.	Open the RSSrvPolicy.config file located in the <install>\ReportServer directory. 
-3.	Add the following <CodeGroup> element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
+To modify the RSSrvPolicy.config file 
+-	You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.
+-	Open the RSSrvPolicy.config file located in the <install>\ReportServer directory. 
+-	Add the following <CodeGroup> element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
 	
 	```xml
 	< CodeGroup
@@ -150,12 +147,11 @@ If you are running the sample security extension in a development environment th
 Note: 
 For simplicity, the Forms Authentication Sample is weak-named and requires a simple URL membership entry in the security policy files. In your production security extension implementation, you should create strong-named assemblies and use the strong name membership condition when adding security policies for your assembly. For more information about strong-named assemblies, see the Creating and Using Strong-Named Assemblies topic on MSDN. 
 
--	To modify the Web.config file for Report Server
-
-1.	Open the Web.config file in a text editor. By default, the file is in the <install>\ReportServer directory.
-2.	Locate the <identity> element and set the Impersonate attribute to false. * <identity impersonate="false" /> * 
-3.	Locate the <authentication> element and change the Mode attribute to Forms. 
-4.	Add the following <forms> element as a child of the <authentication> element and set the loginUrl, name, timeout, and path attributes as follows: 
+To modify the Web.config file for Report Server
+-	Open the Web.config file in a text editor. By default, the file is in the <install>\ReportServer directory.
+-	Locate the <identity> element and set the Impersonate attribute to false. * <identity impersonate="false" /> * 
+-	Locate the <authentication> element and change the Mode attribute to Forms. 
+-	Add the following <forms> element as a child of the <authentication> element and set the loginUrl, name, timeout, and path attributes as follows: 
 
 	```xml
 	<authentication mode="Forms">
@@ -180,15 +176,13 @@ Adding Machine Keys
  For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
  For example:
 <RSPATH>\ReportServer\web.config
-Add under <system.web>
-
+-	Add under <system.web>
 	```xml
 		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
 	```
 <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config
- Add under 	<configuration>
- 
-	```xml
+-	Add under <configuration>
+ 	```xml
 	 <system.web>
 		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
 	</system.web>
@@ -199,7 +193,7 @@ http://www.a2zmenu.com/utility/machine-key-generator.aspx
 
 ## Step 5: Configure Passthrough cookies
 
- The new portal and the reportserver communicate using internal soap APIs for some of its operations. When additional cookies are required to be passed from the portal to the server the PassThroughCookies properties is still available. More Details: https://msdn.microsoft.com/en-us/library/ms345241.aspx 
+The new portal and the reportserver communicate using internal soap APIs for some of its operations. When additional cookies are required to be passed from the portal to the server the PassThroughCookies properties is still available. More Details: https://msdn.microsoft.com/en-us/library/ms345241.aspx 
 In the rsreportserver.config file add following under <UI> :-
 ```xml
 <UI>
