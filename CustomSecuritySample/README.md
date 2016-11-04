@@ -180,22 +180,18 @@ Adding Machine Keys
  For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
  For example:
 <RSPATH>\ReportServer\web.config
-Add under 
+Add under <system.web>
 
 	```xml
-	<system.web>
 		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
-	</system.web>
 	```
 <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config
- Add under 
+ Add under 	<configuration>
  
 	```xml
-	<configuration>
 	 <system.web>
 		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
 	</system.web>
-	</configuration>
 	```
 Note: You should use a validation key specific for you deployment, there are several tools to generate the keys, one example is: 
 http://www.a2zmenu.com/utility/machine-key-generator.aspx 
