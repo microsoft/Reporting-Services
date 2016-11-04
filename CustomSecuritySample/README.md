@@ -114,13 +114,13 @@ Modify files in the ReportServer Folder
 	
 	```xml
 	<UI>
-		< CustomAuthenticationUI>
-			< loginUrl>/Pages/UILogon.aspx</loginUrl>
-			< UseSSL>True</UseSSL>
-		< /CustomAuthenticationUI>
-		< ReportServerUrl>http://<server>/ReportServer</ReportServerUrl>
-		< PageCountMode>Estimate</PageCountMode>
-	< /UI>
+		<CustomAuthenticationUI>
+			<loginUrl>/Pages/UILogon.aspx</loginUrl>
+			<UseSSL>True</UseSSL>
+		</CustomAuthenticationUI>
+		<ReportServerUrl>http://<server>/ReportServer</ReportServerUrl>
+		<PageCountMode>Estimate</PageCountMode>
+	</UI>
 	```
 	
 Note: 
@@ -173,15 +173,12 @@ This will deny unauthenticated users the right to access the report server. The 
 
 Adding Machine Keys
 
- For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
- For example:
-<RSPATH>\ReportServer\web.config
--	Add under <system.web>
+-	For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
+-	For example:In <RSPATH>\ReportServer\web.config,add under "<system.web>"
 	```xml
 		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
 	```
-<RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config
--	Add under <configuration>
+-	Then under <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config, add under "<configuration>"
  	```xml
 	 <system.web>
 		<machineKey validationKey="00A2CEAEF8A91B29F63399CBEE18F272159F114991EA7CF2FD78BC5D9BB0821825C7332C4A4C1698FA58E39634365A97DA8F720377B84F471A3A166CFCDD31DF" decryptionKey="009CA6A1D48DC4DB59E54865C470DFB75FBC1B73AA4833523C9795B1FA88CBE3" validation="AES" decryption="AES" />
@@ -195,6 +192,7 @@ http://www.a2zmenu.com/utility/machine-key-generator.aspx
 
 The new portal and the reportserver communicate using internal soap APIs for some of its operations. When additional cookies are required to be passed from the portal to the server the PassThroughCookies properties is still available. More Details: https://msdn.microsoft.com/en-us/library/ms345241.aspx 
 In the rsreportserver.config file add following under <UI> :-
+
 ```xml
 <UI>
    <CustomAuthenticationUI>
