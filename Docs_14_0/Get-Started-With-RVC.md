@@ -1,6 +1,5 @@
 # Next steps - READ!
 
-* **Make sure you have the latest version of [SQL Server Data Tools installed](https://msdn.microsoft.com/en-us/mt186501).** Earlier versions incorrectly GAC'ed certain libraries that will cause issues - see the common issues section  below.
 * The Report Viewer Control is designed to be included in projects via nuget. It's not a good idea to add the libraries to the GAC.
 * If deploying the control on an intranet site make sure that the page is targeting HTML5.
 
