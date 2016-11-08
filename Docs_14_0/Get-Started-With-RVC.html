@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Get-Started-With-RVC.md</title>
@@ -11,19 +11,13 @@
 <li>The Report Viewer Control is designed to be included in projects via nuget. It&#39;s not a good idea to add the libraries to the GAC.</li>
 <li>If deploying the control on an intranet site make sure that the page is targeting HTML5.</li>
 </ul>
-<h2 id="known-issues">Known issues</h2>
-<ul>
-<li>Icons don&#39;t show when using the control in Master/child pages</li>
-<li>Design time experience doesn&#39;t always show in Visual Studio</li>
-<li>Exception thrown when no Report Server and Report Path properties set</li>
-</ul>
 <h2 id="adding-the-report-viewer-control-to-a-new-project">Adding the Report Viewer Control to a new project</h2>
 <ol>
 <li><p>Create a new ASP.Net empty web site, or open an existing ASP.Net project<br>
 <img src="Get-Started-With-RVC/NewAspWebSite.png" alt="New web project"></p>
 </li>
 <li><p>Install the Report Viewer Control Nuget package via the Nuget package manager console</p>
-<pre><code>Install-Package Microsoft.ReportingServices.ReportViewerControl.WebForms.Preview
+<pre><code>Install-Package Microsoft.ReportingServices.ReportViewerControl.WebForms
 </code></pre></li>
 <li>Add a new .aspx page to the project and register the Report Viewer Control assembly for use within the page<pre><code>&lt;%@ Register assembly=&quot;Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91&quot; namespace=&quot;Microsoft.Reporting.WebForms&quot; tagprefix=&quot;rsweb&quot; %&gt;
 </code></pre></li>
