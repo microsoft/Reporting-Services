@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get-Started-With-RVC.md</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="next-steps-read-">Next steps - READ!</h1>
+<ul>
+<li><strong>Make sure you have the latest version of <a href="https://msdn.microsoft.com/en-us/mt186501">SQL Server Data Tools installed</a>.</strong> Earlier versions incorrectly GAC&#39;ed certain libraries that will cause issues - see the common issues section  below.</li>
+<li>The Report Viewer Control is designed to be included in projects via nuget. It&#39;s not a good idea to add the libraries to the GAC.</li>
+<li>If deploying the control on an intranet site make sure that the page is targeting HTML5.</li>
+</ul>
+<h2 id="known-issues">Known issues</h2>
+<ul>
+<li>Icons don&#39;t show when using the control in Master/child pages</li>
+<li>Design time experience doesn&#39;t always show in Visual Studio</li>
+<li>Exception thrown when no Report Server and Report Path properties set</li>
+</ul>
+<h2 id="adding-the-report-viewer-control-to-a-new-project">Adding the Report Viewer Control to a new project</h2>
+<ol>
+<li><p>Create a new ASP.Net empty web site, or open an existing ASP.Net project<br><img src="Get-Started-With-RVC/NewAspWebSite.png" alt="New web project"></p>
+</li>
+<li><p>Install the Report Viewer Control Nuget package via the Nuget package manager console</p>
+<pre><code>Install-Package Microsoft.ReportingServices.ReportViewerControl.WebForms.Preview
+</code></pre></li>
+<li>Add a new .aspx page to the project and register the Report Viewer Control assembly for use within the page<pre><code>&lt;%@ Register assembly=&quot;Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91&quot; namespace=&quot;Microsoft.Reporting.WebForms&quot; tagprefix=&quot;rsweb&quot; %&gt;
+</code></pre></li>
+<li>Add a ScriptManagerControl to the page</li>
+<li>Add the Report Viewer control to the page. The below snippet can be updated to reference a report hosted on a remote Report Server<pre><code>&lt;rsweb:ReportViewer ID=&quot;ReportViewer1&quot; runat=&quot;server&quot; ProcessingMode=&quot;Remote&quot;&gt;
+&lt;ServerReport ReportPath=&quot;&quot; ReportServerUrl=&quot;&quot; /&gt;
+&lt;/rsweb:ReportViewer&gt;
+</code></pre></li>
+</ol>
+<p>The final page should look like</p>
+<pre><code>&lt;%@ Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;WebForm1.aspx.cs&quot; Inherits=&quot;Sample&quot; %&gt;
+
+&lt;%@ Register assembly=&quot;Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91&quot; namespace=&quot;Microsoft.Reporting.WebForms&quot; tagprefix=&quot;rsweb&quot; %&gt;
+
+&lt;!DOCTYPE html&gt;
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head runat=&quot;server&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt; 
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;
+    &lt;asp:ScriptManager runat=&quot;server&quot;&gt;&lt;/asp:ScriptManager&gt;        
+        &lt;rsweb:ReportViewer ID=&quot;ReportViewer1&quot; runat=&quot;server&quot; ProcessingMode=&quot;Remote&quot;&gt;
+            &lt;ServerReport ReportServerUrl=&quot;http://AContosoDepartment/ReportServer&quot; ReportPath=&quot;/LatestSales&quot; /&gt;
+        &lt;/rsweb:ReportViewer&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="updating-an-existing-project-to-use-the-report-viewer-control">Updating an existing project to use the Report Viewer Control</h2>
+<p>To make use of the 2016 Report Viewer Control in an existing project add the control via Nuget, and update assembly references to version 13.0.0.0. This will include updating the project’s web.config and all .aspx pages that reference the Report Viewer Control.</p>
+<p><strong>Sample web.config changes</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  --&gt;
+&lt;configuration&gt;
+  &lt;system.web&gt;
+    &lt;compilation debug=&quot;true&quot; targetFramework=&quot;4.5.2&quot;&gt;
+      &lt;assemblies&gt;
+        &lt;add assembly=&quot;Microsoft.ReportViewer.Common, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+        &lt;add assembly=&quot;Microsoft.ReportViewer.DataVisualization, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+        &lt;add assembly=&quot;Microsoft.ReportViewer.Design, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+        &lt;add assembly=&quot;Microsoft.ReportViewer.ProcessingObjectModel, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+        &lt;add assembly=&quot;Microsoft.ReportViewer.WebDesign, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+        &lt;add assembly=&quot;Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+        &lt;add assembly=&quot;Microsoft.ReportViewer.WinForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+      &lt;/assemblies&gt;
+      &lt;buildProviders&gt;
+        &lt;add extension=&quot;.rdlc&quot;
+          type=&quot;Microsoft.Reporting.RdlBuildProvider, Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+      &lt;/buildProviders&gt;
+    &lt;/compilation&gt;
+    &lt;httpRuntime targetFramework=&quot;4.5.2&quot;/&gt;
+    &lt;httpHandlers&gt;
+      &lt;add path=&quot;Reserved.ReportViewerWebControl.axd&quot; verb=&quot;*&quot;
+        type=&quot;Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;
+        validate=&quot;false&quot;/&gt;
+    &lt;/httpHandlers&gt;
+  &lt;/system.web&gt;
+  &lt;system.webServer&gt;
+    &lt;validation validateIntegratedModeConfiguration=&quot;false&quot;/&gt;
+    &lt;modules runAllManagedModulesForAllRequests=&quot;true&quot;/&gt;
+    &lt;handlers&gt;
+      &lt;add name=&quot;ReportViewerWebControlHandler&quot; verb=&quot;*&quot; path=&quot;Reserved.ReportViewerWebControl.axd&quot; preCondition=&quot;integratedMode&quot;
+        type=&quot;Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91&quot;/&gt;
+    &lt;/handlers&gt;
+  &lt;/system.webServer&gt;
+&lt;/configuration&gt;
+</code></pre><p><strong>Sample .aspx</strong></p>
+<pre><code>&lt;%@ Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;WebForm1.aspx.cs&quot; Inherits=&quot;SampleAspx&quot; %&gt;
+
+&lt;%@ Register assembly=&quot;Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91&quot; namespace=&quot;Microsoft.Reporting.WebForms&quot; tagprefix=&quot;rsweb&quot; %&gt;
+
+&lt;!DOCTYPE html&gt;
+</code></pre><h2 id="common-issues">Common issues</h2>
+<h3 id="old-version-of-sql-server-data-tools-is-installed">Old version of SQL Server Data Tools is installed</h3>
+<p>If SQL Server Data Tools or SQL Server Management Studio for SQL 2016 is installed, make sure it&#39;s updated to the latest version. Earlier versions of SSDT incorrectly gac’ed certain dlls which conflict with the Report Viewer Control. You may need to manually delete the V13 dll&#39;s  from \windows\assembly\gac_msil to permanently remove them.</p>
+<p>You may need to manually remove the libraries</p>
+<pre><code>gacutil /u &quot;Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL&quot; /f
+gacutil /u &quot;Microsoft.ReportViewer.WinForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL&quot; /f
+gacutil /u &quot;Microsoft.ReportViewer.WebDesign, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL&quot; /f
+gacutil /u &quot;Microsoft.ReportViewer.Common, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL&quot; /f
+</code></pre><h3 id="design-time-isn-t-currently-supported">Design time isn&#39;t currently supported</h3>
+<p>Design time and Control on the canvas experience for Visual Studio 2015 and Visual Studio 2016 is not yet supported. You will most likely see the image below if you use the new Report Control Runtime.</p>
+<p><img src="Get-Started-With-RVC/ErrorCreatingControl.png" alt="Error creating control"></p>
+<h3 id="page-is-rendering-in-intranet-compatability-mode">Page is rendering in intranet compatability mode</h3>
+<p>The 2016 Report Viewer Control is designed to be used with modern browsers, the control may not function if browsers render the web page in an IE compatibility mode. Intranet sites may require a &#39;&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;&#39; tag to override setting which encourage rendering intranet pages in compatibility mode.</p>
+</body>
+<html>
