@@ -1,6 +1,5 @@
 # Next steps - READ!
 
-* The Report Viewer Control is designed to be included in projects via nuget. It's not a good idea to add the libraries to the GAC.
 * If deploying the control on an intranet site make sure that the page is targeting HTML5.
 
 
