@@ -1,4 +1,6 @@
-#region Copyright © Microsoft Corporation. All rights reserved.
+#region
+// Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
+// Licensed under the MIT License (MIT)
 /*============================================================================
   File:     Logon.aspx.cs
   Summary:  The code-behind for a logon page that supports Forms
