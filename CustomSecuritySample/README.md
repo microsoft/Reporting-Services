@@ -186,7 +186,7 @@ Adding Machine Keys
 		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
 	</system.web>
 	```
-Note: You should use a validation key specific for you deployment, there are several tools to generate the keys, one example is: 
+Note: You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: 
 http://www.a2zmenu.com/utility/machine-key-generator.aspx 
  
 
