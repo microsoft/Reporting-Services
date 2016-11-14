@@ -41,7 +41,7 @@ The final page should look like
     <form id="form1" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>        
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" ProcessingMode="Remote">
-            <ServerReport ReportServerUrl="http://AContosoDepartment/ReportServer" ReportServerPath="/LatestSales" />
+            <ServerReport ReportServerUrl="http://AContosoDepartment/ReportServer" ReportPath="/LatestSales" />
         </rsweb:ReportViewer>
     </form>
 </body>
