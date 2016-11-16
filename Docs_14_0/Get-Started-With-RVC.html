@@ -15,7 +15,7 @@
 <img src="Get-Started-With-RVC/NewAspWebSite.png" alt="New web project"></p>
 </li>
 <li><p>Install the Report Viewer Control Nuget package via the Nuget package manager console</p>
-<pre><code>Install-Package Microsoft.ReportingServices.ReportViewerControl.WebForms
+<pre><code>Install-Package Microsoft.ReportingServices.ReportViewerControl.WebForms -Pre
 </code></pre></li>
 <li>Add a new .aspx page to the project and register the Report Viewer Control assembly for use within the page<pre><code>&lt;%@ Register assembly=&quot;Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91&quot; namespace=&quot;Microsoft.Reporting.WebForms&quot; tagprefix=&quot;rsweb&quot; %&gt;
 </code></pre></li>
