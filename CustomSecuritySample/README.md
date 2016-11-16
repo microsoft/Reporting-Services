@@ -132,17 +132,17 @@ To modify the RSSrvPolicy.config file
 -	Add the following <CodeGroup> element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
 	
 	```xml
-	< CodeGroup
+	<CodeGroup
 		class="UnionCodeGroup"
 		version="1"
 		Name="SecurityExtensionCodeGroup" 
 		Description="Code group for the sample security extension"
 		PermissionSetName="FullTrust">
-	< IMembershipCondition 
+	<IMembershipCondition 
 		class="UrlMembershipCondition"
 		version="1"
-		Url="C:\Program Files\Microsoft SQL Server\MSRS11.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.Samples.ReportingServices.CustomSecurity.dll"/>
-	< /CodeGroup>
+		Url="C:\Program Files\Microsoft SQL Server\MSRS13.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.Samples.ReportingServices.CustomSecurity.dll"/>
+	</CodeGroup>
 	```
 Note: 
 For simplicity, the Forms Authentication Sample is weak-named and requires a simple URL membership entry in the security policy files. In your production security extension implementation, you should create strong-named assemblies and use the strong name membership condition when adding security policies for your assembly. For more information about strong-named assemblies, see the Creating and Using Strong-Named Assemblies topic on MSDN. 

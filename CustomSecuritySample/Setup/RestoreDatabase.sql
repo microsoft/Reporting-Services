@@ -1,6 +1,6 @@
 /****************************************************************************
-  This file is part of the Microsoft SQL Server Code Samples.
-  Copyright (C) Microsoft Corporation.  All rights reserved.
+  Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
+  Licensed under the MIT License (MIT)
 
   This source code is intended only as a supplement to Microsoft
   Development Tools and/or on-line documentation.  See these other
