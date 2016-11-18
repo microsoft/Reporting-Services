@@ -193,7 +193,7 @@ http://www.a2zmenu.com/utility/machine-key-generator.aspx
 ## Step 5: Configure Passthrough cookies
 
 The new portal and the reportserver communicate using internal soap APIs for some of its operations. When additional cookies are required to be passed from the portal to the server the PassThroughCookies properties is still available. More Details: https://msdn.microsoft.com/en-us/library/ms345241.aspx 
-In the rsreportserver.config file add following under <UI> :-
+In the rsreportserver.config file add following under <UI>
 
 ```xml
 <UI>
