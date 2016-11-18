@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSecuritySample", "FormsAuthentication\CustomSecurity.csproj", "{FE32AA5A-8EAA-43B9-87EE-73271F89BA52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSecuritySample", "CustomSecurity.csproj", "{FE32AA5A-8EAA-43B9-87EE-73271F89BA52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
