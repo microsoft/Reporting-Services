@@ -6,7 +6,11 @@ In order to provide a better install experience the PowerShell scripts have been
 
 # Reporting Services Custom Security Sample
 This project will help you to get started with how to deploy a custom security extension to SQL Reporting Services 2016.
-For more details please check out the read me document in this folder CustomSecuritySample.
+For more details please check out the read me document in this folder [CustomSecuritySample](https://github.com/Microsoft/Reporting-Services/tree/master/CustomSecuritySample).
+
+# Reporting Load Test
+Contains a Visual Studio Load Test 2015 solution to execute synthetic load for SQL Server Reporting Services 2016 
+https://github.com/Microsoft/Reporting-Services-loadtest
 
 # Code Of Conduct
 This project has adopted the [Microsoft Open Source Code of
