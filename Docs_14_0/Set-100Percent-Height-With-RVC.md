@@ -18,7 +18,7 @@ Below are the two examples to do this
 <body >
     <form id="form1" runat="server">
     <div id="div1" >
-            <asp:ScriptManager runat="server"></asp:ScriptManager>        
+        <asp:ScriptManager runat="server"></asp:ScriptManager>        
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" ProcessingMode="Remote" Height="100%" Width="100%">
             <ServerReport ReportServerUrl="http://test/ReportServer" ReportPath="/testreport" />
         </rsweb:ReportViewer>
