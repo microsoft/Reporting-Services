@@ -1,5 +1,5 @@
 ### How to set 100% height on the new Report Viewer 2016 control
-The new Report Viewer 2016 control is optimized for HTML5 Standards mode pages and works on all modern browsers. In the past with the old RVC control when you set the 100% height property it worked even if none of the ancestors had height specified. This behavior has changed in HTML5. When you set this property on the new RVC control, it will work correctly only if the parent element has a defined height, i..e not a value of auto, or all the ancestors of RVC have 100% height too.
+The new Report Viewer 2016 control is optimized for HTML5 Standards mode pages and works on all modern browsers. In the past with the old RVC control when you set the 100% height property it worked even if none of the ancestors had height specified. This behavior has changed in HTML5. When you set this property on the new RVC control, it will work correctly only if the parent element has a defined height, i.e. not a value of auto, or all the ancestors of RVC have 100% height too.
 
 Below are the two examples to do this
 
