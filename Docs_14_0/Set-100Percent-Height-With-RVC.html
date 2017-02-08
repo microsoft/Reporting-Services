@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Get-Started-With-RVC.md</title>
+  <title>Set-100Percent-Height-With-RVC.md</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h3 id="how-to-set-100-height-on-the-new-report-viewer-2016-control">How to set 100% height on the new Report Viewer 2016 control</h3>
-    <p>The new Report Viewer 2016 control is optimized for HTML5 Standards mode pages and works on all modern browsers. In the past with the old RVC control when you set the 100% height property it worked even if none of the ancestors had height specified. This behavior has changed in HTML5. When you set this property on the new RVC control, it will work correctly only if the parent element has a defined height, i..e not a value of auto, or all the ancestors of RVC have 100% height too.</p>
+    <h1 id="how-to-set-100-height-on-the-new-report-viewer-2016-control">How to set 100% height on the new Report Viewer 2016 control</h1>
+    <p>The new Report Viewer 2016 control is optimized for HTML5 Standards mode pages and works on all modern browsers. In the past with the old RVC control when you set the 100% height property it worked even if none of the ancestors had height specified. This behavior has changed in HTML5. When you set this property on the new RVC control, it will work correctly only if the parent element has a defined height, i.e. not a value of auto, or all the ancestors of RVC have 100% height too.</p>
     <p>Below are the two examples to do this</p>
-    <ol>
-        <li>By setting the height of all the parent elements to 100%</li>
-    </ol>
+    <h3 id="by-setting-the-height-of-all-the-parent-elements-to-100-">By setting the height of all the parent elements to 100%</h3>
 <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/1999/xhtml"</span>&gt;</span>    
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span>
@@ -32,9 +30,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
-    <ol>
-        <li>By setting the style height attribute on the parent of the reportviewer control </li>
-    </ol>
+    <h3 id="by-setting-the-style-height-attribute-on-the-parent-of-the-reportviewer-control">By setting the style height attribute on the parent of the reportviewer control</h3>
 <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/1999/xhtml"</span>&gt;</span>    
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span>
