@@ -111,3 +111,6 @@ To make use of the 2016 Report Viewer Control in an existing project add the con
 ### Page is rendering in intranet compatability mode
 
 The 2016 Report Viewer Control is designed to be used with modern browsers, the control may not function if browsers render the web page in an IE compatibility mode. Intranet sites may require a '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' tag to override setting which encourage rendering intranet pages in compatibility mode.
+
+### How to set 100% height on the new Report Viewer 2016 control
+[Click here](http://htmlpreview.github.io/?https://github.com/Microsoft/Reporting-Services/blob/master/Docs_14_0/Set-100Percent-Height-With-RVC.html)
