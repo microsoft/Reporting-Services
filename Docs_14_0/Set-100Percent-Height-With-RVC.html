@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set-100Percent-Height-With-RVC.md</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="how-to-set-100-height-on-the-new-report-viewer-2016-control">How to set 100% height on the new Report Viewer 2016 control</h1>
+    <p>The new Report Viewer 2016 control is optimized for HTML5 Standards mode pages and works on all modern browsers. In the past with the old RVC control when you set the 100% height property it worked even if none of the ancestors had height specified. This behavior has changed in HTML5. When you set this property on the new RVC control, it will work correctly only if the parent element has a defined height, i.e. not a value of auto, or all the ancestors of RVC have 100% height too.</p>
+    <p>Below are the two examples to do this</p>
+    <h3 id="by-setting-the-height-of-all-the-parent-elements-to-100-">By setting the height of all the parent elements to 100%</h3>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/1999/xhtml"</span>&gt;</span>    
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+    <span class="hljs-selector-tag">html</span>,<span class="hljs-selector-tag">body</span>,<span class="hljs-selector-tag">form</span>,<span class="hljs-selector-id">#div1</span> {
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>; 
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"form1"</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"div1"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">asp:ScriptManager</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">asp:ScriptManager</span>&gt;</span>        
+    <span class="hljs-tag">&lt;<span class="hljs-name">rsweb:ReportViewer</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">"ReportViewer1"</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span> <span class="hljs-attr">ProcessingMode</span>=<span class="hljs-string">"Remote"</span> <span class="hljs-attr">Height</span>=<span class="hljs-string">"100%"</span> <span class="hljs-attr">Width</span>=<span class="hljs-string">"100%"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ServerReport</span> <span class="hljs-attr">ReportServerUrl</span>=<span class="hljs-string">"http://test/ReportServer"</span> <span class="hljs-attr">ReportPath</span>=<span class="hljs-string">"/testreport"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">rsweb:ReportViewer</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+    <h3 id="by-setting-the-style-height-attribute-on-the-parent-of-the-reportviewer-control">By setting the style height attribute on the parent of the reportviewer control</h3>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/1999/xhtml"</span>&gt;</span>    
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"form1"</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"height:100vh;"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">asp:ScriptManager</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">asp:ScriptManager</span>&gt;</span>        
+    <span class="hljs-tag">&lt;<span class="hljs-name">rsweb:ReportViewer</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">"ReportViewer1"</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">"server"</span> <span class="hljs-attr">ProcessingMode</span>=<span class="hljs-string">"Remote"</span> <span class="hljs-attr">Height</span>=<span class="hljs-string">"100%"</span> <span class="hljs-attr">Width</span>=<span class="hljs-string">"100%"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ServerReport</span> <span class="hljs-attr">ReportServerUrl</span>=<span class="hljs-string">"http://test/ReportServer"</span> <span class="hljs-attr">ReportPath</span>=<span class="hljs-string">"/testreport"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">rsweb:ReportViewer</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+</body>
+<html>
