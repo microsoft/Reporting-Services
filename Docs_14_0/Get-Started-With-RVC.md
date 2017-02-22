@@ -114,3 +114,6 @@ The 2016 Report Viewer Control is designed to be used with modern browsers, the 
 
 ### How to set 100% height on the new Report Viewer 2016 control
 For detailed instructions [click here](http://htmlpreview.github.io/?https://github.com/Microsoft/Reporting-Services/blob/master/Docs_14_0/Set-100Percent-Height-With-RVC.html)
+
+### Unable to load DLL 'SqlServerSpatial140.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
+For detailed instructions, [click here](http://htmlpreview.github.io/?https://github.com/Microsoft/Reporting-Services/blob/master/Docs_14_0/Set-Reference-To-Sql-Server-Spatial.html).

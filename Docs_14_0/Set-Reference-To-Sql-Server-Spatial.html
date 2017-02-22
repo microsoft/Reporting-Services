@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set-Reference-To-Sql-Server-Spatial.md</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>
+<a id="user-content-unable-to-load-dll-sqlserverspatial140dll" class="anchor" href="#unable-to-load-dll-sqlserverspatial140dll" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unable to load DLL 'SqlServerSpatial140.dll'?</h1>
+
+<p>Whenever your Report contains a control that requires SQL Server Types, your project will need to load this assembly at runtime. </p>
+
+<h1>
+<a id="user-content-how-to-load-sqlserverspatial140dll" class="anchor" href="#how-to-load-sqlserverspatial140dll" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to load SqlServerSpatial140.dll?</h1>
+
+<p>When you installed the Report Viewer Control nuget package, you would have noticed a new folder called SqlServerTypes was added to your project. In this folder, you will find 2 sub-folders (x86 and x64), which each contain the SqlServerSpatial140.dll. Since it is difficult for us to predict which type of architecture your application will be running in, we added both versions to your project. The instructions for loading this assembly depends on what type of application (ASP.NET Website vs ASP.NET Web Application) you are running.</p>
+
+<h2>
+<a id="user-content-aspnet-web-sites" class="anchor" href="#aspnet-web-sites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ASP.NET Web Sites</h2>
+
+<p>For ASP.NET Web Sites, add the following block of code to the code behind file of the Web Form where you have added Report Viewer Control:</p>
+
+<pre><code>    Default.aspx.cs:
+
+    public partial class _Default : System.Web.UI.Page
+    {
+        static bool _isSqlTypesLoaded = false;
+
+        public _Default()
+        {
+            if (!_isSqlTypesLoaded)
+            {
+                SqlServerTypes.Utilities.LoadNativeAssemblies(Server.MapPath("~"));
+                _isSqlTypesLoaded = true;
+            }
+        }
+    }
+</code></pre>
+
+<h2>
+<a id="user-content-aspnet-web-applications" class="anchor" href="#aspnet-web-applications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ASP.NET Web Applications</h2>
+
+<p>For ASP.NET Web Applications, add the following line of code to the Application_Start method in Global.asax.cs:</p>
+
+<pre><code>    SqlServerTypes.Utilities.LoadNativeAssemblies(Server.MapPath("~/bin"));
+</code></pre>
+</body>
+<html>
