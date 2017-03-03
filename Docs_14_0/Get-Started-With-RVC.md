@@ -10,7 +10,7 @@
 
 2. Install the Report Viewer Control Nuget package via the Nuget package manager console
 ```
-Install-Package Microsoft.ReportingServices.ReportViewerControl.WebForms -Pre
+Install-Package Microsoft.ReportingServices.ReportViewerControl.WebForms
 ```
 3. Add a new .aspx page to the project and register the Report Viewer Control assembly for use within the page
 ```
