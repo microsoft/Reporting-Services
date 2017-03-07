@@ -50,7 +50,7 @@ The final page should look like
 
 ## Updating an existing project to use the Report Viewer Control
 
-To make use of the 2016 Report Viewer Control in an existing project add the control via Nuget, and update assembly references to version 14.0.0.0. This will include updating the project’s web.config and all .aspx pages that reference the Report Viewer Control.
+To make use of the Report Viewer Control in an existing project add the control via Nuget, and update assembly references to version 14.0.0.0. This will include updating the project’s web.config and all .aspx pages that reference the Report Viewer Control.
 
 **Sample web.config changes**
 
@@ -110,9 +110,9 @@ To make use of the 2016 Report Viewer Control in an existing project add the con
 
 ### Page is rendering in intranet compatability mode
 
-The 2016 Report Viewer Control is designed to be used with modern browsers, the control may not function if browsers render the web page in an IE compatibility mode. Intranet sites may require a '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' tag to override setting which encourage rendering intranet pages in compatibility mode.
+The Report Viewer Control is designed to be used with modern browsers, the control may not function if browsers render the web page in an IE compatibility mode. Intranet sites may require a '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' tag to override setting which encourage rendering intranet pages in compatibility mode.
 
-### How to set 100% height on the new Report Viewer 2016 control
+### How to set 100% height on the new Report Viewer control
 For detailed instructions [click here](http://htmlpreview.github.io/?https://github.com/Microsoft/Reporting-Services/blob/master/Docs_14_0/Set-100Percent-Height-With-RVC.html)
 
 ### Unable to load DLL 'SqlServerSpatial140.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
