@@ -95,7 +95,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportingServices.Interfaces">
-      <HintPath>..\..\..\tankas\Microsoft.ReportingServices.Interfaces.dll</HintPath>
+      <HintPath>C:\Program Files\Microsoft SQL Server\MSRS13.SQL2016\Reporting Services\ReportServer\bin\Microsoft.ReportingServices.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
