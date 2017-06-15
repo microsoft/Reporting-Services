@@ -1,0 +1,4 @@
+D:\GIT\Reporting-Services\CustomSecuritySample2016\obj\Debug\CustomSecurity.csprojResolveAssemblyReference.cache
+D:\GIT\Reporting-Services\CustomSecuritySample2016\obj\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.App_LocalResources.Logon.aspx.resources
+D:\GIT\Reporting-Services\CustomSecuritySample2016\obj\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.CustomSecurity.resources
+D:\GIT\Reporting-Services\CustomSecuritySample2016\obj\Debug\CustomSecurity.csproj.GenerateResource.Cache
