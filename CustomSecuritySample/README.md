@@ -162,8 +162,9 @@ Using Forms authentication requires that all report server processes can access 
 
 Generate and add machine keys to your RSReportServer.config file. You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: http://www.a2zmenu.com/utility/machine-key-generator.aspx 
 
+```xml
 		<MachineKey ValidationKey=="[YOUR KEY]" DecryptionKey=="[YOUR KEY]" Validation="AES" Decryption="AES" />
-
+``` 
 
 ## Step 5: Configure Passthrough cookies
 
