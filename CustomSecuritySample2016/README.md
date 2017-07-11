@@ -1,8 +1,8 @@
 # Reporting Services Custom Security Sample
-This project contains a sample and the steps that allow you to deploy a custom security extension to SQL Reporting Services 2016 or Power BI Report Server.
+This project contains a sample and the steps that allow you to deploy a custom security extension to SQL Reporting Services 2016.
 
 # Synopsis
-# Custom Authentication in SSRS2016 and Power BI Report Server
+# Custom Authentication in SSRS2016
 
 SSRS 2016 introduced a new portal to host new OData APIs and host new report workloads such as mobile reports and KPIS. This new portal relies in newer technologies and is isolated from the familiar ReportingServicesService by running in a separate process. This process is not an ASP.NET hosted application and as such breaks assumptions from existing custom security extensions. Moreover, the current interfaces for custom security extensions don't allow for any external context to be passed-in, leaving implementers with the only choice to inspect well-known global ASP.NET Objects, this required some changes to the interface.
 
@@ -177,28 +177,6 @@ Adding Machine Keys
 	```
 
 -	Then <RSPATH>\RSPowerB\Microsoft.ReportingServices.Portal.WebHost.exe.config, add under "configuration"
-
- 	```xml
-	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	</system.web>
-	```
-
-## Power BI Report Server
--	For example:In <RSPATH>\ReportServer\web.config,add under "system.web"
-
-	```xml
-		<machineKey validationKey="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	```
--	Then <RSPATH>\RSPortal\RSPortal.exe.config, add under "configuration"
-
- 	```xml
-	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	</system.web>
-	```
-
--	Then <RSPATH>\RSPowerB\RSPowerBI.exe.config, add under "configuration"
 
  	```xml
 	 <system.web>

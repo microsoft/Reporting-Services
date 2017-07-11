@@ -1,8 +1,8 @@
 # Reporting Services Custom Security Sample
-This project contains a sample and the steps that allow you to deploy a custom security extension to SQL Reporting Services 2016 or Power BI Report Server.
+This project contains a sample and the steps that allow you to deploy a custom security extension to SQL Reporting Services or Power BI Report Server.
 
 # Synopsis
-# Custom Authentication in SSRS2016 and Power BI Report Server
+# Custom Authentication in SSRS and Power BI Report Server
 
 SSRS 2016 introduced a new portal to host new OData APIs and host new report workloads such as mobile reports and KPIS. This new portal relies in newer technologies and is isolated from the familiar ReportingServicesService by running in a separate process. This process is not an ASP.NET hosted application and as such breaks assumptions from existing custom security extensions. Moreover, the current interfaces for custom security extensions don't allow for any external context to be passed-in, leaving implementers with the only choice to inspect well-known global ASP.NET Objects, this required some changes to the interface.
 
@@ -156,59 +156,15 @@ Add the following <authorization> element directly after the <authentication> el
 This will deny unauthenticated users the right to access the report server. The previously established loginUrl attribute of the <authentication> element will redirect unauthenticated requests to the Logon.aspx page.
 
 
-## Step 4: Some of the other changes required in the web.config file and Microsoft.ReportingServices.Portal.WebHost.exe.config
+## Step 4: Generate Machine Keys
 
-Adding Machine Keys
+Using Forms authentication requires that all report server processes can access the authentication cookie. This involves configuring a machine key and decryption algorithm - a familiar step for those who had previously setup SSRS to work in scale-out environments.
 
--	For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
+Generate and add machine keys to your RSReportServer.config file. You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: http://www.a2zmenu.com/utility/machine-key-generator.aspx 
 
-## Reporting Services 2016
--	For example:In <RSPATH>\ReportServer\web.config,add under "system.web"
-
-	```xml
-		<machineKey validationKey="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	```
--	Then <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config, add under "configuration"
-
- 	```xml
-	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	</system.web>
-	```
-
--	Then <RSPATH>\RSPowerB\Microsoft.ReportingServices.Portal.WebHost.exe.config, add under "configuration"
-
- 	```xml
-	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	</system.web>
-	```
-
-## Power BI Report Server
--	For example:In <RSPATH>\ReportServer\web.config,add under "system.web"
-
-	```xml
-		<machineKey validationKey="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	```
--	Then <RSPATH>\RSPortal\RSPortal.exe.config, add under "configuration"
-
- 	```xml
-	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	</system.web>
-	```
-
--	Then <RSPATH>\RSPowerB\RSPowerBI.exe.config, add under "configuration"
-
- 	```xml
-	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
-	</system.web>
-	```
-
-Note: You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: 
-http://www.a2zmenu.com/utility/machine-key-generator.aspx 
- 
+```xml
+		<MachineKey ValidationKey=="[YOUR KEY]" DecryptionKey=="[YOUR KEY]" Validation="AES" Decryption="AES" />
+``` 
 
 ## Step 5: Configure Passthrough cookies
 
