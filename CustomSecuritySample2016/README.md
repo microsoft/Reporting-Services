@@ -109,10 +109,6 @@ Modify files in the ReportServer Folder
 		<Extension Name="Forms" Type="Microsoft.Samples.ReportingServices.CustomSecurity.AuthenticationExtension,Microsoft.Samples.ReportingServices.CustomSecurity" />
 	</Authentication> 
 	```
-	
-Note: 
-If you are running the sample security extension in a development environment that does not have a Secure Sockets Layer (SSL) certificate installed, you must change the value of the <UseSSL> element to False in the previous configuration entry. We recommend that you always use SSL when combining Reporting Services with Forms Authentication. 
-
 To modify the RSSrvPolicy.config file 
 -	You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.
 -	Open the RSSrvPolicy.config file located in the <install>\ReportServer directory. 
