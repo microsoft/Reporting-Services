@@ -166,12 +166,12 @@ Adding Machine Keys
 -	For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
 
 ## Reporting Services 2016
--	For example:In ```<RSPATH>\ReportServer\web.config```, add under "system.web"
+-	For example:In ```<RSPATH>\ReportServer\web.config```, add under ```<system.web>```
 
 	```xml
 		<machineKey validationKey="[YOUR KEY]" decryptionKey="[YOUR KEY]" validation="AES" decryption="AES" />
 	```
--	Then ```<RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config```, add under "configuration"
+-	Then ```<RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config```, add under ```<configuration>```
 
  	```xml
 	 <system.web>
@@ -179,7 +179,7 @@ Adding Machine Keys
 	</system.web>
 	```
 
--	Then ```<RSPATH>\RSPowerB\Microsoft.ReportingServices.Portal.WebHost.exe.config```, add under "configuration"
+-	Then ```<RSPATH>\RSPowerB\Microsoft.ReportingServices.Portal.WebHost.exe.config```, add under ```<configuration>```
 
  	```xml
 	 <system.web>
