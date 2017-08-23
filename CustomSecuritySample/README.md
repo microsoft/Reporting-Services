@@ -71,9 +71,12 @@ To debug the extension, you might want to attach the debugger to both ReportingS
 The basic configurations needed for custom security extension are the same as previous releases. Following changes are needed in for web.config and rsreportserver.config present in the ReportServer folder. There is no longer a separate web.config for the reportmanager, the portal will inherit the same settings as the reportserver endpoint.
 
 To deploy the sample
--	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
--	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
 -	Copy the Logon.aspx page to the <install>\ReportServer directory. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\Portal directory. 
+-   Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\PowerBI directory. (This only needs to be done for Power BI Report Server.)
+
+If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
 	
 Modify files in the ReportServer Folder
 -	To modify the RSReportServer.config file. 
@@ -138,14 +141,14 @@ To modify the Web.config file for Report Server
 -	Open the Web.config file in a text editor. By default, the file is in the <install>\ReportServer directory.
 -	Locate the <identity> element and set the Impersonate attribute to false. * <identity impersonate="false" /> * 
 -	Locate the <authentication> element and change the Mode attribute to Forms. 
--	Add the following <forms> element as a child of the <authentication> element and set the loginUrl, name, timeout, and path attributes as follows: 
+-   Add the following <forms> element as a child of the <authentication> element and set the loginUrl, name, timeout, and path attributes as follows: 
 
 	```xml
 	<authentication mode="Forms">
 		<forms loginUrl="logon.aspx" name="sqlAuthCookie" timeout="60" path="/"></forms>
 	</authentication> 
 	```
-Add the following <authorization> element directly after the <authentication> element. 
+-   Add the following <authorization> element directly after the <authentication> element. 
 
 	```xml
 	<authorization> 
@@ -160,10 +163,12 @@ This will deny unauthenticated users the right to access the report server. The 
 
 Using Forms authentication requires that all report server processes can access the authentication cookie. This involves configuring a machine key and decryption algorithm - a familiar step for those who had previously setup SSRS to work in scale-out environments.
 
-Generate and add machine keys to your RSReportServer.config file. You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: http://www.a2zmenu.com/utility/machine-key-generator.aspx 
+Generate and add machine keys to your RSReportServer.config file. 
+
+You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: http://www.a2zmenu.com/utility/machine-key-generator.aspx 
 
 ```xml
-		<MachineKey ValidationKey=="[YOUR KEY]" DecryptionKey=="[YOUR KEY]" Validation="AES" Decryption="AES" />
+		<MachineKey ValidationKey="[YOUR KEY]" DecryptionKey="[YOUR KEY]" Validation="AES" Decryption="AES" />
 ``` 
 
 ## Step 5: Configure Passthrough cookies
