@@ -16,16 +16,17 @@ The most generic example is accessing HttpContext.Current to read request inform
 Extensions should implement the IAuthenticationExtension2 interface to leverage this. The extensions will need to implement both versions of GetUserInfo method, as is called by the reportserver context and other used in webhost process. The sample below shows one of the simple implementations for the portal where the identity resolved by the reportserver is the one used.
   
 ```csharp
-  public void GetUserInfo(IRSRequestContext requestContext, out IIdentity userIdentity, out IntPtr userId)
-       {
-           userIdentity = null;
-           if (requestContext.User != null)
-           {
-               userIdentity = requestContext.User;
-           }
-	// initialize a pointer to the current user id to zero
-           userId = IntPtr.Zero;
-       }
+    public void GetUserInfo(IRSRequestContext requestContext, out IIdentity userIdentity, out IntPtr userId)
+    {
+        userIdentity = null;
+        if (requestContext.User != null)
+        {
+            userIdentity = requestContext.User;
+        }
+        
+        // initialize a pointer to the current user id to zero
+        userId = IntPtr.Zero;
+   }
 ```
 
 # Implementation 
