@@ -145,8 +145,7 @@ To modify the Web.config file for Report Server
     ```xml
     <identity impersonate="false" />
     ```
--	Locate the ```<authentication>``` element and change the Mode attribute to Forms. 
--   Add the following ```<forms>``` element as a child of the ```<authentication>``` element and set the loginUrl, name, timeout, and path attributes as follows: 
+-	Locate the ```<authentication>``` element and change the Mode attribute to Forms. Also, add the following ```<forms>``` element as a child of the ```<authentication>``` element and set the loginUrl, name, timeout, and path attributes as follows: 
 
 	```xml
 	<authentication mode="Forms">
