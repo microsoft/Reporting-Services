@@ -94,7 +94,7 @@ Modify files in the ReportServer Folder
 	</Authentication>
 	```
 
--	Locate the ```<Security> and ```<Authentication>``` elements, within the ```<Extensions>``` element, and modify the settings as follows: 
+-	Locate the ```<Security>``` and ```<Authentication>``` elements, within the ```<Extensions>``` element, and modify the settings as follows: 
 
 	```xml
 	<Security>
