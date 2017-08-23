@@ -18,7 +18,6 @@ Extensions should implement the IAuthenticationExtension2 interface to leverage 
 ```csharp
     public void GetUserInfo(IRSRequestContext requestContext, out IIdentity userIdentity, out IntPtr userId)
     {
-
         userIdentity = null;
         if (requestContext.User != null)
         {
@@ -26,7 +25,6 @@ Extensions should implement the IAuthenticationExtension2 interface to leverage 
             userIdentity = requestContext.User;
         }
         
-
         // initialize a pointer to the current user id to zero
         userId = IntPtr.Zero;
    }
@@ -77,7 +75,9 @@ The basic configurations needed for custom security extension are the same as pr
 To deploy the sample
 -	Copy the Logon.aspx page to the ```<install>\ReportServer``` directory. 
 -	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the ```<install>\ReportServer\bin``` directory. 
--	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the ```<install>\RSWebApp\bin``` directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the ```<install>\RSWebApp\bin``` directory. 
+
+If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
 	
 Modify files in the ReportServer Folder
 -	To modify the RSReportServer.config file. 
