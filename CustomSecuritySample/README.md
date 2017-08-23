@@ -139,7 +139,7 @@ For simplicity, the Forms Authentication Sample is weak-named and requires a sim
 
 To modify the Web.config file for Report Server
 -	Open the Web.config file in a text editor. By default, the file is in the ```<install>\ReportServer``` directory.
--	Locate the ```<identity> element and set the Impersonate attribute to false. ```<identity impersonate="false" />```
+-	Locate the ```<identity>``` element and set the Impersonate attribute to false. ```<identity impersonate="false" />```
 -	Locate the ```<authentication>``` element and change the Mode attribute to Forms. 
 -   Add the following ```<forms>``` element as a child of the ```<authentication>``` element and set the loginUrl, name, timeout, and path attributes as follows: 
 
@@ -148,7 +148,7 @@ To modify the Web.config file for Report Server
 		<forms loginUrl="logon.aspx" name="sqlAuthCookie" timeout="60" path="/"></forms>
 	</authentication> 
 	```
--   Add the following ```<authorization> element directly after the ```<authentication> element. 
+-   Add the following ```<authorization>``` element directly after the ```<authentication>``` element. 
 
 	```xml
 	<authorization> 
@@ -174,7 +174,7 @@ You should use a validation key specific for you deployment, there are several t
 ## Step 5: Configure Passthrough cookies
 
 The new portal and the reportserver communicate using internal soap APIs for some of its operations. When additional cookies are required to be passed from the portal to the server the PassThroughCookies properties is still available. More Details: https://msdn.microsoft.com/en-us/library/ms345241.aspx 
-In the rsreportserver.config file add following under ```<UI>
+In the rsreportserver.config file add following under ```<UI>```
 
 ```xml
 <UI>
