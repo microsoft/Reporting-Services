@@ -139,7 +139,11 @@ For simplicity, the Forms Authentication Sample is weak-named and requires a sim
 
 To modify the Web.config file for Report Server
 -	Open the Web.config file in a text editor. By default, the file is in the ```<install>\ReportServer``` directory.
--	Locate the ```<identity>``` element and set the Impersonate attribute to false. ```<identity impersonate="false" />```
+-	Locate the ```<identity>``` element and set the Impersonate attribute to false. 
+
+    ```xml
+    <identity impersonate="false" />
+    ```
 -	Locate the ```<authentication>``` element and change the Mode attribute to Forms. 
 -   Add the following ```<forms>``` element as a child of the ```<authentication>``` element and set the loginUrl, name, timeout, and path attributes as follows: 
 
@@ -168,7 +172,7 @@ Generate and add machine keys to your RSReportServer.config file.
 You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: http://www.a2zmenu.com/utility/machine-key-generator.aspx 
 
 ```xml
-		<MachineKey ValidationKey="[YOUR KEY]" DecryptionKey="[YOUR KEY]" Validation="AES" Decryption="AES" />
+<MachineKey ValidationKey="[YOUR KEY]" DecryptionKey="[YOUR KEY]" Validation="AES" Decryption="AES" />
 ``` 
 
 ## Step 5: Configure Passthrough cookies
