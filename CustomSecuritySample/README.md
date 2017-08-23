@@ -167,13 +167,12 @@ This will deny unauthenticated users the right to access the report server. The 
 
 Using Forms authentication requires that all report server processes can access the authentication cookie. This involves configuring a machine key and decryption algorithm - a familiar step for those who had previously setup SSRS to work in scale-out environments.
 
-Generate and add machine keys to your RSReportServer.config file. 
-
-You should use a validation key specific for you deployment, there are several tools to generate the keys like Internet Information Services Manager(IIS) another example is: http://www.a2zmenu.com/utility/machine-key-generator.aspx 
+Generate and add ```<MachineKey>``` under ```<Configuration>``` in your RSReportServer.config file. 
 
 ```xml
 <MachineKey ValidationKey="[YOUR KEY]" DecryptionKey="[YOUR KEY]" Validation="AES" Decryption="AES" />
 ``` 
+You should use a validation key specific for you deployment, there are several tools to generate the keys such as Internet Information Services Manager (IIS) and http://www.a2zmenu.com/utility/machine-key-generator.aspx. 
 
 ## Step 5: Configure Passthrough cookies
 
