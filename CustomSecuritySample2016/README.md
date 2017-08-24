@@ -16,16 +16,18 @@ The most generic example is accessing HttpContext.Current to read request inform
 Extensions should implement the IAuthenticationExtension2 interface to leverage this. The extensions will need to implement both versions of GetUserInfo method, as is called by the reportserver context and other used in webhost process. The sample below shows one of the simple implementations for the portal where the identity resolved by the reportserver is the one used.
   
 ```csharp
-  public void GetUserInfo(IRSRequestContext requestContext, out IIdentity userIdentity, out IntPtr userId)
-       {
-           userIdentity = null;
-           if (requestContext.User != null)
-           {
-               userIdentity = requestContext.User;
-           }
-	// initialize a pointer to the current user id to zero
-           userId = IntPtr.Zero;
-       }
+    public void GetUserInfo(IRSRequestContext requestContext, out IIdentity userIdentity, out IntPtr userId)
+    {
+        userIdentity = null;
+        if (requestContext.User != null)
+        {
+
+            userIdentity = requestContext.User;
+        }
+        
+        // initialize a pointer to the current user id to zero
+        userId = IntPtr.Zero;
+   }
 ```
 
 # Implementation 
@@ -43,7 +45,7 @@ Script is in the CustomSecuritySample\Setup folder.
 
 ## Step 2: Building the Sample
 
-You must first compile and install the extension. The procedure assumes that you have installed Reporting Services to the default location: C:\Program Files\Microsoft SQL Server\MSRS13.MSSQLSERVER\Reporting Services. This location will be referred to throughout the remainder of this topic as <install_>.
+You must first compile and install the extension. The procedure assumes that you have installed Reporting Services to the default location: C:\Program Files\Microsoft SQL Server\MSRS13.MSSQLSERVER\Reporting Services. This location will be referred to throughout the remainder of this topic as ```<install>```.
 
 If you have not already created a strong name key file, generate the key file using the following instructions.
 
@@ -58,7 +60,7 @@ To compile the sample using Visual Studio
 -	Look at the CustomSecuritySample project's references. If you do not see Microsoft.ReportingServices.Interfaces.dll, then complete the following steps: 
 -	On the Project menu, click Add Reference. The Add References dialog box opens. 
 -	Click the .NET tab. 
--	Click Browse, and find Microsoft.ReportingServices.Interfaces on your local drive. By default, the assembly is in the <install>\ReportServer\bin directory. Click OK. The selected reference is added to your project. 
+-	Click Browse, and find Microsoft.ReportingServices.Interfaces on your local drive. By default, the assembly is in the ```<install>\ReportServer\bin``` directory. Click OK. The selected reference is added to your project. 
 -	On the Build menu, click Build Solution. 
 
 Debugging
@@ -71,14 +73,16 @@ To debug the extension, you might want to attach the debugger to both ReportingS
 The basic configurations needed for custom security extension are the same as previous releases. Following changes are needed in for web.config and rsreportserver.config present in the ReportServer folder. There is no longer a separate web.config for the reportmanager, the portal will inherit the same settings as the reportserver endpoint.
 
 To deploy the sample
--	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\ReportServer\bin directory. 
--	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the <install>\RSWebApp\bin directory. If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
--	Copy the Logon.aspx page to the <install>\ReportServer directory. 
+-	Copy the Logon.aspx page to the ```<install>\ReportServer``` directory. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the ```<install>\ReportServer\bin``` directory. 
+-	Copy Microsoft.Samples.ReportingServices.CustomSecurity.dll and Microsoft.Samples.ReportingServices.CustomSecurity.pdb to the ```<install>\RSWebApp\bin``` directory. 
+
+If a PDB file is not present, it was not created by the Build step provided above. Ensure that the Project Properties for Debug/Build is set to generate PDB files. 
 	
 Modify files in the ReportServer Folder
 -	To modify the RSReportServer.config file. 
--	Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the <install>\ReportServer directory. 
--	Locate the <AuthenticationTypes> element and modify the settings as follows: 
+-	Open the RSReportServer.config file with Visual Studio or a simple text editor such as Notepad. RSReportServer.config is located in the ```<install>\ReportServer``` directory. 
+-	Locate the ```<AuthenticationTypes>``` element and modify the settings as follows: 
 	
 	```xml
 	<Authentication>
@@ -91,7 +95,7 @@ Modify files in the ReportServer Folder
 	</Authentication>
 	```
 
--	Locate the <Security> and <Authentication> elements, within the <Extensions> element, and modify the settings as follows: 
+-	Locate the ```<Security>``` and ```<Authentication>``` elements, within the ```<Extensions>``` element, and modify the settings as follows: 
 
 	```xml
 	<Security>
@@ -111,8 +115,8 @@ Modify files in the ReportServer Folder
 	```
 To modify the RSSrvPolicy.config file 
 -	You will need to add a code group for your custom security extension that grants FullTrust permission for your extension. You do this by adding the code group to the RSSrvPolicy.config file.
--	Open the RSSrvPolicy.config file located in the <install>\ReportServer directory. 
--	Add the following <CodeGroup> element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
+-	Open the RSSrvPolicy.config file located in the ```<install>\ReportServer``` directory. 
+-	Add the following ```<CodeGroup>``` element after the existing code group in the security policy file that has a URL membership of $CodeGen as indicated below and then add an entry as follows to RSSrvPolicy.config. Make sure to change the below path according to your ReportServer installation directory:
 	
 	```xml
 	<CodeGroup
@@ -131,17 +135,20 @@ Note:
 For simplicity, the Forms Authentication Sample is weak-named and requires a simple URL membership entry in the security policy files. In your production security extension implementation, you should create strong-named assemblies and use the strong name membership condition when adding security policies for your assembly. For more information about strong-named assemblies, see the Creating and Using Strong-Named Assemblies topic on MSDN. 
 
 To modify the Web.config file for Report Server
--	Open the Web.config file in a text editor. By default, the file is in the <install>\ReportServer directory.
--	Locate the <identity> element and set the Impersonate attribute to false. * <identity impersonate="false" /> * 
--	Locate the <authentication> element and change the Mode attribute to Forms. 
--	Add the following <forms> element as a child of the <authentication> element and set the loginUrl, name, timeout, and path attributes as follows: 
+-	Open the Web.config file in a text editor. By default, the file is in the ```<install>\ReportServer``` directory.
+-	Locate the ```<identity>``` element and set the Impersonate attribute to false. 
+
+    ```xml
+    <identity impersonate="false" /> 
+    ```
+-	Locate the ```<authentication>``` element and change the Mode attribute to Forms. Also, add the following ```<forms>``` element as a child of the ```<authentication>``` element and set the loginUrl, name, timeout, and path attributes as follows: 
 
 	```xml
 	<authentication mode="Forms">
 		<forms loginUrl="logon.aspx" name="sqlAuthCookie" timeout="60" path="/"></forms>
 	</authentication> 
 	```
-Add the following <authorization> element directly after the <authentication> element. 
+-   Add the following ```<authorization>``` element directly after the ```<authentication>``` element. 
 
 	```xml
 	<authorization> 
@@ -149,7 +156,7 @@ Add the following <authorization> element directly after the <authentication> el
 	</authorization> 
 	```
 
-This will deny unauthenticated users the right to access the report server. The previously established loginUrl attribute of the <authentication> element will redirect unauthenticated requests to the Logon.aspx page.
+This will deny unauthenticated users the right to access the report server. The previously established loginUrl attribute of the ```<authentication>``` element will redirect unauthenticated requests to the Logon.aspx page.
 
 
 ## Step 4: Some of the other changes required in the web.config file and Microsoft.ReportingServices.Portal.WebHost.exe.config
@@ -159,24 +166,24 @@ Adding Machine Keys
 -	For the case of Forms authentication which requires the decryption of the Authentication cookie, both processes need to be configured with the same machine key and decryption algorithm. This was a step familiar to those who had previously setup SSRS to work on scale-out environments, but now is a requirement even for deployments on a single machine.
 
 ## Reporting Services 2016
--	For example:In <RSPATH>\ReportServer\web.config,add under "system.web"
+-	For example:In ```<RSPATH>\ReportServer\web.config```, add under ```<system.web>```
 
 	```xml
-		<machineKey validationKey="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
+		<machineKey validationKey="[YOUR KEY]" decryptionKey="[YOUR KEY]" validation="AES" decryption="AES" />
 	```
--	Then <RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config, add under "configuration"
+-	Then ```<RSPATH>\RSWebApp\Microsoft.ReportingServices.Portal.WebHost.exe.config```, add under ```<configuration>```
 
  	```xml
 	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
+		<machineKey validationKey="[YOUR KEY]" decryptionKey="[YOUR KEY]" validation="AES" decryption="AES" />
 	</system.web>
 	```
 
--	Then <RSPATH>\RSPowerB\Microsoft.ReportingServices.Portal.WebHost.exe.config, add under "configuration"
+-	Then ```<RSPATH>\RSPowerB\Microsoft.ReportingServices.Portal.WebHost.exe.config```, add under ```<configuration>```
 
  	```xml
 	 <system.web>
-		<machineKey validationKey=="[YOUR KEY]" decryptionKey=="[YOUR KEY]" validation="AES" decryption="AES" />
+		<machineKey validationKey="[YOUR KEY]" decryptionKey="[YOUR KEY]" validation="AES" decryption="AES" />
 	</system.web>
 	```
 
@@ -187,7 +194,7 @@ http://www.a2zmenu.com/utility/machine-key-generator.aspx
 ## Step 5: Configure Passthrough cookies
 
 The new portal and the reportserver communicate using internal soap APIs for some of its operations. When additional cookies are required to be passed from the portal to the server the PassThroughCookies properties is still available. More Details: https://msdn.microsoft.com/en-us/library/ms345241.aspx 
-In the rsreportserver.config file add following under <UI>
+In the rsreportserver.config file add following under ```<UI>```
 
 ```xml
 <UI>
