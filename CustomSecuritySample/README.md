@@ -172,6 +172,11 @@ Generate and add ```<MachineKey>``` under ```<Configuration>``` in your RSReport
 ```xml
 <MachineKey ValidationKey="[YOUR KEY]" DecryptionKey="[YOUR KEY]" Validation="AES" Decryption="AES" />
 ``` 
+
+**Check the casing of the attributes, it should be Pascal Casing as the example above**
+
+**There is not need for a ```<system.web>``` entry**
+
 You should use a validation key specific for you deployment, there are several tools to generate the keys such as Internet Information Services Manager (IIS) and http://www.a2zmenu.com/utility/machine-key-generator.aspx. 
 
 ## Step 5: Configure Passthrough cookies
