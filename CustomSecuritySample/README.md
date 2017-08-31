@@ -177,7 +177,7 @@ Generate and add ```<MachineKey>``` under ```<Configuration>``` in your RSReport
 
 **There is not need for a ```<system.web>``` entry**
 
-You should use a validation key specific for you deployment, there are several tools to generate the keys such as Internet Information Services Manager (IIS) or the script detailed in ["Appendix A: How to generate a ```<machineKey>``` element"](https://support.microsoft.com/en-us/help/2915218/resolving-view-state-message-authentication-code-mac-errors#AppendixA)
+You should use a validation key specific for you deployment, there are several tools to generate the keys such as Internet Information Services Manager (IIS) or the script detailed in ["Appendix A: How to generate a ```<machineKey>``` element"](https://support.microsoft.com/en-us/help/2915218/resolving-view-state-message-authentication-code-mac-errors#appendixa)
 
 ## Step 5: Configure Passthrough cookies
 
