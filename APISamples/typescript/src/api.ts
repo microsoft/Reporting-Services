@@ -1,9 +1,17 @@
 import { CatalogItem } from './api';
+import axiosLib, { AxiosInstance } from "axios";
 export class Api {
     private serverUrl:string;
+    private axios:AxiosInstance;
 
     constructor(server:string = 'http://localhost/reports'){
-        this.serverUrl = `${server}/api/v2.0`
+        this.axios = axiosLib.create({
+            baseURL: `${server}/api/v2.0`,
+            withCredentials: true,
+            headers: {
+                'Content-Type':'application/json;charset=UTF-8'
+            }
+        });
     }
 
     requestOptions(method:string, body?:any): RequestInit {
@@ -19,23 +27,22 @@ export class Api {
     }
 
     async getFolderItemsAsync(path:string = '/') : Promise<CatalogItem[] | CatalogItem> {
-        let url: string = `${this.serverUrl}/Folders(Path='${path}')/CatalogItems`;
-        let response = await fetch(url, this.requestOptions('GET'));
-        let items = await response.json();
+        let response = await this.axios.get(`/Folders(Path='${path}')/CatalogItems`);
+        let items = response.data;
         return items.value;
     }
 
     async postCatalogItemAsync(item:CatalogItem) : Promise<void> {
         let url: string = `${this.serverUrl}/CatalogItems`;
-        let response = await fetch(url, this.requestOptions('POST',item));
-        let createdItem = await response.json();
+        let response = await this.axios.post('/CatalogItems',item);
+        let createdItem = response.data;
         return createdItem;
     }
 
     async meAsync() : Promise<User> {
         let url: string = `${this.serverUrl}/me`;
-        let response = await fetch(url, this.requestOptions('GET'));
-        let item = await response.json();
+        let response = await this.axios.get('/me');
+        let item = response.data
         return item;
     }
 
@@ -109,7 +116,7 @@ export class Api {
     }
 }
 
-export const api = new Api('http://10.130.60.160/reports');
+export const api = new Api();
 
 
 export enum CatalogItemType { 
