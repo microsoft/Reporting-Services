@@ -3,19 +3,27 @@ This project showcases the use of the Report Server API to build a simple websit
 
 The sample uses Typescript, React and Webpack to generate a SPA web app. 
 
-## Setting up CORS
-By default, the report server blocks requests comming form third-party domains such as this one. To be able to communitate with the API we need to first add the sample host to the origin whitelist.
+## Setting up CORS & CSRF
+By default, the report server follows a Same-Origin policy and requires every request to include a XSRF token. To run the sample, localhost must be added to the list of allowed origins and the XSRF check must be disabled.
 
-## Setting up CSRF
-TODO: Explain why they need to disable CSRF and how to do it.
+Set the values of the following configuration settings in your server:
+|Property Name| New Value|
+|-------------|----------|
+|AccessControlAllowCredentials|true|
+|AccessControlAllowHeaders|*|
+|AccessControlAllowMethods|*|
+|AccessControlAllowOrigin|http://localhost:8080|
+|EnableXsrfValidation|False|
+
+To learn how to change the configuration settings, go to the [Reporting Services Documentation](https://docs.microsoft.com/en-us/sql/reporting-services/tools/server-properties-advanced-page-reporting-services)
 
 ## Getting the source code and running the sample
 ```bash
 # clone repo
-git clone https://github.com/Microsoft/vscode-react-sample.git  API
+git clone https://github.com/Microsoft/Reporting-Services  RS-Samples
 
-# navigate to repo
-cd react-todo
+# navigate to typescript source
+cd RS-Samples/APISamples/Typescript
 
 # install deps
 npm install
@@ -23,8 +31,6 @@ npm install
 # run the sample
 npm run dev
 ```
-
-The sample runs in 
 
 # Contributing
 
