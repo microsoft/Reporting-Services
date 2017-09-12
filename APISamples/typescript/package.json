@@ -1,8 +1,7 @@
 {
-  "name": "pbirs-web-sample",
+  "name": "report-server-api-sample",
   "version": "1.0.0",
-  "description": "PBIRS Web Sample",
-  "main": "index.js",
+  "description": "report-server-api Sample",
   "scripts": {
     "dev": "webpack-dev-server"
   },

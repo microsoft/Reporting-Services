@@ -1,5 +1,5 @@
 # Getting started
-This project showcases the use of the Report Server API to build a simple website that lists CatalogItems in the report server, uploads new items, and gets the current user info.
+This project showcases the use of the Report Server API (June 2017 Preview) to build a simple website that lists CatalogItems in the report server, uploads new items, and gets the current user info.
 
 The sample uses Typescript, React and Webpack to generate a SPA web app. 
 
@@ -31,7 +31,7 @@ npm install
 # run the sample
 npm run dev
 ```
-
+The samples assumes that the report server instance is running in localhost.
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
