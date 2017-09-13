@@ -7,9 +7,10 @@ The sample uses Typescript, React and Webpack to generate a SPA web app.
 By default, the report server follows a Same-Origin policy and requires every request to include a XSRF token. To run the sample, localhost must be added to the list of allowed origins and the XSRF check must be disabled.
 
 Set the values of the following configuration settings in your server:
+
 |Property Name| New Value|
 |-------------|----------|
-|AccessControlAllowCredentials|true|
+|AccessControlAllowCredentials|True|
 |AccessControlAllowHeaders|*|
 |AccessControlAllowMethods|*|
 |AccessControlAllowOrigin|http://localhost:8080|
