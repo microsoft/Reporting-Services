@@ -71,9 +71,6 @@ export class Api {
             case 'rsc':
                 item['@odata.type'] = '#Model.Component';
                 break;
-            case 'smdl':
-                item['@odata.type'] = '#Model.ReportModel';
-                break;
             case 'rsmobile':
                 item['@odata.type'] = '#Model.MobileReport';
                 break;
