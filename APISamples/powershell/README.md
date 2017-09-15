@@ -24,7 +24,7 @@ git clone https://github.com/Microsoft/Reporting-Services  RS-Samples
 # navigate to typescript source
 cd RS-Samples/APISamples/powershell
 
-# copy your report in this folder and change the name of the test report in powershellSamples.ps1
+# copy your report in this folder and change the name or type of the test report in powershellSamples.ps1
 .powershellSamples.ps1
 ```
 The samples assumes that the report server instance is running in localhost.

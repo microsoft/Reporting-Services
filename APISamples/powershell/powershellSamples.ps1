@@ -35,7 +35,6 @@ Invoke-WebRequest -Uri $catalogItemsUri -Method Post -Body $payload -ContentType
 Write-Host "Download an item..."
 $downloadPath = 'test.rdl'
 $url = $ReportPortalUri + "/api/v2.0/CatalogItems(Path='/test')/Content/"+ '$value'
-Write-Host $url
 $response = Invoke-WebRequest -Uri $url -Method Get -UseDefaultCredentials
 [System.IO.File]::WriteAllBytes($downloadPath, $response.Content)
 
