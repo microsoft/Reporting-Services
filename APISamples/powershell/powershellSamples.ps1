@@ -16,10 +16,10 @@
  PARTICULAR PURPOSE.
 ===========================================================================#>
 
-$ReportPortalUri = 'http://myserver/reports/'
+$ReportPortalUri = 'http://localhost/reports/'
 
 Write-Host "Upload an item..."
-$uploadItemPath = 'C:\reports\test.rdl'
+$uploadItemPath = 'test.rdl'
 $catalogItemsUri = $ReportPortalUri + "/api/v2.0/CatalogItems"
 $bytes = [System.IO.File]::ReadAllBytes($uploadItemPath)
 $payload = @{
@@ -33,9 +33,9 @@ Invoke-WebRequest -Uri $catalogItemsUri -Method Post -Body $payload -ContentType
 
 
 Write-Host "Download an item..."
-$downloadPath = 'C:\download\test.rdl'
-$catalogItemsApi = $ReportPortalUri + "/api/v2.0/CatalogItems(Path='/test')/Content/$value"
-$url = [string]::Format($catalogItemsApi, $item)
+$downloadPath = 'test.rdl'
+$url = $ReportPortalUri + "/api/v2.0/CatalogItems(Path='/test')/Content/"+ '$value'
+Write-Host $url
 $response = Invoke-WebRequest -Uri $url -Method Get -UseDefaultCredentials
 [System.IO.File]::WriteAllBytes($downloadPath, $response.Content)
 
@@ -43,6 +43,3 @@ $response = Invoke-WebRequest -Uri $url -Method Get -UseDefaultCredentials
 Write-Host "Delete an item..."
 $url = $ReportPortalUri + "/api/v2.0/CatalogItems(Path='/test')"
 Invoke-WebRequest -Uri $url -Method Delete -UseDefaultCredentials | Out-Null
-
-
-
