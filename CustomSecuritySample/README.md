@@ -132,7 +132,7 @@ To modify the RSSrvPolicy.config file
 	<IMembershipCondition 
 		class="UrlMembershipCondition"
 		version="1"
-		Url="C:\Program Files\Microsoft SQL Server\MSRS13.MSSQLSERVER\Reporting Services\ReportServer\bin\Microsoft.Samples.ReportingServices.CustomSecurity.dll"/>
+		Url="C:\Program Files\Microsoft Power BI Report Server\PBIRS\ReportServer\bin\Microsoft.Samples.ReportingServices.CustomSecurity.dll"/>
 	</CodeGroup>
 	```
 Note: 
