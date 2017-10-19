@@ -179,14 +179,6 @@ Adding Machine Keys
 	</system.web>
 	```
 
--	Then ```<RSPATH>\RSPowerB\Microsoft.ReportingServices.Portal.WebHost.exe.config```, add under ```<configuration>```
-
- 	```xml
-	 <system.web>
-		<machineKey validationKey="[YOUR KEY]" decryptionKey="[YOUR KEY]" validation="AES" decryption="AES" />
-	</system.web>
-	```
-
 You should use a validation key specific for you deployment, there are several tools to generate the keys such as Internet Information Services Manager (IIS) or the script detailed in ["Appendix A: How to generate a ```<machineKey>``` element"](https://support.microsoft.com/en-us/help/2915218/resolving-view-state-message-authentication-code-mac-errors#appendixa)
  
 
