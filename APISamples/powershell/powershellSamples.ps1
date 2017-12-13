@@ -16,7 +16,7 @@
  PARTICULAR PURPOSE.
 ===========================================================================#>
 
-$ReportPortalUri = 'http://myserver/reports/'
+$ReportPortalUri = 'http://myserver/reports'
 
 Write-Host "Upload an item..."
 $uploadItemPath = 'C:\reports\test.rdl'
