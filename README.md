@@ -5,7 +5,7 @@ Git repo for SQL Server Reporting Services samples and community projects
 In order to provide a better install experience the PowerShell scripts have been moved to https://github.com/Microsoft/ReportingServicesTools
 
 # Reporting Services Custom Security Sample
-This project will help you to get started with how to deploy a custom security extension to SQL Reporting Services 2016.
+This project will help you to get started with how to deploy a custom security extension to SQL Reporting Services.
 For more details please check out the read me document in this folder [CustomSecuritySample](https://github.com/Microsoft/Reporting-Services/tree/master/CustomSecuritySample).
 
 # Reporting Load Test
