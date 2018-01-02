@@ -44,7 +44,7 @@ Script is in the CustomSecuritySample\Setup folder.
 
 ## Step 2: Building the Sample
 
-You must first compile and install the extension. The procedure assumes that you have installed Reporting Services to the default location: C:\Program Files\Microsoft SQL Server\MSRS13.MSSQLSERVER\Reporting Services. This location will be referred to throughout the remainder of this topic as ```<install>```.
+You must first compile and install the extension. The procedure assumes that you have installed Reporting Services to the default location: C:\Program Files\Microsoft Power BI Report Server\PBIRS\ReportServer\ or C:\Program Files\Microsoft SQL Server Reporting Services\SSRS\ReportServer\. This location will be referred to throughout the remainder of this topic as ```<install>```.
 
 If you have not already created a strong name key file, generate the key file using the following instructions.
 
