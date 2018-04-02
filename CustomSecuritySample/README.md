@@ -1,5 +1,5 @@
-# Reporting Services Custom Security Sample
-This project contains a sample and the steps that allow you to deploy a custom security extension to SQL Reporting Services or Power BI Report Server.
+# Reporting Services Custom Security Sample for Power BI Report Server and SQL Reporting Services 2017
+This project contains a sample and the steps that allow you to deploy a custom security extension to SQL Reporting Services 2017 or Power BI Report Server.
 
 # Synopsis
 # Custom Authentication in SSRS and Power BI Report Server
