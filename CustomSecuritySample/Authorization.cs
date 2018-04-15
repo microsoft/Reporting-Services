@@ -36,7 +36,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
 {
    public class Authorization: IAuthorizationExtension
    {
-      private static string m_adminUserName;
+      private static string userName;
       static Authorization()
       {
          InitializeMaps();
@@ -83,7 +83,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
       // perform a case insensitive comparison. Ideally you would check
       // the SQL Server instance CaseSensitivity property before making
       // a case-insensitive comparison.
-      if (0 == String.Compare(userName, m_adminUserName, true,
+      if (0 == String.Compare(userName, userName, true,
             CultureInfo.CurrentCulture))
         return true;
 
@@ -120,7 +120,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
       // perform a case insensitive comparison. Ideally you would check
       // the SQL Server instance CaseSensitivity property before making
       // a case-insensitive comparison.
-      if (0 == String.Compare(userName, m_adminUserName, true,
+      if (0 == String.Compare(userName, userName, true,
             CultureInfo.CurrentCulture))
         return true;
 
@@ -170,7 +170,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
          // perform a case insensitive comparison. Ideally you would check
          // the SQL Server instance CaseSensitivity property before making
          // a case-insensitive comparison.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
+         if (0 == String.Compare(userName, userName, true, 
                CultureInfo.CurrentCulture))
             return true;
 
@@ -219,7 +219,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
          ReportOperation requiredOperation)
       {
          // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
+         if (0 == String.Compare(userName, userName, true, 
                CultureInfo.CurrentCulture))
             return true;
          
@@ -248,7 +248,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
          FolderOperation requiredOperation)
       {
          // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
+         if (0 == String.Compare(userName, userName, true, 
                CultureInfo.CurrentCulture))
             return true;
          
@@ -293,7 +293,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
          ResourceOperation requiredOperation)
       {
          // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
+         if (0 == String.Compare(userName, userName, true, 
                CultureInfo.CurrentCulture))
             return true;
             
@@ -323,7 +323,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
          ResourceOperation[] requiredOperations)
       {
          // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
+         if (0 == String.Compare(userName, userName, true, 
                CultureInfo.CurrentCulture))
             return true;
    
@@ -343,7 +343,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
          DatasourceOperation requiredOperation)
       {
          // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
+         if (0 == String.Compare(userName, userName, true, 
                CultureInfo.CurrentCulture))
             return true;
 
@@ -660,7 +660,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
                return false;
            }
 
-           if (userName.Equals(m_adminUserName, StringComparison.OrdinalIgnoreCase))
+           if (userName.Equals(userName, StringComparison.OrdinalIgnoreCase))
            {
                return true;
            }
@@ -687,7 +687,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
             {
                if(child.Name == "UserName")
                {
-                  m_adminUserName = child.InnerText;
+                  userName = child.InnerText;
                }
                else
                {

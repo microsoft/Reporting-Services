@@ -1,0 +1,10 @@
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\bin\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.dll.config
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\bin\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.dll
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\bin\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.pdb
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\bin\Debug\Microsoft.ReportingServices.Interfaces.dll
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\obj\Debug\CustomSecurity.csprojResolveAssemblyReference.cache
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\obj\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.App_LocalResources.Logon.aspx.resources
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\obj\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.CustomSecurity.resources
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\obj\Debug\CustomSecurity.csproj.GenerateResource.Cache
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\obj\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.dll
+C:\Users\Wenbin\Source\Repos\Reporting-Services\CustomSecuritySample\obj\Debug\Microsoft.Samples.ReportingServices.CustomSecurity.pdb
