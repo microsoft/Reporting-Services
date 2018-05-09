@@ -44,8 +44,11 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase")]
         public void SetConfiguration(String configuration)
         {
-            var doc = new XmlDocument();
-            doc.LoadXml(configuration);
+            if (!string.IsNullOrEmpty(configuration))
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(configuration);
+            }
         }
 
         /// <summary>
