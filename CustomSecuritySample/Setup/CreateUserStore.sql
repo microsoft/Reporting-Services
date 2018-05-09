@@ -101,9 +101,15 @@ exec ('sp_grantdbaccess [' + @ASPUserName + ']');
 
 -- Grant execute permissions to the LookupUser and RegisterUser stored procs
 exec ('grant execute on LookupUser to [' + @ASPUserName + ']');
-
 exec ('grant execute on RegisterUser to [' + @ASPUserName + ']');
 
+
+-- Virtual Service Account for PBI RS
+CREATE USER [NT SERVICE\PowerBIReportServer] FOR LOGIN [NT SERVICE\PowerBIReportServer] 
+
+-- Grant execute permissions to the LookupUser and RegisterUser stored procs
+exec ('grant execute on LookupUser to [NT SERVICE\PowerBIReportServer]');
+exec ('grant execute on RegisterUser to [NT SERVICE\PowerBIReportServer]');
 
 
 
