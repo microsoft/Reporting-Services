@@ -196,11 +196,11 @@ In the rsreportserver.config file add following under ```<UI>```
 
 # Automatic configuration of the sample
 
-All the steps are automated in a PowerShell Script, if you have a PowerBI Report Server default installation you can run
+All the steps are automated in a PowerShell Script, if you have a Power BI Report Server default installation you can run (the script is only valid for Power BI Report Server, for SSRS you need to follow the manual steps)
 ```
 .\Configure.ps1
 ```
-*This configuration is not intended to use in production, you should generate your own strong name key and your own authentication key different of those used in the sample
+*This configuration is not intended to use in production, you should generate your own strong name key and your own authentication key different of those used in the sample*
 
 # Code Of Conduct
 This project has adopted the [Microsoft Open Source Code of
