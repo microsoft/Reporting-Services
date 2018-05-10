@@ -194,6 +194,12 @@ In the rsreportserver.config file add following under ```<UI>```
 </UI>
 ``` 
 
+#Script
+
+All the steps are automated in a PowerShell Script, if you have a PowerBI Report Server default installation you can run
+```
+.\Configure.ps1
+```
 
 # Code Of Conduct
 This project has adopted the [Microsoft Open Source Code of
