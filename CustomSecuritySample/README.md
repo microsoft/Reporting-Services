@@ -29,6 +29,8 @@ Extensions should implement the IAuthenticationExtension2 interface to leverage 
    }
 ```
 
+> Implementation note: The portal call the reportserver `login.aspx` page if there is no valid `IIdentity userIdentity`. So do not return a generic identity if your `requestContext.User` is null.
+
 # Implementation 
 
 ## Step 1: Creating the UserAccounts Database
