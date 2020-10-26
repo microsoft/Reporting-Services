@@ -12,6 +12,10 @@ For more details please check out the read me document in this folder [CustomSec
 Contains a Visual Studio Load Test 2015 solution to execute synthetic load for SQL Server Reporting Services 2016 
 https://github.com/Microsoft/Reporting-Services-loadtest
 
+# Paginated Report Samples
+Contains several sample Power BI paginated reports to download and explore. They demonstrate typical ways you can use paginated reports.
+For more details please check out this article [Paginated Report Samples](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-samples).
+
 # Code Of Conduct
 This project has adopted the [Microsoft Open Source Code of
 Conduct](https://opensource.microsoft.com/codeofconduct/).
