@@ -21,174 +21,174 @@
         <DataSourceName>DataSource</DataSourceName>
         <rd:DesignerState>
           <DataGrid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="">
-            <RowNumber>10</RowNumber>
-            <ColumnNumber>15</ColumnNumber>
-            <ColumnName ColumnIndex="0" ColumnWidth="100" DataType="String">Company</ColumnName>
-            <ColumnName ColumnIndex="1" ColumnWidth="100" DataType="String">InvoiceId</ColumnName>
-            <ColumnName ColumnIndex="2" ColumnWidth="100" DataType="String">Item</ColumnName>
-            <ColumnName ColumnIndex="3" ColumnWidth="100" DataType="String">Description</ColumnName>
-            <ColumnName ColumnIndex="4" ColumnWidth="100" DataType="String">Quantity</ColumnName>
-            <ColumnName ColumnIndex="5" ColumnWidth="100" DataType="String">SalesPrice</ColumnName>
-            <ColumnName ColumnIndex="6" ColumnWidth="100" DataType="String">Discount</ColumnName>
-            <ColumnName ColumnIndex="7" ColumnWidth="100" DataType="Float">Amount</ColumnName>
-            <ColumnName ColumnIndex="8" ColumnWidth="100" DataType="String">SalesUnitTxt</ColumnName>
-            <ColumnName ColumnIndex="9" ColumnWidth="100" DataType="String">FormLetterRemarksTxt</ColumnName>
-            <ColumnName ColumnIndex="10" ColumnWidth="100" DataType="String">HeaderNotes</ColumnName>
-            <ColumnName ColumnIndex="11" ColumnWidth="100" DataType="String">BankAccountNum</ColumnName>
-            <ColumnName ColumnIndex="12" ColumnWidth="100" DataType="String">ShowTotals1</ColumnName>
-            <ColumnName ColumnIndex="13" ColumnWidth="100" DataType="String">CurrencySymbol</ColumnName>
-            <ColumnName ColumnIndex="14" ColumnWidth="100" DataType="String">CashDisc</ColumnName>
-            <Data ColumnIndex="0" RowIndex="0">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="0">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="0">D011</Data>
-            <Data ColumnIndex="3" RowIndex="0">Lens</Data>
-            <Data ColumnIndex="4" RowIndex="0">2 </Data>
-            <Data ColumnIndex="5" RowIndex="0">2</Data>
-            <Data ColumnIndex="6" RowIndex="0">0</Data>
-            <Data ColumnIndex="7" RowIndex="0">4</Data>
-            <Data ColumnIndex="8" RowIndex="0">Each</Data>
-            <Data ColumnIndex="9" RowIndex="0">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="0" />
-            <Data ColumnIndex="11" RowIndex="0">34567</Data>
-            <Data ColumnIndex="12" RowIndex="0">YES</Data>
-            <Data ColumnIndex="13" RowIndex="0">$</Data>
-            <Data ColumnIndex="14" RowIndex="0">0</Data>
-            <Data ColumnIndex="0" RowIndex="1">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="1">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="1">L0001</Data>
-            <Data ColumnIndex="3" RowIndex="1">Mid-Range Speaker</Data>
-            <Data ColumnIndex="4" RowIndex="1">35</Data>
-            <Data ColumnIndex="5" RowIndex="1">500</Data>
-            <Data ColumnIndex="6" RowIndex="1">0</Data>
-            <Data ColumnIndex="7" RowIndex="1">17500</Data>
-            <Data ColumnIndex="8" RowIndex="1">Each</Data>
-            <Data ColumnIndex="9" RowIndex="1">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="1" />
-            <Data ColumnIndex="11" RowIndex="1">34567</Data>
-            <Data ColumnIndex="12" RowIndex="1">YES</Data>
-            <Data ColumnIndex="13" RowIndex="1">$</Data>
-            <Data ColumnIndex="14" RowIndex="1">0</Data>
-            <Data ColumnIndex="0" RowIndex="2">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="2">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="2">P0001</Data>
-            <Data ColumnIndex="3" RowIndex="2">Acoustic Foam Panel</Data>
-            <Data ColumnIndex="4" RowIndex="2">117</Data>
-            <Data ColumnIndex="5" RowIndex="2">37</Data>
-            <Data ColumnIndex="6" RowIndex="2">0</Data>
-            <Data ColumnIndex="7" RowIndex="2">4329</Data>
-            <Data ColumnIndex="8" RowIndex="2">Each</Data>
-            <Data ColumnIndex="9" RowIndex="2">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="2" />
-            <Data ColumnIndex="11" RowIndex="2">34567</Data>
-            <Data ColumnIndex="12" RowIndex="2">YES</Data>
-            <Data ColumnIndex="13" RowIndex="2">$</Data>
-            <Data ColumnIndex="14" RowIndex="2">0</Data>
-            <Data ColumnIndex="0" RowIndex="3">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="3">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="3">D0003</Data>
-            <Data ColumnIndex="3" RowIndex="3">Standard Speaker</Data>
-            <Data ColumnIndex="4" RowIndex="3">23</Data>
-            <Data ColumnIndex="5" RowIndex="3">220</Data>
-            <Data ColumnIndex="6" RowIndex="3">0</Data>
-            <Data ColumnIndex="7" RowIndex="3">5060</Data>
-            <Data ColumnIndex="8" RowIndex="3">Each</Data>
-            <Data ColumnIndex="9" RowIndex="3">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="3" />
-            <Data ColumnIndex="11" RowIndex="3">34567</Data>
-            <Data ColumnIndex="12" RowIndex="3">YES</Data>
-            <Data ColumnIndex="13" RowIndex="3">$</Data>
-            <Data ColumnIndex="14" RowIndex="3">0</Data>
-            <Data ColumnIndex="0" RowIndex="4">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="4">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="4">T0001</Data>
-            <Data ColumnIndex="3" RowIndex="4">Speaker cabel 10</Data>
-            <Data ColumnIndex="4" RowIndex="4">65</Data>
-            <Data ColumnIndex="5" RowIndex="4">500</Data>
-            <Data ColumnIndex="6" RowIndex="4">0</Data>
-            <Data ColumnIndex="7" RowIndex="4">32500</Data>
-            <Data ColumnIndex="8" RowIndex="4">Each</Data>
-            <Data ColumnIndex="9" RowIndex="4">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="4" />
-            <Data ColumnIndex="11" RowIndex="4">34567</Data>
-            <Data ColumnIndex="12" RowIndex="4">YES</Data>
-            <Data ColumnIndex="13" RowIndex="4">$</Data>
-            <Data ColumnIndex="14" RowIndex="4">0</Data>
-            <Data ColumnIndex="0" RowIndex="5">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="5">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="5">D0004</Data>
-            <Data ColumnIndex="3" RowIndex="5">High End Speaker</Data>
-            <Data ColumnIndex="4" RowIndex="5">12</Data>
-            <Data ColumnIndex="5" RowIndex="5">2000</Data>
-            <Data ColumnIndex="6" RowIndex="5">0</Data>
-            <Data ColumnIndex="7" RowIndex="5">24000</Data>
-            <Data ColumnIndex="8" RowIndex="5">Each</Data>
-            <Data ColumnIndex="9" RowIndex="5">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="5" />
-            <Data ColumnIndex="11" RowIndex="5">34567</Data>
-            <Data ColumnIndex="12" RowIndex="5">YES</Data>
-            <Data ColumnIndex="13" RowIndex="5">$</Data>
-            <Data ColumnIndex="14" RowIndex="5">0</Data>
-            <Data ColumnIndex="0" RowIndex="6">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="6">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="6">T0004</Data>
-            <Data ColumnIndex="3" RowIndex="6">Television M120 37'' Silver</Data>
-            <Data ColumnIndex="4" RowIndex="6">53</Data>
-            <Data ColumnIndex="5" RowIndex="6">350</Data>
-            <Data ColumnIndex="6" RowIndex="6">0</Data>
-            <Data ColumnIndex="7" RowIndex="6">18550</Data>
-            <Data ColumnIndex="8" RowIndex="6">Each</Data>
-            <Data ColumnIndex="9" RowIndex="6">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="6" />
-            <Data ColumnIndex="11" RowIndex="6">34567</Data>
-            <Data ColumnIndex="12" RowIndex="6">YES</Data>
-            <Data ColumnIndex="13" RowIndex="6">$</Data>
-            <Data ColumnIndex="14" RowIndex="6">0</Data>
-            <Data ColumnIndex="0" RowIndex="7">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="7">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="7">T00002</Data>
-            <Data ColumnIndex="3" RowIndex="7">Projector Television</Data>
-            <Data ColumnIndex="4" RowIndex="7">23</Data>
-            <Data ColumnIndex="5" RowIndex="7">3750</Data>
-            <Data ColumnIndex="6" RowIndex="7">0</Data>
-            <Data ColumnIndex="7" RowIndex="7">86250</Data>
-            <Data ColumnIndex="8" RowIndex="7">Each</Data>
-            <Data ColumnIndex="9" RowIndex="7">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="7" />
-            <Data ColumnIndex="11" RowIndex="7">34567</Data>
-            <Data ColumnIndex="12" RowIndex="7">YES</Data>
-            <Data ColumnIndex="13" RowIndex="7">$</Data>
-            <Data ColumnIndex="14" RowIndex="7">0</Data>
-            <Data ColumnIndex="0" RowIndex="8">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="8">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="8">T0005</Data>
-            <Data ColumnIndex="3" RowIndex="8">Television HDTV X590 52" White</Data>
-            <Data ColumnIndex="4" RowIndex="8">33</Data>
-            <Data ColumnIndex="5" RowIndex="8">2890</Data>
-            <Data ColumnIndex="6" RowIndex="8">0</Data>
-            <Data ColumnIndex="7" RowIndex="8">95370</Data>
-            <Data ColumnIndex="8" RowIndex="8">Each</Data>
-            <Data ColumnIndex="9" RowIndex="8">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="8" />
-            <Data ColumnIndex="11" RowIndex="8">34567</Data>
-            <Data ColumnIndex="12" RowIndex="8">YES</Data>
-            <Data ColumnIndex="13" RowIndex="8">$</Data>
-            <Data ColumnIndex="14" RowIndex="8">0</Data>
-            <Data ColumnIndex="0" RowIndex="9">Microsoft</Data>
-            <Data ColumnIndex="1" RowIndex="9">000007-1</Data>
-            <Data ColumnIndex="2" RowIndex="9">T0003</Data>
-            <Data ColumnIndex="3" RowIndex="9">Surround Sound Receiver</Data>
-            <Data ColumnIndex="4" RowIndex="9">56</Data>
-            <Data ColumnIndex="5" RowIndex="9">450</Data>
-            <Data ColumnIndex="6" RowIndex="9">0</Data>
-            <Data ColumnIndex="7" RowIndex="9">25200</Data>
-            <Data ColumnIndex="8" RowIndex="9">Each</Data>
-            <Data ColumnIndex="9" RowIndex="9">Sales invoice notes</Data>
-            <Data ColumnIndex="10" RowIndex="9" />
-            <Data ColumnIndex="11" RowIndex="9">34567</Data>
-            <Data ColumnIndex="12" RowIndex="9">YES</Data>
-            <Data ColumnIndex="13" RowIndex="9">$</Data>
-            <Data ColumnIndex="14" RowIndex="9">0</Data>
-          </DataGrid>
+  <RowNumber>10</RowNumber>
+  <ColumnNumber>15</ColumnNumber>
+  <ColumnName ColumnIndex="0" ColumnWidth="100" DataType="String">Company</ColumnName>
+  <ColumnName ColumnIndex="1" ColumnWidth="100" DataType="String">InvoiceId</ColumnName>
+  <ColumnName ColumnIndex="2" ColumnWidth="100" DataType="String">Item</ColumnName>
+  <ColumnName ColumnIndex="3" ColumnWidth="358" DataType="String">Description</ColumnName>
+  <ColumnName ColumnIndex="4" ColumnWidth="100" DataType="String">Quantity</ColumnName>
+  <ColumnName ColumnIndex="5" ColumnWidth="100" DataType="String">SalesPrice</ColumnName>
+  <ColumnName ColumnIndex="6" ColumnWidth="100" DataType="String">Discount</ColumnName>
+  <ColumnName ColumnIndex="7" ColumnWidth="100" DataType="Float">Amount</ColumnName>
+  <ColumnName ColumnIndex="8" ColumnWidth="100" DataType="String">SalesUnitTxt</ColumnName>
+  <ColumnName ColumnIndex="9" ColumnWidth="100" DataType="String">FormLetterRemarksTxt</ColumnName>
+  <ColumnName ColumnIndex="10" ColumnWidth="100" DataType="String">HeaderNotes</ColumnName>
+  <ColumnName ColumnIndex="11" ColumnWidth="100" DataType="String">BankAccountNum</ColumnName>
+  <ColumnName ColumnIndex="12" ColumnWidth="100" DataType="String">ShowTotals1</ColumnName>
+  <ColumnName ColumnIndex="13" ColumnWidth="100" DataType="String">CurrencySymbol</ColumnName>
+  <ColumnName ColumnIndex="14" ColumnWidth="100" DataType="String">CashDisc</ColumnName>
+  <Data ColumnIndex="0" RowIndex="0">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="0">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="0">D011</Data>
+  <Data ColumnIndex="3" RowIndex="0">Lens</Data>
+  <Data ColumnIndex="4" RowIndex="0">2 </Data>
+  <Data ColumnIndex="5" RowIndex="0">2</Data>
+  <Data ColumnIndex="6" RowIndex="0">0</Data>
+  <Data ColumnIndex="7" RowIndex="0">4</Data>
+  <Data ColumnIndex="8" RowIndex="0">Each</Data>
+  <Data ColumnIndex="9" RowIndex="0">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="0" />
+  <Data ColumnIndex="11" RowIndex="0">34567</Data>
+  <Data ColumnIndex="12" RowIndex="0">YES</Data>
+  <Data ColumnIndex="13" RowIndex="0">$</Data>
+  <Data ColumnIndex="14" RowIndex="0">0</Data>
+  <Data ColumnIndex="0" RowIndex="1">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="1">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="1">L0001</Data>
+  <Data ColumnIndex="3" RowIndex="1">Mid-Range Speaker</Data>
+  <Data ColumnIndex="4" RowIndex="1">35</Data>
+  <Data ColumnIndex="5" RowIndex="1">500</Data>
+  <Data ColumnIndex="6" RowIndex="1">0</Data>
+  <Data ColumnIndex="7" RowIndex="1">17500</Data>
+  <Data ColumnIndex="8" RowIndex="1">Each</Data>
+  <Data ColumnIndex="9" RowIndex="1">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="1" />
+  <Data ColumnIndex="11" RowIndex="1">34567</Data>
+  <Data ColumnIndex="12" RowIndex="1">YES</Data>
+  <Data ColumnIndex="13" RowIndex="1">$</Data>
+  <Data ColumnIndex="14" RowIndex="1">0</Data>
+  <Data ColumnIndex="0" RowIndex="2">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="2">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="2">P0001</Data>
+  <Data ColumnIndex="3" RowIndex="2">Acoustic Foam Panel</Data>
+  <Data ColumnIndex="4" RowIndex="2">117</Data>
+  <Data ColumnIndex="5" RowIndex="2">37</Data>
+  <Data ColumnIndex="6" RowIndex="2">0</Data>
+  <Data ColumnIndex="7" RowIndex="2">4329</Data>
+  <Data ColumnIndex="8" RowIndex="2">Each</Data>
+  <Data ColumnIndex="9" RowIndex="2">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="2" />
+  <Data ColumnIndex="11" RowIndex="2">34567</Data>
+  <Data ColumnIndex="12" RowIndex="2">YES</Data>
+  <Data ColumnIndex="13" RowIndex="2">$</Data>
+  <Data ColumnIndex="14" RowIndex="2">0</Data>
+  <Data ColumnIndex="0" RowIndex="3">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="3">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="3">D0003</Data>
+  <Data ColumnIndex="3" RowIndex="3">Standard Speaker</Data>
+  <Data ColumnIndex="4" RowIndex="3">23</Data>
+  <Data ColumnIndex="5" RowIndex="3">220</Data>
+  <Data ColumnIndex="6" RowIndex="3">0</Data>
+  <Data ColumnIndex="7" RowIndex="3">5060</Data>
+  <Data ColumnIndex="8" RowIndex="3">Each</Data>
+  <Data ColumnIndex="9" RowIndex="3">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="3" />
+  <Data ColumnIndex="11" RowIndex="3">34567</Data>
+  <Data ColumnIndex="12" RowIndex="3">YES</Data>
+  <Data ColumnIndex="13" RowIndex="3">$</Data>
+  <Data ColumnIndex="14" RowIndex="3">0</Data>
+  <Data ColumnIndex="0" RowIndex="4">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="4">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="4">T0001</Data>
+  <Data ColumnIndex="3" RowIndex="4">Speaker cable 10</Data>
+  <Data ColumnIndex="4" RowIndex="4">65</Data>
+  <Data ColumnIndex="5" RowIndex="4">500</Data>
+  <Data ColumnIndex="6" RowIndex="4">0</Data>
+  <Data ColumnIndex="7" RowIndex="4">32500</Data>
+  <Data ColumnIndex="8" RowIndex="4">Each</Data>
+  <Data ColumnIndex="9" RowIndex="4">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="4" />
+  <Data ColumnIndex="11" RowIndex="4">34567</Data>
+  <Data ColumnIndex="12" RowIndex="4">YES</Data>
+  <Data ColumnIndex="13" RowIndex="4">$</Data>
+  <Data ColumnIndex="14" RowIndex="4">0</Data>
+  <Data ColumnIndex="0" RowIndex="5">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="5">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="5">D0004</Data>
+  <Data ColumnIndex="3" RowIndex="5">High End Speaker</Data>
+  <Data ColumnIndex="4" RowIndex="5">12</Data>
+  <Data ColumnIndex="5" RowIndex="5">2000</Data>
+  <Data ColumnIndex="6" RowIndex="5">0</Data>
+  <Data ColumnIndex="7" RowIndex="5">24000</Data>
+  <Data ColumnIndex="8" RowIndex="5">Each</Data>
+  <Data ColumnIndex="9" RowIndex="5">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="5" />
+  <Data ColumnIndex="11" RowIndex="5">34567</Data>
+  <Data ColumnIndex="12" RowIndex="5">YES</Data>
+  <Data ColumnIndex="13" RowIndex="5">$</Data>
+  <Data ColumnIndex="14" RowIndex="5">0</Data>
+  <Data ColumnIndex="0" RowIndex="6">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="6">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="6">T0004</Data>
+  <Data ColumnIndex="3" RowIndex="6">Television M120 37'' Silver</Data>
+  <Data ColumnIndex="4" RowIndex="6">53</Data>
+  <Data ColumnIndex="5" RowIndex="6">350</Data>
+  <Data ColumnIndex="6" RowIndex="6">0</Data>
+  <Data ColumnIndex="7" RowIndex="6">18550</Data>
+  <Data ColumnIndex="8" RowIndex="6">Each</Data>
+  <Data ColumnIndex="9" RowIndex="6">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="6" />
+  <Data ColumnIndex="11" RowIndex="6">34567</Data>
+  <Data ColumnIndex="12" RowIndex="6">YES</Data>
+  <Data ColumnIndex="13" RowIndex="6">$</Data>
+  <Data ColumnIndex="14" RowIndex="6">0</Data>
+  <Data ColumnIndex="0" RowIndex="7">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="7">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="7">T00002</Data>
+  <Data ColumnIndex="3" RowIndex="7">Projector Television</Data>
+  <Data ColumnIndex="4" RowIndex="7">23</Data>
+  <Data ColumnIndex="5" RowIndex="7">3750</Data>
+  <Data ColumnIndex="6" RowIndex="7">0</Data>
+  <Data ColumnIndex="7" RowIndex="7">86250</Data>
+  <Data ColumnIndex="8" RowIndex="7">Each</Data>
+  <Data ColumnIndex="9" RowIndex="7">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="7" />
+  <Data ColumnIndex="11" RowIndex="7">34567</Data>
+  <Data ColumnIndex="12" RowIndex="7">YES</Data>
+  <Data ColumnIndex="13" RowIndex="7">$</Data>
+  <Data ColumnIndex="14" RowIndex="7">0</Data>
+  <Data ColumnIndex="0" RowIndex="8">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="8">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="8">T0005</Data>
+  <Data ColumnIndex="3" RowIndex="8">Television HDTV X590 52" White</Data>
+  <Data ColumnIndex="4" RowIndex="8">33</Data>
+  <Data ColumnIndex="5" RowIndex="8">2890</Data>
+  <Data ColumnIndex="6" RowIndex="8">0</Data>
+  <Data ColumnIndex="7" RowIndex="8">95370</Data>
+  <Data ColumnIndex="8" RowIndex="8">Each</Data>
+  <Data ColumnIndex="9" RowIndex="8">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="8" />
+  <Data ColumnIndex="11" RowIndex="8">34567</Data>
+  <Data ColumnIndex="12" RowIndex="8">YES</Data>
+  <Data ColumnIndex="13" RowIndex="8">$</Data>
+  <Data ColumnIndex="14" RowIndex="8">0</Data>
+  <Data ColumnIndex="0" RowIndex="9">Microsoft</Data>
+  <Data ColumnIndex="1" RowIndex="9">000007-1</Data>
+  <Data ColumnIndex="2" RowIndex="9">T0003</Data>
+  <Data ColumnIndex="3" RowIndex="9">Surround Sound Receiver</Data>
+  <Data ColumnIndex="4" RowIndex="9">56</Data>
+  <Data ColumnIndex="5" RowIndex="9">450</Data>
+  <Data ColumnIndex="6" RowIndex="9">0</Data>
+  <Data ColumnIndex="7" RowIndex="9">25200</Data>
+  <Data ColumnIndex="8" RowIndex="9">Each</Data>
+  <Data ColumnIndex="9" RowIndex="9">Sales invoice notes</Data>
+  <Data ColumnIndex="10" RowIndex="9" />
+  <Data ColumnIndex="11" RowIndex="9">34567</Data>
+  <Data ColumnIndex="12" RowIndex="9">YES</Data>
+  <Data ColumnIndex="13" RowIndex="9">$</Data>
+  <Data ColumnIndex="14" RowIndex="9">0</Data>
+</DataGrid>
         </rd:DesignerState>
         <CommandText>&lt;Query&gt;
   &lt;XmlData&gt;
@@ -265,7 +265,7 @@
         &lt;Company&gt;Microsoft&lt;/Company&gt;
         &lt;InvoiceId&gt;000007-1&lt;/InvoiceId&gt;
         &lt;Item&gt;T0001&lt;/Item&gt;
-        &lt;Description&gt;Speaker cabel 10&lt;/Description&gt;
+        &lt;Description&gt;Speaker cable 10&lt;/Description&gt;
         &lt;Quantity&gt;65&lt;/Quantity&gt;
         &lt;SalesPrice&gt;500&lt;/SalesPrice&gt;
         &lt;Discount&gt;0&lt;/Discount&gt;
@@ -867,7 +867,7 @@
                                     <Paragraph>
                                       <TextRuns>
                                         <TextRun>
-                                          <Value>=Sum(Fields!Amount.Value)</Value>
+                                          <Value>=0.04 * Sum(Fields!Amount.Value) + Sum(Fields!Amount.Value)</Value>
                                           <Style>
                                             <FontSize>20pt</FontSize>
                                             <FontWeight>Bold</FontWeight>
