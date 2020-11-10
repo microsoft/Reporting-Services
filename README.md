@@ -14,7 +14,14 @@ https://github.com/Microsoft/Reporting-Services-loadtest
 
 # Paginated Report Samples
 Contains several sample Power BI paginated reports to download and explore. They demonstrate typical ways you can use paginated reports.
-For more details please check out this article [Paginated Report Samples](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-samples).
+For more details please check out this article [Paginated Report Samples](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-samples). 
+This folder contains the following paginated report samples :
+- [CountrySalesPerformance](https://github.com/microsoft/Reporting-Services/blob/master/PaginatedReportSamples/CountrySalesPerformance.rdl)
+- [Invoice](https://github.com/microsoft/Reporting-Services/blob/master/PaginatedReportSamples/Invoice.rdl)
+- [Labels](https://github.com/microsoft/Reporting-Services/blob/master/PaginatedReportSamples/Labels.rdl)
+- [Letter](https://github.com/microsoft/Reporting-Services/blob/master/PaginatedReportSamples/Letter.rdl)
+- [Transcript](https://github.com/microsoft/Reporting-Services/blob/master/PaginatedReportSamples/Transcript.rdl)
+
 
 # Code Of Conduct
 This project has adopted the [Microsoft Open Source Code of
