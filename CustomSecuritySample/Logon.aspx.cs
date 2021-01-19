@@ -1,6 +1,6 @@
 #region
 // Copyright (c) 2016 Microsoft Corporation. All Rights Reserved.
-// Modified (c) 2020 sonraí LLC. All Rights Forfitted.
+// Modified (c) 2020 cfitzg. All Rights Forfitted.
 // Licensed under the MIT License (MIT)
 /*============================================================================
   File:     Logon.aspx.cs
@@ -34,10 +34,21 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
 
         private void Page_Load(object sender, EventArgs e)
         {
-            //Your secret authentication sauce goes here
-            FormsAuthentication.RedirectFromLoginPage("daylite", true);
+            //Your secret authentication sauce goes here.. (this init commit is just anon/admin access for all)
+            //appHash should get dynamically generated from the app calling SSRS (ideally for each request if performant enough)
+            //ie. 
+            //if (CheckAuth(System.Web.HttpContext.Current.Request.Cookies["origAppHash"].ToString()))
+            //if (CheckAuth(System.Web.HttpContext.Current.Session["otroAppHash"].ToString()))
+            if (System.Web.HttpContext.Current.Request.IsLocal)
+                FormsAuthentication.RedirectFromLoginPage("nitelite", true);
         }
 
+        private bool CheckAuth(string appHash)
+        {
+            //DecodeandCrytoChecks on appHash 
+                return true;
+        }
+           
         #region Web Form Designer generated code
         override protected void OnInit(EventArgs e)
         {

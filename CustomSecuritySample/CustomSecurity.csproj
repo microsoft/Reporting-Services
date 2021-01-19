@@ -180,9 +180,6 @@
     <None Include="Configure.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Setup\CreateUserStore.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Logon.aspx">
       <SubType>ASPXCodeBehind</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -209,7 +206,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Setup\RestoreDatabase.sql" />
     <None Include="Web References\localhost\ActiveState.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

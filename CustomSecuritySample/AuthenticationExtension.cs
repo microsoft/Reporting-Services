@@ -22,11 +22,8 @@
 #endregion
 
 using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Security.Principal;
 using System.Web;
-using System.Globalization;
 using System.Xml;
 using Microsoft.ReportingServices.Interfaces;
 

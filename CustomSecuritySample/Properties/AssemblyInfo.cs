@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -8,8 +7,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SSRS 2019 Custom Auth")]
 [assembly: AssemblyDescription("Forms-based authentication for authenticating apps to SSRS")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("sonraí")]
-[assembly: AssemblyProduct("Daylite")]
+[assembly: AssemblyCompany("cfitzg")]
+[assembly: AssemblyProduct("MSPullRequest")]
 [assembly: AssemblyCopyright("2020")]
 [assembly: AssemblyTrademark("MIT")]
 [assembly: AssemblyCulture("")]
