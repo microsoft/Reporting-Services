@@ -12,7 +12,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,7 +26,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:80/ReportServer_SQL2014/ReportService2010.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:80/LegacyReportServer_SQL2014/ReportService2010.asmx")]
         public string Microsoft_Samples_ReportingServices_CustomSecurity_localhost_ReportingService2010 {
             get {
                 return ((string)(this["Microsoft_Samples_ReportingServices_CustomSecurity_localhost_ReportingService2010" +
@@ -36,7 +36,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost; Integrated Security=SSPI;database=UserAccounts")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost; Integrated Security=SSPI;database=ReportServer")]
         public string Database_ConnectionString {
             get {
                 return ((string)(this["Database_ConnectionString"]));

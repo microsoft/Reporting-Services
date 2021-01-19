@@ -26,9 +26,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Security.Principal;
 using System.Web;
-using Microsoft.ReportingServices.Interfaces;
 using System.Globalization;
 using System.Xml;
+using Microsoft.ReportingServices.Interfaces;
 
 namespace Microsoft.Samples.ReportingServices.CustomSecurity
 {
@@ -42,7 +42,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
         /// string that is stored along with the Extension element in
         /// the configuration file.</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase")]
-        public void SetConfiguration(String configuration)
+        public void SetConfiguration(string configuration)
         {
             if (!string.IsNullOrEmpty(configuration))
             {
@@ -92,18 +92,15 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
         //original method that was added in the code.
         public void GetUserInfo(out IIdentity userIdentity, out IntPtr userId)
         {
-            // If the current user identity is not null,
-            // set the userIdentity parameter to that of the current user 
-            if (HttpContext.Current != null
-                  && HttpContext.Current.User != null)
+            // If the current user identity is not null or already auth'd, set the userIdentity parameter to that of the current user 
+            if (HttpContext.Current.User.Identity.IsAuthenticated || (HttpContext.Current != null && HttpContext.Current.User != null))
             {
                 userIdentity = HttpContext.Current.User.Identity;
             }
             else
             // The current user identity is null. This happens when the user attempts an anonymous logon.
-            // Although it is ok to return userIdentity as a null reference, it is best to throw an appropriate
-            // exception for debugging purposes.
-            // To configure for anonymous logon, return a Gener
+            // Although it is ok to return userIdentity as a null reference, it is best to throw an appropriate exception for debugging purposes.
+            // To configure for anonymous logon, return a Generic
             {
                 //System.Diagnostics.Debug.Assert(false, "Warning: userIdentity is null! Modify your code if you wish to support anonymous logon.");
                 throw new NullReferenceException("Anonymous logon is not configured. userIdentity should not be null!");
@@ -145,36 +142,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope")]
         public static bool VerifyUser(string userName)
         {
-            bool isValid = false;
-            using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.Database_ConnectionString))
-            {
-                SqlCommand cmd = new SqlCommand("LookupUser", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                SqlParameter sqlParam = cmd.Parameters.Add("@userName",
-                    SqlDbType.VarChar,
-                    255);
-                sqlParam.Value = userName;
-                try
-                {
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        // If a row exists for the user, then the user is valid.
-                        if (reader.Read())
-                        {
-                            isValid = true;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(string.Format(CultureInfo.InvariantCulture,
-                    CustomSecurity.VerifyError + ex.Message));
-                }
-            }
-
-            return isValid;
+            return true;
         }
     }
 }

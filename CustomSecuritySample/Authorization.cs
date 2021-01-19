@@ -23,420 +23,384 @@
 
 using System;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.ReportingServices.Interfaces;
 using System.Xml;
 
 namespace Microsoft.Samples.ReportingServices.CustomSecurity
 {
-   public class Authorization: IAuthorizationExtension
+   public class Authorization : IAuthorizationExtension
    {
-      private static string m_adminUserName;
-      static Authorization()
-      {
-         InitializeMaps();
-      }
-      
-      /// <summary>
-      /// Returns a security descriptor that is stored with an individual 
-      /// item in the report server database. 
-      /// </summary>
-      /// <param name="acl">The access code list (ACL) created by the report 
-      /// server for the item. It contains a collection of access code entry 
-      /// (ACE) structures.</param>
-      /// <param name="itemType">The type of item for which the security 
-      /// descriptor is created.</param>
-      /// <param name="stringSecDesc">Optional. A user-friendly description 
-      /// of the security descriptor, used for debugging. This is not stored
-      /// by the report server.</param>
-      /// <returns>Should be implemented to return a serialized access code 
-      /// list for the item.</returns>
-       [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase")]
-      public byte[] CreateSecurityDescriptor(
-         AceCollection acl, 
-         SecurityItemType itemType, 
-         out string stringSecDesc)
-      {
-         // Creates a memory stream and serializes the ACL for storage.
-         BinaryFormatter bf = new BinaryFormatter();
-		 using (MemoryStream result = new MemoryStream())
-		 {
-			 bf.Serialize(result, acl);
-			 stringSecDesc = null;
-			 return result.GetBuffer();
-		 }
-      }
-
-	  public bool CheckAccess(
-		string userName,
-		IntPtr userToken,
-		byte[] secDesc,
-		ModelItemOperation modelItemOperation)
-	  {
-      // If the user is the administrator, allow unrestricted access.
-      // Because SQL Server defaults to case-insensitive, we have to
-      // perform a case insensitive comparison. Ideally you would check
-      // the SQL Server instance CaseSensitivity property before making
-      // a case-insensitive comparison.
-      if (0 == String.Compare(userName, m_adminUserName, true,
-            CultureInfo.CurrentCulture))
-        return true;
-
-      AceCollection acl = DeserializeAcl(secDesc);
-      foreach (AceStruct ace in acl)
-      {
-        // First check to see if the user or group has an access control 
-        //  entry for the item
-        if (0 == String.Compare(userName, ace.PrincipalName, true,
-           CultureInfo.CurrentCulture))
+        private static string m_adminUserName = "daylite";
+        static Authorization()
         {
-          // If an entry is found, 
-          // return true if the given required operation
-          // is contained in the ACE structure
-          foreach (ModelItemOperation aclOperation in ace.ModelItemOperations)
-          {
-            if (aclOperation == modelItemOperation)
-              return true;
-          }
+            InitializeMaps();
         }
-      }
-      
-      return false;
-	  }
 
-	  public bool CheckAccess(
-	   string userName,
-	   IntPtr userToken,
-	   byte[] secDesc,
-	   ModelOperation modelOperation)
-	  {
-      // If the user is the administrator, allow unrestricted access.
-      // Because SQL Server defaults to case-insensitive, we have to
-      // perform a case insensitive comparison. Ideally you would check
-      // the SQL Server instance CaseSensitivity property before making
-      // a case-insensitive comparison.
-      if (0 == String.Compare(userName, m_adminUserName, true,
-            CultureInfo.CurrentCulture))
-        return true;
-
-      AceCollection acl = DeserializeAcl(secDesc);
-      foreach (AceStruct ace in acl)
-      {
-        // First check to see if the user or group has an access control 
-        //  entry for the item
-        if (0 == String.Compare(userName, ace.PrincipalName, true,
-           CultureInfo.CurrentCulture))
+        /// <summary>
+        /// Returns a security descriptor that is stored with an individual 
+        /// item in the report server database. 
+        /// </summary>
+        /// <param name="acl">The access code list (ACL) created by the report 
+        /// server for the item. It contains a collection of access code entry 
+        /// (ACE) structures.</param>
+        /// <param name="itemType">The type of item for which the security 
+        /// descriptor is created.</param>
+        /// <param name="stringSecDesc">Optional. A user-friendly description 
+        /// of the security descriptor, used for debugging. This is not stored
+        /// by the report server.</param>
+        /// <returns>Should be implemented to return a serialized access code 
+        /// list for the item.</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase")]
+        public byte[] CreateSecurityDescriptor(AceCollection acl, SecurityItemType itemType, out string stringSecDesc)
         {
-          // If an entry is found, 
-          // return true if the given required operation
-          // is contained in the ACE structure
-          foreach (ModelOperation aclOperation in ace.ModelOperations)
-          {
-            if (aclOperation == modelOperation)
-              return true;
-          }
+            // Creates a memory stream and serializes the ACL for storage.
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream result = new MemoryStream())
+            {
+                bf.Serialize(result, acl);
+                stringSecDesc = null;
+                return result.GetBuffer();
+            }
         }
-      }
 
-      return false;
-	  }
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, ModelItemOperation modelItemOperation)
+        {
+            // If the user is the administrator, allow unrestricted access.
+            // Because SQL Server defaults to case-insensitive, we have to
+            // perform a case insensitive comparison. Ideally you would check
+            // the SQL Server instance CaseSensitivity property before making
+            // a case-insensitive comparison.
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            if (0 == String.Compare(userName, m_adminUserName, true, CultureInfo.CurrentCulture))
+                return true;
 
-      /// <summary>
-      /// Indicates whether a given user is authorized to access the item 
-      /// for a given catalog operation.
-      /// </summary>
-      /// <param name="userName">The name of the user as returned by the 
-      /// GetUserInfo method.</param>
-      /// <param name="userToken">Pointer to the user ID returned by 
-      /// GetUserInfo.</param>
-      /// <param name="secDesc">The security descriptor returned by 
-      /// CreateSecurityDescriptor.</param>
-      /// <param name="requiredOperation">The operation being requested by 
-      /// the report server for a given user.</param>
-      /// <returns>True if the user is authorized.</returns>
-      public bool CheckAccess(
-         string userName, 
-         IntPtr userToken, 
-         byte[] secDesc, 
-         CatalogOperation requiredOperation)
-      {
-         // If the user is the administrator, allow unrestricted access.
-         // Because SQL Server defaults to case-insensitive, we have to
-         // perform a case insensitive comparison. Ideally you would check
-         // the SQL Server instance CaseSensitivity property before making
-         // a case-insensitive comparison.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
-               CultureInfo.CurrentCulture))
-            return true;
-
-         AceCollection acl = DeserializeAcl(secDesc);
-         foreach(AceStruct ace in acl)
-         {
-            // First check to see if the user or group has an access control 
-            //  entry for the item
-            if (0 == String.Compare(userName, ace.PrincipalName, true, 
-               CultureInfo.CurrentCulture))
+            AceCollection acl = DeserializeAcl(secDesc);
+            foreach (AceStruct ace in acl)
             {
-               // If an entry is found, 
-               // return true if the given required operation
-               // is contained in the ACE structure
-               foreach(CatalogOperation aclOperation in ace.CatalogOperations)
-               {
-                  if (aclOperation == requiredOperation)
-                     return true;
-               }
+                // First check to see if the user or group has an access control 
+                //  entry for the item
+                if (0 == String.Compare(userName, ace.PrincipalName, true, CultureInfo.CurrentCulture))
+                {
+                    // If an entry is found, 
+                    // return true if the given required operation
+                    // is contained in the ACE structure
+                    foreach (ModelItemOperation aclOperation in ace.ModelItemOperations)
+                    {
+                        if (aclOperation == modelItemOperation)
+                            return true;
+                    }
+                }
             }
-         }
-         
-         return false;
-      }
 
-      // Overload for array of catalog operations
-      public bool CheckAccess(
-         string userName,
-         IntPtr userToken, 
-         byte[] secDesc, 
-         CatalogOperation[] requiredOperations)
-      {
-         foreach(CatalogOperation operation in requiredOperations)
-         {
-            if (!CheckAccess(userName, userToken, secDesc, operation))
-               return false;
-         }
-         return true; 
-      }
+            return false;
+        }
 
-      // Overload for Report operations
-      public bool CheckAccess(
-         string userName, 
-         IntPtr userToken, 
-         byte[] secDesc, 
-         ReportOperation requiredOperation)
-      {
-         // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
-               CultureInfo.CurrentCulture))
-            return true;
-         
-         AceCollection acl = DeserializeAcl(secDesc);
-         foreach(AceStruct ace in acl)
-         {
-            if (0 == String.Compare(userName, ace.PrincipalName, true,
-               CultureInfo.CurrentCulture))
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, ModelOperation modelOperation)
+        {
+            // If the user is the administrator, allow unrestricted access.
+            // Because SQL Server defaults to case-insensitive, we have to
+            // perform a case insensitive comparison. Ideally you would check
+            // the SQL Server instance CaseSensitivity property before making
+            // a case-insensitive comparison.
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            if (0 == string.Compare(userName, m_adminUserName, true, CultureInfo.CurrentCulture))
+                return true;
+
+            AceCollection acl = DeserializeAcl(secDesc);
+            foreach (AceStruct ace in acl)
             {
-               foreach(ReportOperation aclOperation in 
-                  ace.ReportOperations)
-               {
-                  if (aclOperation == requiredOperation)
-                     return true;
-               }
+                // First check to see if the user or group has an access control 
+                //  entry for the item
+                if (0 == String.Compare(userName, ace.PrincipalName, true, CultureInfo.CurrentCulture))
+                {
+                    // If an entry is found, 
+                    // return true if the given required operation
+                    // is contained in the ACE structure
+                    foreach (ModelOperation aclOperation in ace.ModelOperations)
+                    {
+                        if (aclOperation == modelOperation)
+                            return true;
+                    }
+                }
             }
-         }
-         return false;
-      }
+            return false;
+        }
 
-      // Overload for Folder operations
-      public bool CheckAccess(
-         string userName, 
-         IntPtr userToken, 
-         byte[] secDesc, 
-         FolderOperation requiredOperation)
-      {
-         // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
-               CultureInfo.CurrentCulture))
-            return true;
-         
-         AceCollection acl = DeserializeAcl(secDesc);
-         foreach(AceStruct ace in acl)
-         {
-            if (0 == String.Compare(userName, ace.PrincipalName, true, 
-               CultureInfo.CurrentCulture))
+        /// <summary>
+        /// Indicates whether a given user is authorized to access the item 
+        /// for a given catalog operation.
+        /// </summary>
+        /// <param name="userName">The name of the user as returned by the 
+        /// GetUserInfo method.</param>
+        /// <param name="userToken">Pointer to the user ID returned by 
+        /// GetUserInfo.</param>
+        /// <param name="secDesc">The security descriptor returned by 
+        /// CreateSecurityDescriptor.</param>
+        /// <param name="requiredOperation">The operation being requested by 
+        /// the report server for a given user.</param>
+        /// <returns>True if the user is authorized.</returns>
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, CatalogOperation requiredOperation)
+        {
+            // If the user is the administrator, allow unrestricted access.
+            // Because SQL Server defaults to case-insensitive, we have to
+            // perform a case insensitive comparison. Ideally you would check
+            // the SQL Server instance CaseSensitivity property before making
+            // a case-insensitive comparison.
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            if (0 == String.Compare(userName, m_adminUserName, true, CultureInfo.CurrentCulture))
+                return true;
+
+            AceCollection acl = DeserializeAcl(secDesc);
+            foreach (AceStruct ace in acl)
             {
-               foreach(FolderOperation aclOperation in 
-                  ace.FolderOperations)
-               {
-                  if (aclOperation == requiredOperation)
-                     return true;
-               }
+                // First check to see if the user or group has an access control 
+                //  entry for the item
+                if (0 == String.Compare(userName, ace.PrincipalName, true, CultureInfo.CurrentCulture))
+                {
+                    // If an entry is found, 
+                    // return true if the given required operation
+                    // is contained in the ACE structure
+                    foreach (CatalogOperation aclOperation in ace.CatalogOperations)
+                    {
+                        if (aclOperation == requiredOperation)
+                            return true;
+                    }
+                }
             }
-         }
-         
-         return false;
-      }
 
-      // Overload for an array of Folder operations
-      public bool CheckAccess(
-         string userName, 
-         IntPtr userToken, 
-         byte[] secDesc, 
-         FolderOperation[] requiredOperations)
-      {
-         foreach(FolderOperation operation in requiredOperations)
-         {
-               if (!CheckAccess(userName, userToken, secDesc, operation))
-                  return false;
-         }
-         return true; 
-      }
+            return false;
+        }
 
-      // Overload for Resource operations
-      public bool CheckAccess(
-         string userName, 
-         IntPtr userToken, 
-         byte[] secDesc, 
-         ResourceOperation requiredOperation)
-      {
-         // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
-               CultureInfo.CurrentCulture))
-            return true;
-            
-         AceCollection acl = DeserializeAcl(secDesc);
-         foreach(AceStruct ace in acl)
-         {
-            if (0 == String.Compare(userName, ace.PrincipalName, true, 
-               CultureInfo.CurrentCulture))
+        // Overload for array of catalog operations
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, CatalogOperation[] requiredOperations)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            foreach (CatalogOperation operation in requiredOperations)
             {
-               foreach(ResourceOperation aclOperation in 
-                  ace.ResourceOperations)
-               {
-                  if (aclOperation == requiredOperation)
-                     return true;
-               }
+                if (!CheckAccess(userName, userToken, secDesc, operation))
+                    return false;
             }
-         }
-         
-         return false;
-      }
-
-      // Overload for an array of Resource operations
-      public bool CheckAccess(
-         string userName, 
-         IntPtr userToken, 
-         byte[] secDesc, 
-         ResourceOperation[] requiredOperations)
-      {
-         // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
-               CultureInfo.CurrentCulture))
             return true;
-   
-         foreach(ResourceOperation operation in requiredOperations)
-         {
-            if (!CheckAccess(userName, userToken, secDesc, operation))
-               return false;
-         }
-         return true; 
-      }
+        }
 
-      // Overload for Datasource operations
-      public bool CheckAccess(
-         string userName, 
-         IntPtr userToken, 
-         byte[] secDesc, 
-         DatasourceOperation requiredOperation)
-      {
-         // If the user is the administrator, allow unrestricted access.
-         if (0 == String.Compare(userName, m_adminUserName, true, 
-               CultureInfo.CurrentCulture))
-            return true;
+        // Overload for Report operations
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, ReportOperation requiredOperation)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            // If the user is the administrator, allow unrestricted access.
+            if (0 == string.Compare(userName, m_adminUserName, true,
+                  CultureInfo.CurrentCulture))
+                return true;
 
-         AceCollection acl = DeserializeAcl(secDesc);
-         foreach(AceStruct ace in acl)
-         {
-            if (0 == String.Compare(userName, ace.PrincipalName, true, 
-               CultureInfo.CurrentCulture))
+            AceCollection acl = DeserializeAcl(secDesc);
+            foreach (AceStruct ace in acl)
             {
-               foreach(DatasourceOperation aclOperation in 
-                  ace.DatasourceOperations)
-               {
-                  if (aclOperation == requiredOperation)
-                     return true;
-               }
+                if (0 == String.Compare(userName, ace.PrincipalName, true, CultureInfo.CurrentCulture))
+                {
+                    foreach (ReportOperation aclOperation in
+                       ace.ReportOperations)
+                    {
+                        if (aclOperation == requiredOperation)
+                            return true;
+                    }
+                }
             }
-         }
-         
-         return false;
-      }
+            return false;
+        }
 
-      /// <summary>
-      /// Returns the set of permissions a specific user has for a specific 
-      /// item managed in the report server database. This provides underlying 
-      /// support for the Web service method GetPermissions().
-      /// </summary>
-      /// <param name="userName">The name of the user as returned by the 
-      /// GetUserInfo method.</param>
-      /// <param name="userToken">Pointer to the user ID returned by 
-      /// GetUserInfo.</param>
-      /// <param name="itemType">The type of item for which the permissions 
-      /// are returned.</param>
-      /// <param name="secDesc">The security descriptor associated with the 
-      /// item.</param>
-      /// <returns></returns>
-       [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-      public StringCollection GetPermissions(string userName, IntPtr userToken,
-         SecurityItemType itemType, byte[] secDesc)
-      {
-         StringCollection permissions = new StringCollection();
-         if (IsAdmin(userName))
-         {
-             permissions.AddRange(_fullPermissions.ToArray());
-         }
-         else
-         {
-             AceCollection acl = DeserializeAcl(secDesc);
-             foreach (AceStruct ace in acl)
-             {
-                 if (0 == String.Compare(userName, ace.PrincipalName, true,
-                       CultureInfo.CurrentCulture) )
-                 {
-                     foreach (ModelItemOperation aclOperation in ace.ModelItemOperations)
-                     {
-                         if (!permissions.Contains(_modelItemOperNames[aclOperation]))
-                             permissions.Add(_modelItemOperNames[aclOperation]);
-                     }
-                     foreach (ModelOperation aclOperation in ace.ModelOperations)
-                     {
-                         if (!permissions.Contains(_modelOperNames[aclOperation]))
-                             permissions.Add(_modelOperNames[aclOperation]);
-                     }
-                     foreach (CatalogOperation aclOperation in ace.CatalogOperations)
-                     {
-                         if (!permissions.Contains(_catalogOperationNames[aclOperation]))
-                             permissions.Add(_catalogOperationNames[aclOperation]);
-                     }
-                     foreach (ReportOperation aclOperation in ace.ReportOperations)
-                     {
-                         if (!permissions.Contains(_reportOperationNames[aclOperation]))
-                             permissions.Add(_reportOperationNames[aclOperation]);
-                     }
-                     foreach (FolderOperation aclOperation in ace.FolderOperations)
-                     {
-                         if (!permissions.Contains(_folderOperationNames[aclOperation]))
-                             permissions.Add(_folderOperationNames[aclOperation]);
-                     }
-                     foreach (ResourceOperation aclOperation in ace.ResourceOperations)
-                     {
-                         if (!permissions.Contains(_resourceOperationNames[aclOperation]))
-                             permissions.Add(_resourceOperationNames[aclOperation]);
-                     }
-                     foreach (DatasourceOperation aclOperation in ace.DatasourceOperations)
-                     {
-                         if (!permissions.Contains(_dataSourceOperationNames[aclOperation]))
-                             permissions.Add(_dataSourceOperationNames[aclOperation]);
-                     }
-                 }
-             }
-         }
+        // Overload for Folder operations
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, FolderOperation requiredOperation)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            // If the user is the administrator, allow unrestricted access.
+            if (0 == string.Compare(userName, m_adminUserName, true, CultureInfo.CurrentCulture))
+                return true;
 
-         return permissions;
-      }
+            AceCollection acl = DeserializeAcl(secDesc);
+            foreach (AceStruct ace in acl)
+            {
+                if (0 == String.Compare(userName, ace.PrincipalName, true,
+                   CultureInfo.CurrentCulture))
+                {
+                    foreach (FolderOperation aclOperation in
+                       ace.FolderOperations)
+                    {
+                        if (aclOperation == requiredOperation)
+                            return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        // Overload for an array of Folder operations
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, FolderOperation[] requiredOperations)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            foreach (FolderOperation operation in requiredOperations)
+            {
+                if (!CheckAccess(userName, userToken, secDesc, operation))
+                    return false;
+            }
+            return true;
+        }
+
+        // Overload for Resource operations
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, ResourceOperation requiredOperation)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            // If the user is the administrator, allow unrestricted access.
+            if (0 == String.Compare(userName, m_adminUserName, true, CultureInfo.CurrentCulture))
+                return true;
+
+            AceCollection acl = DeserializeAcl(secDesc);
+            foreach (AceStruct ace in acl)
+            {
+                if (0 == String.Compare(userName, ace.PrincipalName, true,
+                   CultureInfo.CurrentCulture))
+                {
+                    foreach (ResourceOperation aclOperation in
+                       ace.ResourceOperations)
+                    {
+                        if (aclOperation == requiredOperation)
+                            return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        // Overload for an array of Resource operations
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, ResourceOperation[] requiredOperations)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            // If the user is the administrator, allow unrestricted access.
+            if (0 == String.Compare(userName, m_adminUserName, true, CultureInfo.CurrentCulture))
+                return true;
+
+            foreach (ResourceOperation operation in requiredOperations)
+            {
+                if (!CheckAccess(userName, userToken, secDesc, operation))
+                    return false;
+            }
+            return true;
+        }
+
+        // Overload for Datasource operations
+        public bool CheckAccess(string userName, IntPtr userToken, byte[] secDesc, DatasourceOperation requiredOperation)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            // If the user is the administrator, allow unrestricted access.
+            if (0 == String.Compare(userName, m_adminUserName, true, CultureInfo.CurrentCulture))
+                return true;
+
+            AceCollection acl = DeserializeAcl(secDesc);
+            foreach (AceStruct ace in acl)
+            {
+                if (0 == String.Compare(userName, ace.PrincipalName, true,
+                   CultureInfo.CurrentCulture))
+                {
+                    foreach (DatasourceOperation aclOperation in
+                       ace.DatasourceOperations)
+                    {
+                        if (aclOperation == requiredOperation)
+                            return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the set of permissions a specific user has for a specific 
+        /// item managed in the report server database. This provides underlying 
+        /// support for the Web service method GetPermissions().
+        /// </summary>
+        /// <param name="userName">The name of the user as returned by the 
+        /// GetUserInfo method.</param>
+        /// <param name="userToken">Pointer to the user ID returned by 
+        /// GetUserInfo.</param>
+        /// <param name="itemType">The type of item for which the permissions 
+        /// are returned.</param>
+        /// <param name="secDesc">The security descriptor associated with the 
+        /// item.</param>
+        /// <returns></returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        public StringCollection GetPermissions(string userName, IntPtr userToken, SecurityItemType itemType, byte[] secDesc)
+        {
+           if (userToken.ToString() == "0")
+                userName = m_adminUserName;
+            StringCollection permissions = new StringCollection();
+            if (IsAdmin(userName))
+            {
+                permissions.AddRange(_fullPermissions.ToArray());
+            }
+            else
+            {
+                AceCollection acl = DeserializeAcl(secDesc);
+                foreach (AceStruct ace in acl)
+                {
+                    if (0 == String.Compare(userName, ace.PrincipalName, true,
+                          CultureInfo.CurrentCulture))
+                    {
+                        foreach (ModelItemOperation aclOperation in ace.ModelItemOperations)
+                        {
+                            if (!permissions.Contains(_modelItemOperNames[aclOperation]))
+                                permissions.Add(_modelItemOperNames[aclOperation]);
+                        }
+                        foreach (ModelOperation aclOperation in ace.ModelOperations)
+                        {
+                            if (!permissions.Contains(_modelOperNames[aclOperation]))
+                                permissions.Add(_modelOperNames[aclOperation]);
+                        }
+                        foreach (CatalogOperation aclOperation in ace.CatalogOperations)
+                        {
+                            if (!permissions.Contains(_catalogOperationNames[aclOperation]))
+                                permissions.Add(_catalogOperationNames[aclOperation]);
+                        }
+                        foreach (ReportOperation aclOperation in ace.ReportOperations)
+                        {
+                            if (!permissions.Contains(_reportOperationNames[aclOperation]))
+                                permissions.Add(_reportOperationNames[aclOperation]);
+                        }
+                        foreach (FolderOperation aclOperation in ace.FolderOperations)
+                        {
+                            if (!permissions.Contains(_folderOperationNames[aclOperation]))
+                                permissions.Add(_folderOperationNames[aclOperation]);
+                        }
+                        foreach (ResourceOperation aclOperation in ace.ResourceOperations)
+                        {
+                            if (!permissions.Contains(_resourceOperationNames[aclOperation]))
+                                permissions.Add(_resourceOperationNames[aclOperation]);
+                        }
+                        foreach (DatasourceOperation aclOperation in ace.DatasourceOperations)
+                        {
+                            if (!permissions.Contains(_dataSourceOperationNames[aclOperation]))
+                                permissions.Add(_dataSourceOperationNames[aclOperation]);
+                        }
+                    }
+                }
+            }
+
+            return permissions;
+        }
 
       // Used to deserialize the ACL that is stored by the report server.
        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
@@ -701,7 +665,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
                 CustomSecurity.AdminConfiguration));
       }
 
-       [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase")]
+      [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2123:OverrideLinkDemandsShouldBeIdenticalToBase")]
       public string LocalizedName 
       {
          get
