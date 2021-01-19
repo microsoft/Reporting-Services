@@ -139,7 +139,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope")]
         public static bool VerifyUser(string userName)
         {
-            return true;
+            return true; //already auth'd
         }
     }
 }
