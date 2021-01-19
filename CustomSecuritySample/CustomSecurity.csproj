@@ -164,6 +164,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Content Include="ConfigSandbox\Catalog.sql" />
+    <Content Include="ConfigSandbox\CatalogTempDB.sql" />
+    <Content Include="ConfigSandbox\global.asax" />
+    <Content Include="ConfigSandbox\Logon.aspx" />
+    <Content Include="CreateUserStore.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -177,6 +182,9 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="ConfigSandbox\rsreportserver.config" />
+    <None Include="ConfigSandbox\rssrvpolicy.config" />
+    <None Include="ConfigSandbox\web.config" />
     <None Include="Configure.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -40,7 +40,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
             //if (CheckAuth(System.Web.HttpContext.Current.Request.Cookies["origAppHash"].ToString()))
             //if (CheckAuth(System.Web.HttpContext.Current.Session["otroAppHash"].ToString()))
             if (System.Web.HttpContext.Current.Request.IsLocal)
-                FormsAuthentication.RedirectFromLoginPage("nitelite", true);
+                FormsAuthentication.RedirectFromLoginPage("daylite", true);
         }
 
         private bool CheckAuth(string appHash)

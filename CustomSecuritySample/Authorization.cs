@@ -34,7 +34,7 @@ namespace Microsoft.Samples.ReportingServices.CustomSecurity
 {
    public class Authorization : IAuthorizationExtension
    {
-        private static string m_adminUserName = "nitelite";
+        private static string m_adminUserName = "daylite";
         static Authorization()
         {
             InitializeMaps();
