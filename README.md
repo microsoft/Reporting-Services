@@ -21,6 +21,8 @@ This folder contains the following paginated report samples :
 - [Labels](https://raw.githubusercontent.com/microsoft/Reporting-Services/master/PaginatedReportSamples/Labels.rdl)
 - [Letter](https://raw.githubusercontent.com/microsoft/Reporting-Services/master/PaginatedReportSamples/Letter.rdl)
 - [Transcript](https://raw.githubusercontent.com/microsoft/Reporting-Services/master/PaginatedReportSamples/Transcript.rdl)
+- [OrganizationExpenditures](https://raw.githubusercontent.com/microsoft/Reporting-Services/master/PaginatedReportSamples/OrganizationExpenditures.rdl)
+- [RegionalSales](https://raw.githubusercontent.com/microsoft/Reporting-Services/master/PaginatedReportSamples/RegionalSales.rdl)
 
 
 # Code Of Conduct
