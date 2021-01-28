@@ -2019,7 +2019,7 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQggh
   <CustomProperties>
     <CustomProperty>
       <Name>ReportGeneratorTemplate</Name>
-      <Value>RDLSamples_OrganizationalExpenditures</Value>
+      <Value>RDLSamples_OrganizationExpenditure</Value>
     </CustomProperty>
   </CustomProperties>
 </Report>
