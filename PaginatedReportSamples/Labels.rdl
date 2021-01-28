@@ -2466,7 +2466,7 @@
   <CustomProperties>
     <CustomProperty>
       <Name>ReportGeneratorTemplate</Name>
-      <Value>RDLSamples</Value>
+      <Value>RDLSamples_Labels</Value>
     </CustomProperty>
   </CustomProperties>
 </Report>

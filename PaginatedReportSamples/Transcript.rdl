@@ -1617,7 +1617,7 @@
   <CustomProperties>
     <CustomProperty>
       <Name>ReportGeneratorTemplate</Name>
-      <Value>RDLSamples</Value>
+      <Value>RDLSamples_Transcript</Value>
     </CustomProperty>
   </CustomProperties>
   <EmbeddedImages>

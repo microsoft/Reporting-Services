@@ -1,0 +1,2025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition">
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>5a7cb844-808d-4210-afab-dc2d76bbdecf</rd:ReportID>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="EnterData">
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <ConnectionProperties>
+        <DataProvider>ENTERDATA</DataProvider>
+        <ConnectString />
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:DataSourceID>cb5455a2-1c29-4654-a9eb-501cd2d71718</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsOrganization">
+      <Query>
+        <DataSourceName>EnterData</DataSourceName>
+        <rd:DesignerState>
+          <DataGrid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="">
+            <RowNumber>9</RowNumber>
+            <ColumnNumber>2</ColumnNumber>
+            <ColumnName ColumnIndex="0" ColumnWidth="100" DataType="String">OrganizationKey</ColumnName>
+            <ColumnName ColumnIndex="1" ColumnWidth="100" DataType="String">OrganizationName</ColumnName>
+            <Data ColumnIndex="0" RowIndex="0">13</Data>
+            <Data ColumnIndex="1" RowIndex="0">Australia</Data>
+            <Data ColumnIndex="0" RowIndex="1">8</Data>
+            <Data ColumnIndex="1" RowIndex="1">Canadian Division</Data>
+            <Data ColumnIndex="0" RowIndex="2">5</Data>
+            <Data ColumnIndex="1" RowIndex="2">Central Division</Data>
+            <Data ColumnIndex="0" RowIndex="3">11</Data>
+            <Data ColumnIndex="1" RowIndex="3">France</Data>
+            <Data ColumnIndex="0" RowIndex="4">12</Data>
+            <Data ColumnIndex="1" RowIndex="4">Germany</Data>
+            <Data ColumnIndex="0" RowIndex="5">3</Data>
+            <Data ColumnIndex="1" RowIndex="5">Northeast Division</Data>
+            <Data ColumnIndex="0" RowIndex="6">4</Data>
+            <Data ColumnIndex="1" RowIndex="6">Northwest Division</Data>
+            <Data ColumnIndex="0" RowIndex="7">6</Data>
+            <Data ColumnIndex="1" RowIndex="7">Southeast Division</Data>
+            <Data ColumnIndex="0" RowIndex="8">7</Data>
+            <Data ColumnIndex="1" RowIndex="8">Southwest Division</Data>
+          </DataGrid>
+        </rd:DesignerState>
+        <CommandText>&lt;Query&gt;
+  &lt;XmlData&gt;
+    &lt;Data&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Australia&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;8&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Canadian Division&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;5&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Central Division&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;11&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;France&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;12&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Germany&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;3&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Northeast Division&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;4&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Northwest Division&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;6&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Southeast Division&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;OrganizationKey&gt;7&lt;/OrganizationKey&gt;
+        &lt;OrganizationName&gt;Southwest Division&lt;/OrganizationName&gt;
+      &lt;/Row&gt;
+    &lt;/Data&gt;
+  &lt;/XmlData&gt;
+  &lt;ElementPath&gt;Data{}/Row{OrganizationKey(String),OrganizationName(String)}&lt;/ElementPath&gt;
+&lt;/Query&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="OrganizationKey">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>OrganizationKey</DataField>
+        </Field>
+        <Field Name="OrganizationName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>OrganizationName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsDepartmentGroup">
+      <Query>
+        <DataSourceName>EnterData</DataSourceName>
+        <rd:DesignerState>
+          <DataGrid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="">
+            <RowNumber>8</RowNumber>
+            <ColumnNumber>2</ColumnNumber>
+            <ColumnName ColumnIndex="0" ColumnWidth="100" DataType="String">DepartmentGroupKey</ColumnName>
+            <ColumnName ColumnIndex="1" ColumnWidth="100" DataType="String">DepartmentGroupName</ColumnName>
+            <Data ColumnIndex="0" RowIndex="0">-1</Data>
+            <Data ColumnIndex="1" RowIndex="0">[All Department Groups]</Data>
+            <Data ColumnIndex="0" RowIndex="1">1</Data>
+            <Data ColumnIndex="1" RowIndex="1">Corporate</Data>
+            <Data ColumnIndex="0" RowIndex="2">2</Data>
+            <Data ColumnIndex="1" RowIndex="2">Executive General and Administration</Data>
+            <Data ColumnIndex="0" RowIndex="3">3</Data>
+            <Data ColumnIndex="1" RowIndex="3">Inventory Management</Data>
+            <Data ColumnIndex="0" RowIndex="4">4</Data>
+            <Data ColumnIndex="1" RowIndex="4">Manufacturing</Data>
+            <Data ColumnIndex="0" RowIndex="5">5</Data>
+            <Data ColumnIndex="1" RowIndex="5">Quality Assurance</Data>
+            <Data ColumnIndex="0" RowIndex="6">6</Data>
+            <Data ColumnIndex="1" RowIndex="6">Research and Development</Data>
+            <Data ColumnIndex="0" RowIndex="7">7</Data>
+            <Data ColumnIndex="1" RowIndex="7">Sales and Marketing</Data>
+          </DataGrid>
+        </rd:DesignerState>
+        <CommandText>&lt;Query&gt;
+  &lt;XmlData&gt;
+    &lt;Data&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;[All Department Groups]&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;1&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;Corporate&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;2&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;Executive General and Administration&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;3&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;Inventory Management&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;4&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;Manufacturing&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;5&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;Quality Assurance&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;6&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;Research and Development&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;DepartmentGroupKey&gt;7&lt;/DepartmentGroupKey&gt;
+        &lt;DepartmentGroupName&gt;Sales and Marketing&lt;/DepartmentGroupName&gt;
+      &lt;/Row&gt;
+    &lt;/Data&gt;
+  &lt;/XmlData&gt;
+  &lt;ElementPath&gt;Data{}/Row{DepartmentGroupKey(String),DepartmentGroupName(String)}&lt;/ElementPath&gt;
+&lt;/Query&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DepartmentGroupKey">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>DepartmentGroupKey</DataField>
+        </Field>
+        <Field Name="DepartmentGroupName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>DepartmentGroupName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsMain">
+      <Query>
+        <DataSourceName>EnterData</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="OrganizationKey">
+            <rd:UserDefined>true</rd:UserDefined>
+            <Value>=Parameters!OrganizationKey.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DepartmentGroupKey">
+            <rd:UserDefined>true</rd:UserDefined>
+            <Value>=Parameters!DepartmentGroupKey.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:DesignerState>
+          <DataGrid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="">
+            <RowNumber>37</RowNumber>
+            <ColumnNumber>7</ColumnNumber>
+            <ColumnName ColumnIndex="0" ColumnWidth="100" DataType="String">Level_01</ColumnName>
+            <ColumnName ColumnIndex="1" ColumnWidth="100" DataType="String">Level_02</ColumnName>
+            <ColumnName ColumnIndex="2" ColumnWidth="100" DataType="String">Level_03</ColumnName>
+            <ColumnName ColumnIndex="3" ColumnWidth="100" DataType="Float">Amount</ColumnName>
+            <ColumnName ColumnIndex="4" ColumnWidth="100" DataType="String">OrganizationKey</ColumnName>
+            <ColumnName ColumnIndex="5" ColumnWidth="100" DataType="String">Date</ColumnName>
+            <ColumnName ColumnIndex="6" ColumnWidth="100" DataType="String">DepartmentGroupKey</ColumnName>
+            <Data ColumnIndex="0" RowIndex="0">Discounts</Data>
+            <Data ColumnIndex="1" RowIndex="0" />
+            <Data ColumnIndex="2" RowIndex="0" />
+            <Data ColumnIndex="3" RowIndex="0">227.0700</Data>
+            <Data ColumnIndex="4" RowIndex="0">13</Data>
+            <Data ColumnIndex="5" RowIndex="0">5/1/2020</Data>
+            <Data ColumnIndex="6" RowIndex="0">-1</Data>
+            <Data ColumnIndex="0" RowIndex="1">Interest Expense</Data>
+            <Data ColumnIndex="1" RowIndex="1" />
+            <Data ColumnIndex="2" RowIndex="1" />
+            <Data ColumnIndex="3" RowIndex="1">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="1">13</Data>
+            <Data ColumnIndex="5" RowIndex="1">5/2/2020</Data>
+            <Data ColumnIndex="6" RowIndex="1">-1</Data>
+            <Data ColumnIndex="0" RowIndex="2">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="2">Commissions</Data>
+            <Data ColumnIndex="2" RowIndex="2" />
+            <Data ColumnIndex="3" RowIndex="2">38048.7800</Data>
+            <Data ColumnIndex="4" RowIndex="2">13</Data>
+            <Data ColumnIndex="5" RowIndex="2">5/3/2020</Data>
+            <Data ColumnIndex="6" RowIndex="2">-1</Data>
+            <Data ColumnIndex="0" RowIndex="3">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="3">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="3">Amortization of Goodwill</Data>
+            <Data ColumnIndex="3" RowIndex="3">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="3">13</Data>
+            <Data ColumnIndex="5" RowIndex="3">5/4/2020</Data>
+            <Data ColumnIndex="6" RowIndex="3">-1</Data>
+            <Data ColumnIndex="0" RowIndex="4">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="4">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="4">Building Leasehold</Data>
+            <Data ColumnIndex="3" RowIndex="4">345234.3456</Data>
+            <Data ColumnIndex="4" RowIndex="4">13</Data>
+            <Data ColumnIndex="5" RowIndex="4">5/5/2020</Data>
+            <Data ColumnIndex="6" RowIndex="4">-1</Data>
+            <Data ColumnIndex="0" RowIndex="5">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="5">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="5">Equipment</Data>
+            <Data ColumnIndex="3" RowIndex="5">4647.2345</Data>
+            <Data ColumnIndex="4" RowIndex="5">13</Data>
+            <Data ColumnIndex="5" RowIndex="5">5/6/2020</Data>
+            <Data ColumnIndex="6" RowIndex="5">-1</Data>
+            <Data ColumnIndex="0" RowIndex="6">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="6">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="6">Furniture and Fixtures</Data>
+            <Data ColumnIndex="3" RowIndex="6">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="6">13</Data>
+            <Data ColumnIndex="5" RowIndex="6">5/7/2020</Data>
+            <Data ColumnIndex="6" RowIndex="6">-1</Data>
+            <Data ColumnIndex="0" RowIndex="7">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="7">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="7">Other Assets</Data>
+            <Data ColumnIndex="3" RowIndex="7">38048.7800</Data>
+            <Data ColumnIndex="4" RowIndex="7">13</Data>
+            <Data ColumnIndex="5" RowIndex="7">5/8/2020</Data>
+            <Data ColumnIndex="6" RowIndex="7">-1</Data>
+            <Data ColumnIndex="0" RowIndex="8">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="8">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="8">Vehicles</Data>
+            <Data ColumnIndex="3" RowIndex="8">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="8">13</Data>
+            <Data ColumnIndex="5" RowIndex="8">5/9/2020</Data>
+            <Data ColumnIndex="6" RowIndex="8">-1</Data>
+            <Data ColumnIndex="0" RowIndex="9">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="9">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="9">Employee Benefits</Data>
+            <Data ColumnIndex="3" RowIndex="9">345234.3456</Data>
+            <Data ColumnIndex="4" RowIndex="9">13</Data>
+            <Data ColumnIndex="5" RowIndex="9">5/10/2020</Data>
+            <Data ColumnIndex="6" RowIndex="9">-1</Data>
+            <Data ColumnIndex="0" RowIndex="10">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="10">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="10">Payroll Taxes</Data>
+            <Data ColumnIndex="3" RowIndex="10">4647.2345</Data>
+            <Data ColumnIndex="4" RowIndex="10">13</Data>
+            <Data ColumnIndex="5" RowIndex="10">5/11/2020</Data>
+            <Data ColumnIndex="6" RowIndex="10">-1</Data>
+            <Data ColumnIndex="0" RowIndex="11">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="11">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="11">Salaries</Data>
+            <Data ColumnIndex="3" RowIndex="11">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="11">13</Data>
+            <Data ColumnIndex="5" RowIndex="11">5/12/2020</Data>
+            <Data ColumnIndex="6" RowIndex="11">-1</Data>
+            <Data ColumnIndex="0" RowIndex="12">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="12">Labor Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="12">Conferences</Data>
+            <Data ColumnIndex="3" RowIndex="12">38048.7800</Data>
+            <Data ColumnIndex="4" RowIndex="12">13</Data>
+            <Data ColumnIndex="5" RowIndex="12">5/13/2020</Data>
+            <Data ColumnIndex="6" RowIndex="12">-1</Data>
+            <Data ColumnIndex="0" RowIndex="13">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="13">Labor Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="13">Marketing Collateral</Data>
+            <Data ColumnIndex="3" RowIndex="13">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="13">13</Data>
+            <Data ColumnIndex="5" RowIndex="13">5/14/2020</Data>
+            <Data ColumnIndex="6" RowIndex="13">-1</Data>
+            <Data ColumnIndex="0" RowIndex="14">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="14">Labor Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="14" />
+            <Data ColumnIndex="3" RowIndex="14">345234.3456</Data>
+            <Data ColumnIndex="4" RowIndex="14">13</Data>
+            <Data ColumnIndex="5" RowIndex="14">5/15/2020</Data>
+            <Data ColumnIndex="6" RowIndex="14">-1</Data>
+            <Data ColumnIndex="0" RowIndex="15">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="15">Marketing</Data>
+            <Data ColumnIndex="2" RowIndex="15" />
+            <Data ColumnIndex="3" RowIndex="15">4647.2345</Data>
+            <Data ColumnIndex="4" RowIndex="15">13</Data>
+            <Data ColumnIndex="5" RowIndex="15">5/16/2020</Data>
+            <Data ColumnIndex="6" RowIndex="15">-1</Data>
+            <Data ColumnIndex="0" RowIndex="16">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="16">Marketing</Data>
+            <Data ColumnIndex="2" RowIndex="16" />
+            <Data ColumnIndex="3" RowIndex="16">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="16">13</Data>
+            <Data ColumnIndex="5" RowIndex="16">5/17/2020</Data>
+            <Data ColumnIndex="6" RowIndex="16">-1</Data>
+            <Data ColumnIndex="0" RowIndex="17">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="17">Office Supplies</Data>
+            <Data ColumnIndex="2" RowIndex="17" />
+            <Data ColumnIndex="3" RowIndex="17">38048.7800</Data>
+            <Data ColumnIndex="4" RowIndex="17">13</Data>
+            <Data ColumnIndex="5" RowIndex="17">5/18/2020</Data>
+            <Data ColumnIndex="6" RowIndex="17">-1</Data>
+            <Data ColumnIndex="0" RowIndex="18">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="18">Other Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="18" />
+            <Data ColumnIndex="3" RowIndex="18">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="18">13</Data>
+            <Data ColumnIndex="5" RowIndex="18">5/19/2020</Data>
+            <Data ColumnIndex="6" RowIndex="18">-1</Data>
+            <Data ColumnIndex="0" RowIndex="19">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="19">Professional Services</Data>
+            <Data ColumnIndex="2" RowIndex="19" />
+            <Data ColumnIndex="3" RowIndex="19">345234.3456</Data>
+            <Data ColumnIndex="4" RowIndex="19">13</Data>
+            <Data ColumnIndex="5" RowIndex="19">5/20/2020</Data>
+            <Data ColumnIndex="6" RowIndex="19">-1</Data>
+            <Data ColumnIndex="0" RowIndex="20">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="20">Rent</Data>
+            <Data ColumnIndex="2" RowIndex="20" />
+            <Data ColumnIndex="3" RowIndex="20">4647.2345</Data>
+            <Data ColumnIndex="4" RowIndex="20">13</Data>
+            <Data ColumnIndex="5" RowIndex="20">5/21/2020</Data>
+            <Data ColumnIndex="6" RowIndex="20">-1</Data>
+            <Data ColumnIndex="0" RowIndex="21">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="21">Telephone and Utilities</Data>
+            <Data ColumnIndex="2" RowIndex="21">Telephone</Data>
+            <Data ColumnIndex="3" RowIndex="21">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="21">13</Data>
+            <Data ColumnIndex="5" RowIndex="21">5/22/2020</Data>
+            <Data ColumnIndex="6" RowIndex="21">-1</Data>
+            <Data ColumnIndex="0" RowIndex="22">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="22">Telephone and Utilities</Data>
+            <Data ColumnIndex="2" RowIndex="22">Utilities</Data>
+            <Data ColumnIndex="3" RowIndex="22">38048.7800</Data>
+            <Data ColumnIndex="4" RowIndex="22">13</Data>
+            <Data ColumnIndex="5" RowIndex="22">5/23/2020</Data>
+            <Data ColumnIndex="6" RowIndex="22">-1</Data>
+            <Data ColumnIndex="0" RowIndex="23">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="23">Depreciation</Data>
+            <Data ColumnIndex="2" RowIndex="23">Entertainment</Data>
+            <Data ColumnIndex="3" RowIndex="23">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="23">13</Data>
+            <Data ColumnIndex="5" RowIndex="23">5/24/2020</Data>
+            <Data ColumnIndex="6" RowIndex="23">-1</Data>
+            <Data ColumnIndex="0" RowIndex="24">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="24">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="24">Meals</Data>
+            <Data ColumnIndex="3" RowIndex="24">345234.3456</Data>
+            <Data ColumnIndex="4" RowIndex="24">13</Data>
+            <Data ColumnIndex="5" RowIndex="24">5/25/2020</Data>
+            <Data ColumnIndex="6" RowIndex="24">-1</Data>
+            <Data ColumnIndex="0" RowIndex="25">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="25">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="25">Other Travel Related</Data>
+            <Data ColumnIndex="3" RowIndex="25">4647.2345</Data>
+            <Data ColumnIndex="4" RowIndex="25">13</Data>
+            <Data ColumnIndex="5" RowIndex="25">5/26/2020</Data>
+            <Data ColumnIndex="6" RowIndex="25">-1</Data>
+            <Data ColumnIndex="0" RowIndex="26">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="26">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="26">Travel Lodging</Data>
+            <Data ColumnIndex="3" RowIndex="26">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="26">13</Data>
+            <Data ColumnIndex="5" RowIndex="26">5/27/2020</Data>
+            <Data ColumnIndex="6" RowIndex="26">-1</Data>
+            <Data ColumnIndex="0" RowIndex="27">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="27">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="27">Travel Transportation</Data>
+            <Data ColumnIndex="3" RowIndex="27">38048.7800</Data>
+            <Data ColumnIndex="4" RowIndex="27">13</Data>
+            <Data ColumnIndex="5" RowIndex="27">5/28/2020</Data>
+            <Data ColumnIndex="6" RowIndex="27">-1</Data>
+            <Data ColumnIndex="0" RowIndex="28">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="28">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="28" />
+            <Data ColumnIndex="3" RowIndex="28">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="28">13</Data>
+            <Data ColumnIndex="5" RowIndex="28">5/29/2020</Data>
+            <Data ColumnIndex="6" RowIndex="28">-1</Data>
+            <Data ColumnIndex="0" RowIndex="29">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="29">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="29" />
+            <Data ColumnIndex="3" RowIndex="29">345234.3456</Data>
+            <Data ColumnIndex="4" RowIndex="29">13</Data>
+            <Data ColumnIndex="5" RowIndex="29">5/30/2020</Data>
+            <Data ColumnIndex="6" RowIndex="29">-1</Data>
+            <Data ColumnIndex="0" RowIndex="30">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="30">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="30" />
+            <Data ColumnIndex="3" RowIndex="30">4647.2345</Data>
+            <Data ColumnIndex="4" RowIndex="30">13</Data>
+            <Data ColumnIndex="5" RowIndex="30">5/31/2020</Data>
+            <Data ColumnIndex="6" RowIndex="30">-1</Data>
+            <Data ColumnIndex="0" RowIndex="31">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="31">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="31" />
+            <Data ColumnIndex="3" RowIndex="31">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="31">13</Data>
+            <Data ColumnIndex="5" RowIndex="31">6/1/2020</Data>
+            <Data ColumnIndex="6" RowIndex="31">-1</Data>
+            <Data ColumnIndex="0" RowIndex="32">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="32">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="32" />
+            <Data ColumnIndex="3" RowIndex="32">38048.7800</Data>
+            <Data ColumnIndex="4" RowIndex="32">13</Data>
+            <Data ColumnIndex="5" RowIndex="32">6/2/2020</Data>
+            <Data ColumnIndex="6" RowIndex="32">-1</Data>
+            <Data ColumnIndex="0" RowIndex="33">Operating Expenses</Data>
+            <Data ColumnIndex="1" RowIndex="33">Travel Expenses</Data>
+            <Data ColumnIndex="2" RowIndex="33" />
+            <Data ColumnIndex="3" RowIndex="33">2345.2342</Data>
+            <Data ColumnIndex="4" RowIndex="33">13</Data>
+            <Data ColumnIndex="5" RowIndex="33">6/3/2020</Data>
+            <Data ColumnIndex="6" RowIndex="33">-1</Data>
+            <Data ColumnIndex="0" RowIndex="34">Returns and Adjustments</Data>
+            <Data ColumnIndex="1" RowIndex="34" />
+            <Data ColumnIndex="2" RowIndex="34" />
+            <Data ColumnIndex="3" RowIndex="34">345234.3456</Data>
+            <Data ColumnIndex="4" RowIndex="34">13</Data>
+            <Data ColumnIndex="5" RowIndex="34">6/4/2020</Data>
+            <Data ColumnIndex="6" RowIndex="34">-1</Data>
+            <Data ColumnIndex="0" RowIndex="35">Total Cost of Sales</Data>
+            <Data ColumnIndex="1" RowIndex="35">Standard Cost of Sales</Data>
+            <Data ColumnIndex="2" RowIndex="35" />
+            <Data ColumnIndex="3" RowIndex="35">4647.2345</Data>
+            <Data ColumnIndex="4" RowIndex="35">13</Data>
+            <Data ColumnIndex="5" RowIndex="35">6/5/2020</Data>
+            <Data ColumnIndex="6" RowIndex="35">-1</Data>
+            <Data ColumnIndex="0" RowIndex="36">Total Cost of Sales</Data>
+            <Data ColumnIndex="1" RowIndex="36">Variances</Data>
+            <Data ColumnIndex="2" RowIndex="36" />
+            <Data ColumnIndex="3" RowIndex="36">2344.2345</Data>
+            <Data ColumnIndex="4" RowIndex="36">13</Data>
+            <Data ColumnIndex="5" RowIndex="36">6/6/2020</Data>
+            <Data ColumnIndex="6" RowIndex="36">-1</Data>
+          </DataGrid>
+        </rd:DesignerState>
+        <CommandText>&lt;Query&gt;
+  &lt;XmlData&gt;
+    &lt;Data&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Discounts&lt;/Level_01&gt;
+        &lt;Level_02&gt;&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;227.0700&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/1/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Interest Expense&lt;/Level_01&gt;
+        &lt;Level_02&gt;&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/2/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Commissions&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;38048.7800&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/3/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Amortization of Goodwill&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/4/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Building Leasehold&lt;/Level_03&gt;
+        &lt;Amount&gt;345234.3456&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/5/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Equipment&lt;/Level_03&gt;
+        &lt;Amount&gt;4647.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/6/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Furniture and Fixtures&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/7/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Other Assets&lt;/Level_03&gt;
+        &lt;Amount&gt;38048.7800&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/8/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Vehicles&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/9/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Employee Benefits&lt;/Level_03&gt;
+        &lt;Amount&gt;345234.3456&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/10/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Payroll Taxes&lt;/Level_03&gt;
+        &lt;Amount&gt;4647.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/11/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Salaries&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/12/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Labor Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;Conferences&lt;/Level_03&gt;
+        &lt;Amount&gt;38048.7800&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/13/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Labor Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;Marketing Collateral&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/14/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Labor Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;345234.3456&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/15/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Marketing&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;4647.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/16/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Marketing&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/17/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Office Supplies&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;38048.7800&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/18/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Other Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/19/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Professional Services&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;345234.3456&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/20/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Rent&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;4647.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/21/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Telephone and Utilities&lt;/Level_02&gt;
+        &lt;Level_03&gt;Telephone&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/22/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Telephone and Utilities&lt;/Level_02&gt;
+        &lt;Level_03&gt;Utilities&lt;/Level_03&gt;
+        &lt;Amount&gt;38048.7800&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/23/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Depreciation&lt;/Level_02&gt;
+        &lt;Level_03&gt;Entertainment&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/24/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;Meals&lt;/Level_03&gt;
+        &lt;Amount&gt;345234.3456&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/25/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;Other Travel Related&lt;/Level_03&gt;
+        &lt;Amount&gt;4647.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/26/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;Travel Lodging&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/27/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;Travel Transportation&lt;/Level_03&gt;
+        &lt;Amount&gt;38048.7800&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/28/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/29/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;345234.3456&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/30/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;4647.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;5/31/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;6/1/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;38048.7800&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;6/2/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Operating Expenses&lt;/Level_01&gt;
+        &lt;Level_02&gt;Travel Expenses&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;2345.2342&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;6/3/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Returns and Adjustments&lt;/Level_01&gt;
+        &lt;Level_02&gt;&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;345234.3456&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;6/4/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Total Cost of Sales&lt;/Level_01&gt;
+        &lt;Level_02&gt;Standard Cost of Sales&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;4647.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;6/5/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+      &lt;Row&gt;
+        &lt;Level_01&gt;Total Cost of Sales&lt;/Level_01&gt;
+        &lt;Level_02&gt;Variances&lt;/Level_02&gt;
+        &lt;Level_03&gt;&lt;/Level_03&gt;
+        &lt;Amount&gt;2344.2345&lt;/Amount&gt;
+        &lt;OrganizationKey&gt;13&lt;/OrganizationKey&gt;
+        &lt;Date&gt;6/6/2020&lt;/Date&gt;
+        &lt;DepartmentGroupKey&gt;-1&lt;/DepartmentGroupKey&gt;
+      &lt;/Row&gt;
+    &lt;/Data&gt;
+  &lt;/XmlData&gt;
+  &lt;ElementPath&gt;Data{}/Row{Level_01(String),Level_02(String),Level_03(String),Amount(Float),OrganizationKey(String),Date(String),DepartmentGroupKey(String)}&lt;/ElementPath&gt;
+&lt;/Query&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Level_01">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Level_01</DataField>
+        </Field>
+        <Field Name="Level_02">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Level_02</DataField>
+        </Field>
+        <Field Name="Level_03">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Level_03</DataField>
+        </Field>
+        <Field Name="Amount">
+          <rd:TypeName>System.Double</rd:TypeName>
+          <DataField>Amount</DataField>
+        </Field>
+        <Field Name="OrganizationKey">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>OrganizationKey</DataField>
+        </Field>
+        <Field Name="Date">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Date</DataField>
+        </Field>
+        <Field Name="DepartmentGroupKey">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>DepartmentGroupKey</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Chart Name="Chart1">
+            <ChartCategoryHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart1_CategoryGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Level_01.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Level_01.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!Level_01.Value</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartCategoryHierarchy>
+            <ChartSeriesHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart1_SeriesGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Level_01.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Level_01.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!Level_01.Value</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartSeriesHierarchy>
+            <ChartData>
+              <ChartSeriesCollection>
+                <ChartSeries Name="Amount">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Sum(Fields!Amount.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <Format>#,0,;(#,0,)</Format>
+                        </Style>
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
+                      </ChartDataLabel>
+                      <ToolTip>=Fields!Level_01.Value &amp; vbCrLf &amp; FormatCurrency(Sum(Fields!Amount.Value)) &amp; " (" &amp; FormatPercent(Sum(Fields!Amount.Value) / Sum(Fields!Amount.Value, "dsMain")) &amp; ")"</ToolTip>
+                      <Style />
+                      <ChartMarker>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Shape</Type>
+                  <Subtype>TreeMap</Subtype>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+              </ChartSeriesCollection>
+            </ChartData>
+            <ChartAreas>
+              <ChartArea Name="Default">
+                <ChartCategoryAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartCategoryAxes>
+                <ChartValueAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartValueAxes>
+                <Style>
+                  <BackgroundColor>#00ffffff</BackgroundColor>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                </Style>
+              </ChartArea>
+            </ChartAreas>
+            <ChartLegends>
+              <ChartLegend Name="Default">
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <Position>TopLeft</Position>
+                <ChartLegendTitle>
+                  <Caption />
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </ChartLegendTitle>
+                <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+                <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+              </ChartLegend>
+            </ChartLegends>
+            <ChartTitles>
+              <ChartTitle Name="Default">
+                <Caption>LEVEL 01 EXPENDITURES ACCOUNTS ('000)</Caption>
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextAlign>Left</TextAlign>
+                  <VerticalAlign>Top</VerticalAlign>
+                  <Color>DimGray</Color>
+                </Style>
+                <Position>TopLeft</Position>
+              </ChartTitle>
+            </ChartTitles>
+            <Palette>EarthTones</Palette>
+            <ChartBorderSkin>
+              <Style>
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <Color>White</Color>
+              </Style>
+            </ChartBorderSkin>
+            <ChartNoDataMessage Name="NoDataMessage">
+              <Caption>No Data Available</Caption>
+              <Style>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>General</TextAlign>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </ChartNoDataMessage>
+            <DataSetName>dsMain</DataSetName>
+            <Top>1.5in</Top>
+            <Height>6in</Height>
+            <Width>4.8in</Width>
+            <Style>
+              <Border>
+                <Color>LightGrey</Color>
+                <Style>Solid</Style>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </Chart>
+          <Chart Name="Chart2">
+            <ChartCategoryHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart2_CategoryGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Level_01.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Level_01.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <ChartMembers>
+                    <ChartMember>
+                      <Group Name="Chart2_CategoryGroup1">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!Level_02.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!Level_02.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <ChartMembers>
+                        <ChartMember>
+                          <Group Name="Chart2_CategoryGroup2">
+                            <GroupExpressions>
+                              <GroupExpression>=Fields!Level_03.Value</GroupExpression>
+                            </GroupExpressions>
+                          </Group>
+                          <SortExpressions>
+                            <SortExpression>
+                              <Value>=Fields!Level_03.Value</Value>
+                            </SortExpression>
+                          </SortExpressions>
+                          <Label>=Fields!Level_03.Value &amp; vbCrLf &amp; FormatCurrency(Sum(Fields!Amount.Value)) &amp; " (" &amp; FormatPercent(Sum(Fields!Amount.Value) / Sum(Fields!Amount.Value, "dsMain")) &amp; ")"</Label>
+                        </ChartMember>
+                      </ChartMembers>
+                      <Label>=Fields!Level_02.Value &amp; vbCrLf &amp; FormatCurrency(Sum(Fields!Amount.Value)) &amp; " (" &amp; FormatPercent(Sum(Fields!Amount.Value) / Sum(Fields!Amount.Value, "dsMain")) &amp; ")"</Label>
+                    </ChartMember>
+                  </ChartMembers>
+                  <Label>=Fields!Level_01.Value &amp; vbCrLf &amp; FormatCurrency(Sum(Fields!Amount.Value)) &amp; " (" &amp; FormatPercent(Sum(Fields!Amount.Value) / Sum(Fields!Amount.Value, "dsMain")) &amp; ")"</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartCategoryHierarchy>
+            <ChartSeriesHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart2_SeriesGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Level_01.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Level_01.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!Level_01.Value</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartSeriesHierarchy>
+            <ChartData>
+              <ChartSeriesCollection>
+                <ChartSeries Name="Amount">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Sum(Fields!Amount.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <Format>#,0,;(#,0,)</Format>
+                        </Style>
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
+                      </ChartDataLabel>
+                      <Style />
+                      <ChartMarker>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Shape</Type>
+                  <Subtype>Sunburst</Subtype>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+              </ChartSeriesCollection>
+            </ChartData>
+            <ChartAreas>
+              <ChartArea Name="Default">
+                <ChartCategoryAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartCategoryAxes>
+                <ChartValueAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>Gainsboro</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartValueAxes>
+                <Style>
+                  <BackgroundColor>#00ffffff</BackgroundColor>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                </Style>
+              </ChartArea>
+            </ChartAreas>
+            <ChartTitles>
+              <ChartTitle Name="Default">
+                <Caption>EXPENDITURES ACCOUNTS HIERARCHY ('000)</Caption>
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>14pt</FontSize>
+                  <TextAlign>Left</TextAlign>
+                  <VerticalAlign>Top</VerticalAlign>
+                  <Color>DimGray</Color>
+                </Style>
+                <Position>TopLeft</Position>
+              </ChartTitle>
+            </ChartTitles>
+            <Palette>EarthTones</Palette>
+            <ChartBorderSkin>
+              <Style>
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <Color>White</Color>
+              </Style>
+            </ChartBorderSkin>
+            <ChartNoDataMessage Name="NoDataMessage">
+              <Caption>No Data Available</Caption>
+              <Style>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>General</TextAlign>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </ChartNoDataMessage>
+            <DataSetName>dsMain</DataSetName>
+            <Top>1.5in</Top>
+            <Left>5.2in</Left>
+            <Height>6in</Height>
+            <Width>4.8in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Color>LightGrey</Color>
+                <Style>Solid</Style>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </Chart>
+          <Image Name="ReportLogo">
+            <Source>Embedded</Source>
+            <Value>Contoso_LogoSmall</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.29167in</Top>
+            <Height>0.90833in</Height>
+            <Width>1.35833in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Rectangle Name="TitleTile">
+            <ReportItems>
+              <Textbox Name="ReportTitle">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Organization Expenditures</Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <FontSize>28pt</FontSize>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.09444in</Top>
+                <Left>0.15in</Left>
+                <Height>0.55556in</Height>
+                <Width>8.3in</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Width>1pt</Width>
+                  </BottomBorder>
+                  <VerticalAlign>Bottom</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ReportSubtitle2">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Organization: </Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>=Parameters!OrganizationKey.Label</Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value> | </Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>Period:</Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value xml:space="preserve"> </Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>=Format(Parameters!DateFrom.Value, "d") &amp; " to " &amp; Format(Parameters!DateTo.Value, "d")</Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value> | </Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>Department:</Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value xml:space="preserve"> </Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>=Parameters!DepartmentGroupKey.Label</Value>
+                        <Style>
+                          <FontFamily>Segoe UI Light</FontFamily>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.65in</Top>
+                <Left>0.15in</Left>
+                <Height>0.35in</Height>
+                <Width>8.3in</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <VerticalAlign>Top</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>6pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Left>1.4in</Left>
+            <Height>1.2in</Height>
+            <Width>8.6in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>#0d7b3d</BackgroundColor>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <Height>7.5in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>10in</Width>
+      <Page>
+        <PageFooter>
+          <Height>0.6in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Footer1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Run at </Value>
+                      <Style>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.2in</Top>
+              <Height>0.4in</Height>
+              <Width>5in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Width>1pt</Width>
+                </TopBorder>
+                <BackgroundColor>#0d7b3d</BackgroundColor>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>8pt</PaddingLeft>
+                <PaddingRight>4pt</PaddingRight>
+                <PaddingTop>4pt</PaddingTop>
+                <PaddingBottom>4pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Footer2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Page </Value>
+                      <Style>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value> of </Value>
+                      <Style>
+                        <FontWeight>Normal</FontWeight>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Globals!TotalPages</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.2in</Top>
+              <Left>5in</Left>
+              <Height>0.4in</Height>
+              <Width>5in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Width>1pt</Width>
+                </TopBorder>
+                <BackgroundColor>#0d7b3d</BackgroundColor>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>4pt</PaddingLeft>
+                <PaddingRight>8pt</PaddingRight>
+                <PaddingTop>4pt</PaddingTop>
+                <PaddingBottom>4pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>8.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="OrganizationKey">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>3</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Organization:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsOrganization</DataSetName>
+          <ValueField>OrganizationKey</ValueField>
+          <LabelField>OrganizationName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="DateFrom">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>10/10/2015 12:00:00 AM</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date From:</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="DateTo">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>12/31/2020 00:00:00</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Date To:</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="DepartmentGroupKey">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>-1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Department Group:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsDepartmentGroup</DataSetName>
+          <ValueField>DepartmentGroupKey</ValueField>
+          <LabelField>DepartmentGroupName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>3</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>OrganizationKey</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>DateFrom</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>DateTo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>DepartmentGroupKey</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Contoso_LogoSmall">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <CustomProperties>
+    <CustomProperty>
+      <Name>ReportGeneratorTemplate</Name>
+      <Value>RDLSamples_OrganizationalExpenditures</Value>
+    </CustomProperty>
+  </CustomProperties>
+</Report>

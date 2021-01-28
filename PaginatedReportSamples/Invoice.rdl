@@ -3565,7 +3565,7 @@
   <CustomProperties>
     <CustomProperty>
       <Name>ReportGeneratorTemplate</Name>
-      <Value>RDLSamples</Value>
+      <Value>RDLSamples_Invoice</Value>
     </CustomProperty>
   </CustomProperties>
   <EmbeddedImages>
