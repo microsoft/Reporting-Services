@@ -1895,10 +1895,10 @@
         </PageFooter>
         <PageHeight>8.5in</PageHeight>
         <PageWidth>11in</PageWidth>
-        <LeftMargin>0.5in</LeftMargin>
-        <RightMargin>0.5in</RightMargin>
-        <TopMargin>0.5in</TopMargin>
-        <BottomMargin>0.5in</BottomMargin>
+        <LeftMargin>0.2in</LeftMargin>
+        <RightMargin>0.2in</RightMargin>
+        <TopMargin>0.2in</TopMargin>
+        <BottomMargin>0.2in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -1989,6 +1989,12 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <CustomProperties>
+    <CustomProperty>
+      <Name>ReportGeneratorTemplate</Name>
+      <Value>RDLSamples_OrganizationExpenditure</Value>
+    </CustomProperty>
+  </CustomProperties>
   <EmbeddedImages>
     <EmbeddedImage Name="Contoso_LogoSmall">
       <MIMEType>image/png</MIMEType>
@@ -2016,10 +2022,4 @@ cBBgRKQSeIMQIQneC56Pi29txZoeFuum/DuW1lX5Jw0h6tYlATgP5de3WK96T79b1av0cL4ejYtrFKGH
 hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIdrgnwBY7lZSw1Z/fwAAAABJRU5ErkJggg==</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <CustomProperties>
-    <CustomProperty>
-      <Name>ReportGeneratorTemplate</Name>
-      <Value>RDLSamples_OrganizationExpenditure</Value>
-    </CustomProperty>
-  </CustomProperties>
 </Report>
